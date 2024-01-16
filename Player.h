@@ -9,6 +9,7 @@ private:
 
     float jumpSpeed = 0.5f; 
     float jumpHeight = 0.5f;
+    float gravity = 0.5;
     Transform tPlayer;
 public:
     //コンストラクタ
@@ -28,6 +29,4 @@ public:
 
     //開放
     void Release() override;
-
-    void Jump();
 };
