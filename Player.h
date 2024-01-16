@@ -7,9 +7,10 @@ class Player : public GameObject
 private:
     int hPlayer_;
 
-    float jumpSpeed = 0.5f; 
-    float jumpHeight = 0.5f;
-    float gravity = 0.5;
+    bool isJumping;
+    float jumpSpeed = 0.2f; 
+    float jumpHeight = 1.0f;
+    float gravity = 0.02f;
     Transform tPlayer;
 public:
     //コンストラクタ

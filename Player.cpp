@@ -39,13 +39,25 @@ void Player::Update()
         tPlayer.position_.x += 0.1f;
     }
 
-    if (Input::IsKey(DIK_A))
+    if (isJumping)
     {
         tPlayer.position_.y += jumpSpeed;
+        jumpSpeed -= gravity;
+
+        if (tPlayer.position_.y <= 0.0f)
+        {
+            tPlayer.position_.y = 0.0f;
+            isJumping = false;
+        }
     }
-    else if (tPlayer.position_.y >= jumpHeight)
+    else
     {
-        tPlayer.position_.y -= gravity;   
+        if (Input::IsKey(DIK_A))
+        {
+            // ジャンプ開始
+            isJumping = true;
+            jumpSpeed = 0.2f;  // 初期ジャンプ速度
+        }
     }
 }
 
