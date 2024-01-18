@@ -2,7 +2,6 @@
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Stage.h"
-//#include "Engine/SphereCollider.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -20,9 +19,6 @@ void Player::Initialize()
 {
     hPlayer_ = Model::Load("Player.fbx");
     assert(hPlayer_ >= 0);
-
-    //SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0.1, 0), 1.2f);
-    //AddCollider(collision);
 
     tPlayer.scale_ = XMFLOAT3(0.2f, 0.2f, 0.2f);
 }
@@ -60,8 +56,11 @@ void Player::Update()
             jumpSpeed = 0.4f;  // 初期ジャンプ速度
         }
 
-        Stage* pStage = (Stage*)FindObject("Stage");    //ステージオブジェクトを探す
-        int hGroundModel = pStage->GetModelHandle();    //モデル番号を取得
+        XMFLOAT3 newPosition = tPlayer.position_;
+
+        //移動先に足場があるかどうかをレイキャストで確認
+        Stage* pStage = (Stage*)FindObject("Stage");
+        int hGroundModel = pStage->GetModelHandle();
 
         RayCastData data;
         data.start = tPlayer.position_;   //レイの発射位置
@@ -71,7 +70,11 @@ void Player::Update()
         if (data.hit)
         {
             //その分位置を下げる
-            tPlayer.position_.y -= data.dist;
+            tPlayer.position_ = newPosition;
+        }
+        else
+        {
+            tPlayer.position_.y -= gravity;
         }
     }
 }
