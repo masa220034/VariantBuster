@@ -8,7 +8,7 @@ private:
     int hPlayer_;
 
     bool isJumping;
-    float jumpSpeed = 0.2f; 
+    float jumpSpeed = 0.4f; 
     float jumpHeight = 1.0f;
     float gravity = 0.02f;
     Transform tPlayer;

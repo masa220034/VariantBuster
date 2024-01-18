@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
+#include "Stage.h"
 //#include "Engine/SphereCollider.h"
 
 //コンストラクタ
@@ -56,7 +57,21 @@ void Player::Update()
         {
             // ジャンプ開始
             isJumping = true;
-            jumpSpeed = 0.2f;  // 初期ジャンプ速度
+            jumpSpeed = 0.4f;  // 初期ジャンプ速度
+        }
+
+        Stage* pStage = (Stage*)FindObject("Stage");    //ステージオブジェクトを探す
+        int hGroundModel = pStage->GetModelHandle();    //モデル番号を取得
+
+        RayCastData data;
+        data.start = tPlayer.position_;   //レイの発射位置
+        data.dir = XMFLOAT3(0, -1, 0);       //レイの方向
+        Model::RayCast(hGroundModel, &data); //レイを発射
+
+        if (data.hit)
+        {
+            //その分位置を下げる
+            tPlayer.position_.y -= data.dist;
         }
     }
 }
