@@ -49,11 +49,11 @@ void Player::Update()
     }
     else
     {
-        if (Input::IsKey(DIK_A))
+        if (Input::IsKeyDown(DIK_A))
         {
             // ジャンプ開始
             isJumping = true;
-            jumpSpeed = initialVelocity;  // 初期速度
+            jumpSpeed = initialVelocity;  
         }
 
         XMFLOAT3 newPosition = tPlayer.position_;
@@ -69,11 +69,12 @@ void Player::Update()
 
         if (data.hit)
         {
-            //その分位置を下げる
+            //足場がある場合、ジャンプした分の位置を下げる
             tPlayer.position_ = newPosition;
         }
         else
         {
+            //足場がない場合、プレイヤーの高さを下げる
             tPlayer.position_.y -= fallSpeed * gravity;
         }
     }

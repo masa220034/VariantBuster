@@ -7,13 +7,14 @@ class Player : public GameObject
 private:
     int hPlayer_;
 
-    bool isJumping;
-    float moveSpeed = 0.1f;
-    float initialVelocity = 0.4f;
-    float jumpSpeed = 0.4f; 
-    float jumpHeight = 1.0f;
-    float gravity = 0.02f;
-    float fallSpeed = 5.0f;
+    bool isJumping;               //ジャンプしてるかどうか
+    float moveSpeed = 0.1f;       //移動速度
+    float initialVelocity = 0.4f; //ジャンプの初期速度
+    float jumpSpeed = 0.4f;       //垂直方向(Y軸)の速度
+    float jumpHeight = 1.0f;      //ジャンプの高さ
+    float gravity = 0.02f;        //重力
+    float fallSpeed = 10.0f;       //落ちる速度
+
     Transform tPlayer;
 public:
     //コンストラクタ
