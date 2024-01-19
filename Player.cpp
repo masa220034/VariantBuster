@@ -74,7 +74,7 @@ void Player::Update()
         }
         else
         {
-            tPlayer.position_.y -= gravity;
+            tPlayer.position_.y -= 5 * gravity;
         }
     }
 }
