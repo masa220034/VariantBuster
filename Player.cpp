@@ -28,12 +28,12 @@ void Player::Update()
 {
     if (Input::IsKey(DIK_LEFT))
     {
-        tPlayer.position_.x -= 0.1f;
+        tPlayer.position_.x -= moveSpeed;
     }
 
     if (Input::IsKey(DIK_RIGHT))
     {
-        tPlayer.position_.x += 0.1f;
+        tPlayer.position_.x += moveSpeed;
     }
 
     if (isJumping)
@@ -53,7 +53,7 @@ void Player::Update()
         {
             // ジャンプ開始
             isJumping = true;
-            jumpSpeed = 0.4f;  // 初期ジャンプ速度
+            jumpSpeed = initialVelocity;  // 初期速度
         }
 
         XMFLOAT3 newPosition = tPlayer.position_;
@@ -74,7 +74,7 @@ void Player::Update()
         }
         else
         {
-            tPlayer.position_.y -= 5 * gravity;
+            tPlayer.position_.y -= fallSpeed * gravity;
         }
     }
 }
