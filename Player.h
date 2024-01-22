@@ -13,7 +13,8 @@ private:
     float jumpSpeed = 0.4f;       //垂直方向(Y軸)の速度
     float jumpHeight = 1.0f;      //ジャンプの高さ
     float gravity = 0.02f;        //重力
-    float fallSpeed = 10.0f;       //落ちる速度
+    float fallSpeed = 10.0f;      //落ちる速度
+    float fPosition = -6.0f;      //初期足場から落下後の位置
 
     Transform tPlayer;
 public:

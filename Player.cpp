@@ -76,6 +76,12 @@ void Player::Update()
         {
             //足場がない場合、プレイヤーの高さを下げる
             tPlayer.position_.y -= fallSpeed * gravity;
+
+            if (tPlayer.position_.y <= fPosition)
+            {
+                //初期位置に戻す
+                tPlayer.position_ = XMFLOAT3(0.0f, 0.0f, 0.0f);
+            }
         }
     }
 }

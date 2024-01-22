@@ -2,8 +2,6 @@
 #include "Engine/Image.h"
 #include "Engine/Model.h" 
 #include "Engine/Camera.h"
-//#include "Engine/BoxCollider.h"
-
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
@@ -26,9 +24,6 @@ void Stage::Initialize()
 	hGround_ = Model::Load("Ground.fbx");
 	assert(hBackGround_ >= 0);
 	assert(hGround_ >= 0);
-
-	//BoxCollider* collision = new BoxCollider(XMFLOAT3(0.15, -1, 0), XMFLOAT3(11, 2.3, 1));
-	//AddCollider(collision);
 }
 
 //更新
