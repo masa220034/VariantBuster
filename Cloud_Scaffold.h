@@ -2,18 +2,18 @@
 #include "Engine/GameObject.h"
 
 //プレイヤーを管理するクラス
-class Stage : public GameObject
+class Cloud_Scaffold : public GameObject
 {
 private:
-    int hBackGround_;
-    int hGround_;
+    int hCloud_Scaff_;
 
+    Transform tCloud;
 public:
     //コンストラクタ
-    Stage(GameObject* parent);
+    Cloud_Scaffold(GameObject* parent);
 
     //デストラクタ
-    ~Stage();
+    ~Cloud_Scaffold();
 
     //初期化
     void Initialize() override;
@@ -27,5 +27,5 @@ public:
     //開放
     void Release() override;
 
-    int GetModelHandle() { return hGround_; }
+    int GetModelHandle() { return hCloud_Scaff_; }
 };

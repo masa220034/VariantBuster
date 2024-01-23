@@ -35,7 +35,7 @@ void Stage::Update()
 void Stage::Draw()
 {
 	Image::SetTransform(hBackGround_, transform_);
-	Model::SetTransform(hGround_, trGround);
+	Model::SetTransform(hGround_, transform_);
 	Image::Draw(hBackGround_);
 	Model::Draw(hGround_);
 }

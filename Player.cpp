@@ -2,6 +2,7 @@
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Stage.h"
+#include "Cloud_Scaffold.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -60,12 +61,15 @@ void Player::Update()
 
         //移動先に足場があるかどうかをレイキャストで確認
         Stage* pStage = (Stage*)FindObject("Stage");
+        Cloud_Scaffold* pCloud = (Cloud_Scaffold*)FindObject("Cloud_Scaffold");
         int hGroundModel = pStage->GetModelHandle();
+        int hCloud_ScaffoldModel = pCloud->GetModelHandle();
 
         RayCastData data;
         data.start = tPlayer.position_;   //レイの発射位置
         data.dir = XMFLOAT3(0, -1, 0);       //レイの方向
         Model::RayCast(hGroundModel, &data); //レイを発射
+        Model::RayCast(hCloud_ScaffoldModel, &data);
 
         if (data.hit)
         {
