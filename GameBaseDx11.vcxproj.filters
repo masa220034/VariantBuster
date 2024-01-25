@@ -104,7 +104,6 @@
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Stage.cpp" />
-    <ClCompile Include="Cloud_Scaffold.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -185,7 +184,6 @@
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="Stage.h" />
-    <ClInclude Include="Cloud_Scaffold.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

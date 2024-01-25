@@ -1,7 +1,6 @@
 #include "PlayScene.h"
 #include "Player.h"
 #include "Stage.h"
-#include "Cloud_Scaffold.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
 
@@ -16,7 +15,6 @@ void PlayScene::Initialize()
 {
 	Instantiate<Stage>(this);
 	Instantiate<Player>(this);
-	Instantiate<Cloud_Scaffold>(this);
 }
 
 //XV
