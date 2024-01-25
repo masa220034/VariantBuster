@@ -1,7 +1,6 @@
 #include "Stage.h"
 #include "Engine/Image.h"
 #include "Engine/Model.h" 
-#include "Engine/Camera.h"
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
@@ -17,9 +16,6 @@ Stage::~Stage()
 //初期化
 void Stage::Initialize()
 {
-	Camera::SetPosition(XMFLOAT3(0, 3, -10));
-	Camera::SetTarget(XMFLOAT3(0, 2, 0));
-
 	hBackGround_ = Image::Load("PlayBackGround.png");
 	assert(hBackGround_ >= 0);
 }

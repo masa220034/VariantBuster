@@ -2,6 +2,8 @@
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Ground.h"
+#include "Engine/Camera.h"
+
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -17,6 +19,9 @@ Player::~Player()
 //初期化
 void Player::Initialize()
 {
+    Camera::SetPosition(XMFLOAT3(0, 3, -10));
+    Camera::SetTarget(XMFLOAT3(0, 2, 0));
+
     hPlayer_ = Model::Load("Player.fbx");
     assert(hPlayer_ >= 0);
 
