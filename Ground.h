@@ -7,10 +7,9 @@ class Ground : public GameObject
 private:
     int hGround_;
 
-    Transform tGround;
 public:
     //コンストラクタ
-    Ground(GameObject* parent, const std::string& name, float xPos);
+    Ground(GameObject* parent);
 
     //デストラクタ
     ~Ground();

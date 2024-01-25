@@ -5,7 +5,7 @@
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
-	:GameObject(parent, "Stage"), hBackGround_(-1), hGround_(-1)
+	:GameObject(parent, "Stage"), hBackGround_(-1)
 {
 }
 
@@ -21,9 +21,7 @@ void Stage::Initialize()
 	Camera::SetTarget(XMFLOAT3(0, 2, 0));
 
 	hBackGround_ = Image::Load("PlayBackGround.png");
-	hGround_ = Model::Load("Ground.fbx");
 	assert(hBackGround_ >= 0);
-	assert(hGround_ >= 0);
 }
 
 //更新
@@ -35,9 +33,7 @@ void Stage::Update()
 void Stage::Draw()
 {
 	Image::SetTransform(hBackGround_, transform_);
-	Model::SetTransform(hGround_, transform_);
 	Image::Draw(hBackGround_);
-	Model::Draw(hGround_);
 }
 
 //開放

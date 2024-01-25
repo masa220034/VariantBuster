@@ -6,7 +6,6 @@ class Stage : public GameObject
 {
 private:
     int hBackGround_;
-    int hGround_;
 
 public:
     //コンストラクタ
@@ -26,6 +25,4 @@ public:
 
     //開放
     void Release() override;
-
-    int GetModelHandle() { return hGround_; }
 };
