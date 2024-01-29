@@ -1,9 +1,8 @@
 #include "Player.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
-#include "Ground.h"
+#include "Stage.h"
 #include "Engine/Camera.h"
-
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -64,8 +63,8 @@ void Player::Update()
         XMFLOAT3 newPosition = tPlayer.position_;
 
         //移動先に足場があるかどうかをレイキャストで確認
-        Ground* pGround = (Ground*)FindObject("Ground");
-        int hGroundModel = pGround->GetModelHandle();
+        Stage* pStage = (Stage*)FindObject("Stage");
+        int hGroundModel = pStage->GetModelHandle();
 
         RayCastData data;
         data.start = tPlayer.position_;   //レイの発射位置
@@ -89,6 +88,10 @@ void Player::Update()
             }
         }
     }
+
+    //カメラがプレイヤーを追従
+    Camera::SetPosition(XMFLOAT3(tPlayer.position_.x, tPlayer.position_.y + 3, tPlayer.position_.z - 10));
+    Camera::SetTarget(XMFLOAT3(tPlayer.position_.x, tPlayer.position_.y + 2, tPlayer.position_.z));
 }
 
 //描画

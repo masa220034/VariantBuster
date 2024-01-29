@@ -1,7 +1,6 @@
 #include "PlayScene.h"
 #include "Player.h"
 #include "Stage.h"
-#include "Ground.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
 
@@ -15,7 +14,6 @@ PlayScene::PlayScene(GameObject* parent)
 void PlayScene::Initialize()
 {
 	Instantiate<Stage>(this);
-	Instantiate<Ground>(this);
 	Instantiate<Player>(this);
 }
 
