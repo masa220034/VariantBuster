@@ -90,8 +90,8 @@ void Player::Update()
     }
 
     //カメラがプレイヤーを追従
-    Camera::SetPosition(XMFLOAT3(tPlayer.position_.x, tPlayer.position_.y + 3, tPlayer.position_.z - 10));
-    Camera::SetTarget(XMFLOAT3(tPlayer.position_.x, tPlayer.position_.y + 2, tPlayer.position_.z));
+    Camera::SetPosition(XMFLOAT3(tPlayer.position_.x, (tPlayer.position_.y + 3) / 2, tPlayer.position_.z - 10));
+    Camera::SetTarget(XMFLOAT3(tPlayer.position_.x, (tPlayer.position_.y + 2) / 2, tPlayer.position_.z));
 }
 
 //描画
