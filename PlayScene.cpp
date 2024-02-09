@@ -1,6 +1,7 @@
 #include "PlayScene.h"
 #include "Player.h"
 #include "Stage.h"
+#include "Gauge.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
 
@@ -15,6 +16,7 @@ void PlayScene::Initialize()
 {
 	Instantiate<Stage>(this);
 	Instantiate<Player>(this);
+	Instantiate<Gauge>(this);
 }
 
 //XV

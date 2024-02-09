@@ -1,7 +1,7 @@
 #include "Player.h"
+#include "Stage.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
-#include "Stage.h"
 #include "Engine/Camera.h"
 
 //コンストラクタ
@@ -90,8 +90,8 @@ void Player::Update()
     }
 
     //カメラがプレイヤーを追従
-    Camera::SetPosition(XMFLOAT3(tPlayer.position_.x, (tPlayer.position_.y + 3) / 2, tPlayer.position_.z - 10));
-    Camera::SetTarget(XMFLOAT3(tPlayer.position_.x, (tPlayer.position_.y + 2) / 2, tPlayer.position_.z));
+    Camera::SetPosition(XMFLOAT3(0.0f, (tPlayer.position_.y + 3) / 2, tPlayer.position_.z - 10));
+    Camera::SetTarget(XMFLOAT3(0.0f, (tPlayer.position_.y + 2) / 2, tPlayer.position_.z));
 }
 
 //描画
