@@ -84,7 +84,7 @@ void Player::Update()
             if (!isJumping)
             {
                 //足場がない場合、プレイヤーの高さを下げる
-                tPlayer.position_.y -= gravity * 10;
+                tPlayer.position_.y -= gravity * fallSpeed;
             }
 
             if (tPlayer.position_.y <= fPosition)
