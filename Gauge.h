@@ -7,7 +7,6 @@ class Gauge : public GameObject
 	int hFrame_;
 
 	int nowPt_, maxPt_, animPt_;
-    Transform transGauge;
 public:
     //コンストラクタ
     Gauge(GameObject* parent);

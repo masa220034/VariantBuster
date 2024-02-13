@@ -40,6 +40,15 @@ void Player::Update()
         tPlayer.position_.x += moveSpeed;
     }
 
+    //移動先に足場があるかどうかをレイキャストで確認
+    Stage* pStage = (Stage*)FindObject("Stage");
+    int hGroundModel = pStage->GetModelHandle();
+
+    RayCastData data;
+    data.start = tPlayer.position_;   //レイの発射位置
+    data.dir = XMFLOAT3(0, -1, 0);       //レイの方向
+    Model::RayCast(hGroundModel, &data); //レイを発射
+
     if (isJumping)
     {
         tPlayer.position_.y += jumpSpeed;
@@ -55,21 +64,15 @@ void Player::Update()
     {
         if (Input::IsKeyDown(DIK_A))
         {
-            // ジャンプ開始
-            isJumping = true;
-            jumpSpeed = initialVelocity;  
+            if (data.hit)
+            {
+                // ジャンプ開始
+                isJumping = true;
+                jumpSpeed = initialVelocity;
+            }
         }
 
         XMFLOAT3 newPosition = tPlayer.position_;
-
-        //移動先に足場があるかどうかをレイキャストで確認
-        Stage* pStage = (Stage*)FindObject("Stage");
-        int hGroundModel = pStage->GetModelHandle();
-
-        RayCastData data;
-        data.start = tPlayer.position_;   //レイの発射位置
-        data.dir = XMFLOAT3(0, -1, 0);       //レイの方向
-        Model::RayCast(hGroundModel, &data); //レイを発射
 
         if (data.hit)
         {
@@ -78,13 +81,18 @@ void Player::Update()
         }
         else
         {
-            //足場がない場合、プレイヤーの高さを下げる
-            tPlayer.position_.y -= fallSpeed * gravity;
-
+            if (!isJumping)
+            {
+                //足場がない場合、プレイヤーの高さを下げる
+                tPlayer.position_.y -= gravity;
+            }
+            
             if (tPlayer.position_.y <= fPosition)
             {
                 //初期位置に戻す
                 tPlayer.position_ = XMFLOAT3(0.0f, 0.0f, 0.0f);
+                fallSpeed = 0.0f;
+                isJumping = false;
             }
         }
     }
