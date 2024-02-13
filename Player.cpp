@@ -51,8 +51,8 @@ void Player::Update()
 
     if (isJumping)
     {
-       tPlayer.position_.y += jumpSpeed;
-       jumpSpeed -= gravity;
+        tPlayer.position_.y += jumpSpeed;
+        jumpSpeed -= gravity;
 
         if (tPlayer.position_.y <= 0.0f)
         {
@@ -71,9 +71,9 @@ void Player::Update()
                 jumpSpeed = initialVelocity;
             }
         }
-        
+
         XMFLOAT3 newPosition = tPlayer.position_;
-        
+
         if (data.hit)
         {
             //足場がある場合、ジャンプした分の位置を下げる
@@ -81,17 +81,13 @@ void Player::Update()
         }
         else
         {
-            if (!isJumping)
-            {
-                //足場がない場合、プレイヤーの高さを下げる
-                tPlayer.position_.y -= gravity * fallSpeed;
-            }
+            //足場がない場合、プレイヤーの高さを下げる
+            tPlayer.position_.y -= fallSpeed * gravity;
 
             if (tPlayer.position_.y <= fPosition)
             {
                 //初期位置に戻す
                 tPlayer.position_ = XMFLOAT3(0.0f, 0.0f, 0.0f);
-                fallSpeed = 0.0f;
                 isJumping = false;
             }
         }
