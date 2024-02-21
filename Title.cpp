@@ -1,9 +1,11 @@
 #include "Title.h"
 #include "Engine/Image.h"
 
+
 //コンストラクタ
 Title::Title(GameObject* parent)
     :GameObject(parent, "Title"), hTitleBack_(-1), hTitle_(-1)
+
 {
 }
 
@@ -30,7 +32,7 @@ void Title::Update()
 //描画
 void Title::Draw()
 {
-    Image::SetTransform(hTitleBack_, transform_);
+    Image::SetTransform(hTitleBack_, tTitleBack);
     Image::SetTransform(hTitle_, transform_);
     Image::Draw(hTitleBack_);
     Image::Draw(hTitle_); 

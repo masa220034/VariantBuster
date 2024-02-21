@@ -7,6 +7,9 @@ class Title : public GameObject
 private:
     int hTitleBack_;
     int hTitle_;
+
+    Transform tTitleBack;
+    Transform tTitle;
 public:
     //コンストラクタ
     Title(GameObject* parent);

@@ -1,8 +1,7 @@
 #include "Stage.h"
 #include "Gauge.h"
-#include "Time.h"
 #include "Engine/Image.h"
-#include "Engine/Model.h" 
+#include "Engine/Model.h"
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
