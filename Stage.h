@@ -8,7 +8,6 @@ private:
     int hBackGround_;
     int hGround_;
     
-    int nowPt_, maxPt_;
     Transform tGround;
 public:
     //コンストラクタ

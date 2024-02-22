@@ -7,6 +7,11 @@ class Select : public GameObject
 private:
     int hSelectBack_;
     int hButton_;
+    int hImage_;
+    int hSkill_;
+
+    Transform tSelect;
+    Transform tSkill;
 public:
     //コンストラクタ
     Select(GameObject* parent);

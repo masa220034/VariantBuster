@@ -1,12 +1,14 @@
 #include "Player.h"
 #include "Stage.h"
+#include "Gauge.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-    :GameObject(parent, "Player"), hPlayer_(-1)
+    :GameObject(parent, "Player"), hPlayer_(-1),
+    maxPt_(200), nowPt_(0)
 {
 }
 
@@ -39,6 +41,14 @@ void Player::Update()
     {
         tPlayer.position_.x += moveSpeed;
     }
+
+    nowPt_ += 1;
+    if (nowPt_ >= maxPt_)
+    {
+        nowPt_ = maxPt_;
+    }
+    Gauge* pGauge = (Gauge*)FindObject("Gauge");
+    pGauge->SetPt(nowPt_, maxPt_);
 
     //移動先に足場があるかどうかをレイキャストで確認
     Stage* pStage = (Stage*)FindObject("Stage");

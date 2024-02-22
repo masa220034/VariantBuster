@@ -1,12 +1,10 @@
 #include "Stage.h"
-#include "Gauge.h"
 #include "Engine/Image.h"
 #include "Engine/Model.h"
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
-	:GameObject(parent, "Stage"), hBackGround_(-1), hGround_(-1),
-	maxPt_(200), nowPt_(0)
+	:GameObject(parent, "Stage"), hBackGround_(-1), hGround_(-1)
 {
 }
 
@@ -27,13 +25,6 @@ void Stage::Initialize()
 //更新
 void Stage::Update()
 {
-	nowPt_ += 1;
-	if (nowPt_ >= maxPt_)
-	{
-		nowPt_ = maxPt_;
-	}
-	Gauge* pGauge = (Gauge*)FindObject("Gauge");
-	pGauge->SetPt(nowPt_, maxPt_);
 }
 
 //描画
