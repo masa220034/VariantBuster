@@ -47,6 +47,7 @@ void Player::Update()
     {
         nowPt_ = maxPt_;
     }
+
     Gauge* pGauge = (Gauge*)FindObject("Gauge");
     pGauge->SetPt(nowPt_, maxPt_);
 
@@ -64,11 +65,17 @@ void Player::Update()
         tPlayer.position_.y += jumpSpeed;
         jumpSpeed -= gravity;
 
+        
         if (tPlayer.position_.y <= 0.0f)
         {
-            tPlayer.position_.y = 0.0f;
+            if (data.hit)
+            {
+                //足場がある場合、ジャンプした分の位置を下げる
+                tPlayer.position_.y -= data.dist;
+                tPlayer.position_.y = 0.0f;
+            }
             isJumping = false;
-        }
+        }  
     }
     else
     {
@@ -82,14 +89,7 @@ void Player::Update()
             }
         }
 
-        XMFLOAT3 newPosition = tPlayer.position_;
-
-        if (data.hit)
-        {
-            //足場がある場合、ジャンプした分の位置を下げる
-            tPlayer.position_ = newPosition;
-        }
-        else
+        if(!data.hit)
         {
             //足場がない場合、プレイヤーの高さを下げる
             tPlayer.position_.y -= fallSpeed * gravity;

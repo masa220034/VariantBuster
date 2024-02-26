@@ -17,7 +17,7 @@ Stage::~Stage()
 void Stage::Initialize()
 {
 	hBackGround_ = Image::Load("PlayBackGround.png");
-	hGround_ = Model::Load("Ground.fbx");
+	hGround_ = Model::Load("TestGround.fbx");
 	assert(hBackGround_ >= 0);
 	assert(hGround_ >= 0);
 }
