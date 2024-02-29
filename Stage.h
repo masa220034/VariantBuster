@@ -1,14 +1,22 @@
 #pragma once
 #include "Engine/GameObject.h"
 
+enum
+{
+    TYPE_GROUND,
+    TYPE_GOLD,
+    TYPE_MAX
+};
+
 //プレイヤーを管理するクラス
 class Stage : public GameObject
 {
 private:
     int hBackGround_;
-    int hGround_;
-    
-    Transform tGround;
+    int hModel_[TYPE_MAX];
+    int** table_;
+    int width_, height_;
+
 public:
     //コンストラクタ
     Stage(GameObject* parent);
@@ -28,5 +36,5 @@ public:
     //開放
     void Release() override;
 
-    int GetModelHandle() { return hGround_; }
+    int GetModelHandle() { return hModel_[TYPE_GROUND]; }
 };
