@@ -1,14 +1,13 @@
 #include "Player.h"
 #include "Stage.h"
-#include "Gauge.h"
+#include "Bullet.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-    :GameObject(parent, "Player"), hPlayer_(-1),
-    maxPt_(200), nowPt_(0)
+    :GameObject(parent, "Player"), hPlayer_(-1)
 {
 }
 
@@ -26,6 +25,7 @@ void Player::Initialize()
     hPlayer_ = Model::Load("Player.fbx");
     assert(hPlayer_ >= 0);
 
+    //tPlayer.position_ = XMFLOAT3(0.0f, 0.0f, 0.0f);
     tPlayer.scale_ = XMFLOAT3(0.2f, 0.2f, 0.2f);
 }
 
@@ -42,14 +42,11 @@ void Player::Update()
         tPlayer.position_.x += moveSpeed;
     }
 
-    nowPt_ += 1;
-    if (nowPt_ >= maxPt_)
+    if (Input::IsKeyDown(DIK_D))
     {
-        nowPt_ = maxPt_;
+        Bullet* pBullet = Instantiate<Bullet>(GetParent());
+        pBullet->SetPosition(tPlayer.position_);
     }
-
-    Gauge* pGauge = (Gauge*)FindObject("Gauge");
-    pGauge->SetPt(nowPt_, maxPt_);
 
     //移動先に足場があるかどうかをレイキャストで確認
     Stage* pStage = (Stage*)FindObject("Stage");
@@ -65,7 +62,6 @@ void Player::Update()
         tPlayer.position_.y += jumpSpeed;
         jumpSpeed -= gravity;
 
-        
         if (tPlayer.position_.y <= 0.0f)
         {
             if (data.hit)
@@ -75,21 +71,18 @@ void Player::Update()
                 tPlayer.position_.y = 0.0f;
             }
             isJumping = false;
-        }  
+        }
     }
     else
     {
         if (Input::IsKeyDown(DIK_A))
         {
-            if (data.hit)
-            {
-                // ジャンプ開始
-                isJumping = true;
-                jumpSpeed = initialVelocity;
-            }
+            // ジャンプ開始
+            isJumping = true;
+            jumpSpeed = initialVelocity;
         }
 
-        if(!data.hit)
+        if (!data.hit)
         {
             //足場がない場合、プレイヤーの高さを下げる
             tPlayer.position_.y -= fallSpeed * gravity;
@@ -118,4 +111,12 @@ void Player::Draw()
 //開放
 void Player::Release()
 {
+}
+
+void Player::OnCollision(GameObject* pTarget)
+{
+    if (pTarget->GetObjectName() == "EnemyBullet")
+    {
+        pTarget->KillMe();
+    }
 }

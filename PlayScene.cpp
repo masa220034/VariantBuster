@@ -1,10 +1,13 @@
 #include "PlayScene.h"
 #include "Player.h"
+#include "Enemy.h"
+#include "EnemyBullet.h"
 #include "Stage.h"
 #include "Gauge.h"
 #include "Timer.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
+
 
 //コンストラクタ
 PlayScene::PlayScene(GameObject* parent)
@@ -17,6 +20,8 @@ void PlayScene::Initialize()
 {
 	Instantiate<Stage>(this);
 	Instantiate<Player>(this);
+	Instantiate<Enemy>(this);
+	Instantiate<EnemyBullet>(this);
 	Instantiate<Gauge>(this);
 	Instantiate<Timer>(this);
 }

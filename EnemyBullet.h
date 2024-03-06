@@ -1,19 +1,16 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//プレイヤーを管理するクラス
-class Stage : public GameObject
+//◆◆◆を管理するクラス
+class EnemyBullet : public GameObject
 {
-private:
-    int hBackGround_;
-    int hGround_;
-
+    int hModel_;
 public:
     //コンストラクタ
-    Stage(GameObject* parent);
+    EnemyBullet(GameObject* parent);
 
     //デストラクタ
-    ~Stage();
+    ~EnemyBullet();
 
     //初期化
     void Initialize() override;
@@ -26,6 +23,4 @@ public:
 
     //開放
     void Release() override;
-
-    int GetModelHandle() { return hGround_; }
 };

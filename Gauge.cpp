@@ -22,8 +22,9 @@ void Gauge::Initialize()
     hFrame_ = Image::Load("GaugeFrame.png");
     assert(hFrame_ >= 0);
 
-    transform_.position_ = XMFLOAT3(0.8f, -0.1f, 0.0f);
-    transform_.rotate_.z = 180;
+    transform_.position_ = XMFLOAT3(0.15f, 0.85f, 0.0f);
+    transform_.scale_.y = 2.0f;
+    transform_.rotate_.z = 90;
 }
 
 //çXêV
@@ -35,7 +36,7 @@ void Gauge::Update()
 void Gauge::Draw()
 {
     Transform transGauge = transform_;
-    transGauge.scale_.y = (float)nowPt_ / (float)maxPt_;
+    transGauge.scale_.y = 2 * ((float)nowPt_ / (float)maxPt_);
     Image::SetTransform(hGauge_, transGauge);
     Image::Draw(hGauge_);
 

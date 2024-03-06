@@ -40,14 +40,14 @@ void Timer::Draw()
 {
 	pText->SetScale(1.0f);
 
-	//if (frame % FPS < 10)
-	//	pText->SetScale((frame % FPS) * 0.2f + 1.0f);
-	//else
-	//	pText->SetScale(1.0f);
-
 	int sec = frame / FPS; //Œo‰ß‚µ‚½•b”‚ðŒvŽZ
-	std::string timeString = std::to_string(sec / 60) + ":" + std::to_string(sec % 60); //•ª:•b‚Ì•¶Žš—ñ‚ðì¬
-	pText->Draw(drawX, drawY, timeString.c_str());
+	int minutes = sec / 60;
+	int seconds = sec % 60;
+
+	std::string s_minutes = (minutes < 10) ? "0" + std::to_string(minutes) : std::to_string(minutes);
+	std::string s_seconds = (seconds < 10) ? "0" + std::to_string(seconds) : std::to_string(seconds);
+	std::string s_time = s_minutes + ":" + s_seconds; //•ª:•b‚Ì•¶Žš—ñ‚ðì¬
+	pText->Draw(drawX, drawY, s_time.c_str());
 }
 
 void Timer::Release()
