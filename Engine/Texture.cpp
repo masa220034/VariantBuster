@@ -28,6 +28,8 @@ HRESULT Texture::Load(std::string fileName)
 	IWICBitmapFrameDecode* pFrame = NULL;
 	IWICFormatConverter* pFormatConverter = NULL;
 	CoCreateInstance(CLSID_WICImagingFactory, NULL, CLSCTX_INPROC_SERVER, IID_IWICImagingFactory, reinterpret_cast<void **>(&pFactory));
+
+
 	HRESULT hr = pFactory->CreateDecoderFromFilename(wtext, NULL, GENERIC_READ, WICDecodeMetadataCacheOnDemand, &pDecoder);
 	if(FAILED(hr))
 	{
