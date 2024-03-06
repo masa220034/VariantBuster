@@ -5,7 +5,7 @@
 class Enemy : public GameObject
 {
     int hModel_;
-    int nowPt_, maxPt_;
+    int nowHp_, maxHp_;
     float move = 0.05f;
     bool moveUp;
 public:

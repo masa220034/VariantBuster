@@ -8,7 +8,7 @@
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), hModel_(-1),
-    maxPt_(200), nowPt_(0)
+    maxHp_(200), nowHp_(0)
 {
 }
 
@@ -36,15 +36,15 @@ void Enemy::Initialize()
 //更新
 void Enemy::Update()
 {
-    nowPt_ += 1;
-    if (nowPt_ >= maxPt_)
+    nowHp_ += 1;
+    if (nowHp_ >= maxHp_)
     {
-        nowPt_ = maxPt_;
+        nowHp_ = maxHp_;
     }
 
     Gauge* pGauge = (Gauge*)FindObject("Gauge");
-    pGauge->SetPt(nowPt_, maxPt_);
-
+    pGauge->SetPt(nowHp_, maxHp_);
+ 
     if (moveUp)
     {
         transform_.position_.y += move;
@@ -86,6 +86,6 @@ void Enemy::OnCollision(GameObject* pTarget)
     if (pTarget->GetObjectName() == "Bullet")
     {
         pTarget->KillMe();
-        nowPt_ = maxPt_ - 3;
+        nowHp_ = maxHp_ - 10;
     }
 }

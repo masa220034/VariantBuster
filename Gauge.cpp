@@ -4,7 +4,7 @@
 //コンストラクタ
 Gauge::Gauge(GameObject* parent)
     :GameObject(parent, "Gauge"), hGauge_(-1), hFrame_(-1),
-    maxPt_(200), nowPt_(0)
+    maxHp_(200), nowHp_(0)
 {
 }
 
@@ -36,7 +36,7 @@ void Gauge::Update()
 void Gauge::Draw()
 {
     Transform transGauge = transform_;
-    transGauge.scale_.y = 2 * ((float)nowPt_ / (float)maxPt_);
+    transGauge.scale_.y = 2 * ((float)nowHp_ / (float)maxHp_);
     Image::SetTransform(hGauge_, transGauge);
     Image::Draw(hGauge_);
 

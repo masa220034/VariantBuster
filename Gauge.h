@@ -6,7 +6,7 @@ class Gauge : public GameObject
 	int hGauge_;
 	int hFrame_;
 
-	int nowPt_, maxPt_, animPt_;
+	int nowHp_, maxHp_, animHp_;
 public:
     //コンストラクタ
     Gauge(GameObject* parent);
@@ -26,11 +26,11 @@ public:
     //開放
     void Release() override;
 
-    void SetPt(int nowPt, int maxPt)
+    void SetPt(int nowHp, int maxHp)
     {
-        nowPt_ = nowPt;
-        maxPt_ = maxPt;
-        animPt_ = (animPt_ * 9 + nowPt_) / 10;
+        nowHp_ = nowHp;
+        maxHp_ = maxHp;
+        animHp_ = (animHp_ * 9 + nowHp_) / 10;
     }
 };
 
