@@ -1,18 +1,22 @@
 #include "TitleScene.h"
-#include "Title.h"
 #include "Engine/Input.h"
+#include "Engine/Image.h"
 #include "Engine/SceneManager.h"
 
 //コンストラクタ
 TitleScene::TitleScene(GameObject* parent)
-	: GameObject(parent, "TitleScene")
+	: GameObject(parent, "TitleScene"), hTitleBack_(-1), hTitle_(-1)
 {
 }
 
 //初期化
 void TitleScene::Initialize()
 {
-	Instantiate<Title>(this);
+	//画像データのロード
+	hTitleBack_ = Image::Load("BackGround.png");
+	hTitle_ = Image::Load("TitleName.png");
+	assert(hTitleBack_ >= 0);
+	assert(hTitle_ >= 0);
 }
 
 //更新
@@ -28,6 +32,10 @@ void TitleScene::Update()
 //描画
 void TitleScene::Draw()
 {
+	Image::SetTransform(hTitleBack_, tTitleBack);
+	Image::SetTransform(hTitle_, transform_);
+	Image::Draw(hTitleBack_);
+	Image::Draw(hTitle_);
 }
 
 //開放

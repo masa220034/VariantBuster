@@ -4,6 +4,11 @@
 //タイトルシーンを管理するクラス
 class TitleScene : public GameObject
 {
+	int hTitleBack_;
+	int hTitle_;
+
+	Transform tTitleBack;
+	Transform tTitle;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

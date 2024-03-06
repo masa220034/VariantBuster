@@ -96,13 +96,10 @@
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
     <ClCompile Include="TitleScene.cpp" />
-    <ClCompile Include="Title.cpp" />
     <ClCompile Include="SelectScene.cpp" />
-    <ClCompile Include="Select.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ResultScene.cpp" />
-    <ClCompile Include="Result.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -181,13 +178,10 @@
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="TitleScene.h" />
-    <ClInclude Include="Title.h" />
     <ClInclude Include="SelectScene.h" />
-    <ClInclude Include="Select.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResultScene.h" />
-    <ClInclude Include="Result.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Gauge.h" />
     <ClInclude Include="Timer.h" />

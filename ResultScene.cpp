@@ -1,18 +1,20 @@
 #include "ResultScene.h"
-#include "Result.h"
+#include "Engine/Image.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
 
 //コンストラクタ
 ResultScene::ResultScene(GameObject* parent)
-	: GameObject(parent, "ResultScene")
+	: GameObject(parent, "ResultScene"), hPict_(-1)
 {
 }
 
 //初期化
 void ResultScene::Initialize()
 {
-	Instantiate<Result>(this);
+	//画像データのロード
+	hPict_ = Image::Load("Result.png");
+	assert(hPict_ >= 0);
 }
 
 //更新
@@ -28,6 +30,8 @@ void ResultScene::Update()
 //描画
 void ResultScene::Draw()
 {
+	Image::SetTransform(hPict_, transform_);
+	Image::Draw(hPict_);
 }
 
 //開放

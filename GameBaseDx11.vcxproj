@@ -154,13 +154,10 @@
     <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
-    <ClCompile Include="Result.cpp" />
     <ClCompile Include="ResultScene.cpp" />
-    <ClCompile Include="Select.cpp" />
     <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -193,13 +190,10 @@
     <ClInclude Include="Gauge.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="Result.h" />
     <ClInclude Include="ResultScene.h" />
-    <ClInclude Include="Select.h" />
     <ClInclude Include="SelectScene.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="Title.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>

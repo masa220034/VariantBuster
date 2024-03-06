@@ -4,6 +4,13 @@
 //セレクトシーンを管理するクラス
 class SelectScene : public GameObject
 {
+	int hSelectBack_;
+	int hButton_;
+	int hImage_;
+	int hSkill_;
+
+	Transform tSelect;
+	Transform tSkill;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
