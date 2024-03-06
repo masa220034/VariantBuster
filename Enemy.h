@@ -8,6 +8,7 @@ class Enemy : public GameObject
     int nowHp_, maxHp_;
     float move = 0.05f;
     bool moveUp;
+    bool isHpmax;
 public:
     //コンストラクタ
     Enemy(GameObject* parent);

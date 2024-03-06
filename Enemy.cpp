@@ -36,12 +36,16 @@ void Enemy::Initialize()
 //XV
 void Enemy::Update()
 {
-    nowHp_ += 1;
-    if (nowHp_ >= maxHp_)
+    if (!isHpmax)
     {
-        nowHp_ = maxHp_;
+        nowHp_ += 1;
+        if (nowHp_ >= maxHp_)
+        {
+            nowHp_ = maxHp_;
+            isHpmax = true;
+        }
     }
-
+    
     Gauge* pGauge = (Gauge*)FindObject("Gauge");
     pGauge->SetPt(nowHp_, maxHp_);
  
@@ -86,6 +90,6 @@ void Enemy::OnCollision(GameObject* pTarget)
     if (pTarget->GetObjectName() == "Bullet")
     {
         pTarget->KillMe();
-        nowHp_ = maxHp_ - 10;
+        nowHp_ -= 3;
     }
 }

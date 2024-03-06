@@ -4,6 +4,7 @@
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
+#include "Engine/SphereCollider.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -25,8 +26,10 @@ void Player::Initialize()
     hPlayer_ = Model::Load("Player.fbx");
     assert(hPlayer_ >= 0);
 
-    //tPlayer.position_ = XMFLOAT3(0.0f, 0.0f, 0.0f);
     tPlayer.scale_ = XMFLOAT3(0.2f, 0.2f, 0.2f);
+
+    SphereCollider* collision = new SphereCollider(XMFLOAT3(0.0, 0.2, 0.0), 0.25f);
+    AddCollider(collision);
 }
 
 //更新
@@ -99,6 +102,8 @@ void Player::Update()
     //カメラがプレイヤーを追従
     Camera::SetPosition(XMFLOAT3(0.0f, (tPlayer.position_.y + 3) / 2, tPlayer.position_.z - 10));
     Camera::SetTarget(XMFLOAT3(0.0f, (tPlayer.position_.y + 2) / 2, tPlayer.position_.z));
+
+    transform_ = tPlayer;
 }
 
 //描画
