@@ -3,7 +3,8 @@
 #include "Enemy.h"
 #include "EnemyBullet.h"
 #include "Stage.h"
-#include "Gauge.h"
+#include "PlayerGauge.h"
+#include "EnemyGauge.h"
 #include "Timer.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
@@ -22,7 +23,8 @@ void PlayScene::Initialize()
 	Instantiate<Player>(this);
 	Instantiate<Enemy>(this);
 	Instantiate<EnemyBullet>(this);
-	Instantiate<Gauge>(this);
+	Instantiate<PlayerGauge>(this);
+	Instantiate<EnemyGauge>(this);
 	Instantiate<Timer>(this);
 }
 

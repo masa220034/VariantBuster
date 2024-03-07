@@ -101,11 +101,12 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Stage.cpp" />
-    <ClCompile Include="Gauge.cpp" />
+    <ClCompile Include="EnemyGauge.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="EnemyBullet.cpp" />
+    <ClCompile Include="PlayerGauge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -183,11 +184,12 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Stage.h" />
-    <ClInclude Include="Gauge.h" />
+    <ClInclude Include="EnemyGauge.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="EnemyBullet.h" />
+    <ClInclude Include="PlayerGauge.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

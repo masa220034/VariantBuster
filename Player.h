@@ -16,7 +16,8 @@ private:
     float fallSpeed = 10.0f;      //落ちる速度
     float fPosition = -6.0f;      //初期足場から落下後の位置
 
-    int nowPt_, maxPt_;
+    int nowHp_, maxHp_;
+    bool isHpmax;
     Transform tPlayer;
 public:
     //コンストラクタ

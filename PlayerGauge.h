@@ -1,18 +1,19 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-class Gauge : public GameObject
+class PlayerGauge : public GameObject
 {
-	int hGauge_;
-	int hFrame_;
+    int hGauge_;
+    int hFrame_;
+    int nowHp_, maxHp_, animHp_;
 
-	int nowHp_, maxHp_, animHp_;
+    Transform pGauge;
 public:
     //コンストラクタ
-    Gauge(GameObject* parent);
+    PlayerGauge(GameObject* parent);
 
     //デストラクタ
-    ~Gauge();
+    ~PlayerGauge();
 
     //初期化
     void Initialize() override;
@@ -26,7 +27,7 @@ public:
     //開放
     void Release() override;
 
-    void SetPt(int nowHp, int maxHp)
+    void SetHp(int nowHp, int maxHp)
     {
         nowHp_ = nowHp;
         maxHp_ = maxHp;

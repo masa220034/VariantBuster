@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Stage.h"
 #include "Bullet.h"
+#include "PlayerGauge.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
@@ -8,7 +9,8 @@
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-    :GameObject(parent, "Player"), hPlayer_(-1)
+    :GameObject(parent, "Player"), hPlayer_(-1),
+    maxHp_(100), nowHp_(0)
 {
 }
 
@@ -35,6 +37,19 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
+    if (!isHpmax)
+    {
+        nowHp_ += 1;
+        if (nowHp_ >= maxHp_)
+        {
+            nowHp_ = maxHp_;
+            isHpmax = true;
+        }
+    }
+
+    PlayerGauge* pPlayerGauge = (PlayerGauge*)FindObject("PlayerGauge");
+    pPlayerGauge->SetHp(nowHp_, maxHp_);
+
     if (Input::IsKey(DIK_LEFT))
     {
         tPlayer.position_.x -= moveSpeed;
@@ -123,5 +138,6 @@ void Player::OnCollision(GameObject* pTarget)
     if (pTarget->GetObjectName() == "EnemyBullet")
     {
         pTarget->KillMe();
+        nowHp_ -= 20;
     }
 }

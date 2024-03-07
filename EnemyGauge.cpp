@@ -1,25 +1,25 @@
-#include "Gauge.h"
+#include "EnemyGauge.h"
 #include "Engine/Image.h"
 
 //コンストラクタ
-Gauge::Gauge(GameObject* parent)
-    :GameObject(parent, "Gauge"), hGauge_(-1), hFrame_(-1),
+EnemyGauge::EnemyGauge(GameObject* parent)
+    :GameObject(parent, "EnemyGauge"), hGauge_(-1), hFrame_(-1),
     maxHp_(200), nowHp_(0)
 {
 }
 
 //デストラクタ
-Gauge::~Gauge()
+EnemyGauge::~EnemyGauge()
 {
 }
 
 //初期化
-void Gauge::Initialize()
+void EnemyGauge::Initialize()
 {
-    hGauge_ = Image::Load("Gauge.png");
+    hGauge_ = Image::Load("EnemyGauge.png");
     assert(hGauge_ >= 0);
 
-    hFrame_ = Image::Load("GaugeFrame.png");
+    hFrame_ = Image::Load("EnemyGaugeFrame.png");
     assert(hFrame_ >= 0);
 
     transform_.position_ = XMFLOAT3(0.15f, 0.85f, 0.0f);
@@ -28,13 +28,14 @@ void Gauge::Initialize()
 }
 
 //更新
-void Gauge::Update()
+void EnemyGauge::Update()
 {
 }
 
 //描画
-void Gauge::Draw()
+void EnemyGauge::Draw()
 {
+    //エネミーのゲージの描画
     Transform transGauge = transform_;
     transGauge.scale_.y = 2 * ((float)nowHp_ / (float)maxHp_);
     Image::SetTransform(hGauge_, transGauge);
@@ -45,6 +46,6 @@ void Gauge::Draw()
 }
 
 //開放
-void Gauge::Release()
+void EnemyGauge::Release()
 {
 }

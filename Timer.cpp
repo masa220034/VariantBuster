@@ -2,7 +2,7 @@
 #include "Engine/Input.h"
 
 Timer::Timer(GameObject* obj) : GameObject(obj, "Timer"),
-pText(nullptr), frame(0), active(false), drawX(600), drawY(30), limitFrame(0)
+pText(nullptr), frame(0), active(false), drawX(620), drawY(30), limitFrame(0)
 {
 }
 

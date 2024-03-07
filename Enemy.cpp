@@ -1,5 +1,5 @@
 #include "Enemy.h"
-#include "Gauge.h"
+#include "EnemyGauge.h"
 #include "EnemyBullet.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
@@ -46,8 +46,8 @@ void Enemy::Update()
         }
     }
     
-    Gauge* pGauge = (Gauge*)FindObject("Gauge");
-    pGauge->SetPt(nowHp_, maxHp_);
+    EnemyGauge* pEnemyGauge = (EnemyGauge*)FindObject("EnemyGauge");
+    pEnemyGauge->SetHp(nowHp_, maxHp_);
  
     if (moveUp)
     {
