@@ -3,6 +3,7 @@
 #include "EnemyBullet.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
+#include "Engine/SceneManager.h"
 #include "Engine/SphereCollider.h"
 
 //コンストラクタ
@@ -46,6 +47,12 @@ void Enemy::Update()
         }
     }
     
+    if (nowHp_ <= 0)
+    {
+        SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+        pSceneManager->ChangeScene(SCENE_ID_GAMECLEAR);
+    }
+
     EnemyGauge* pEnemyGauge = (EnemyGauge*)FindObject("EnemyGauge");
     pEnemyGauge->SetHp(nowHp_, maxHp_);
  

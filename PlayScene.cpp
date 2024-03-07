@@ -7,7 +7,6 @@
 #include "EnemyGauge.h"
 #include "Timer.h"
 #include "Engine/Input.h"
-#include "Engine/SceneManager.h"
 
 
 //コンストラクタ
@@ -31,11 +30,6 @@ void PlayScene::Initialize()
 //更新
 void PlayScene::Update()
 {
-	if (Input::IsKeyDown(DIK_SPACE))
-	{
-		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-		pSceneManager->ChangeScene(SCENE_ID_RESULT);
-	}
 }
 
 //描画
