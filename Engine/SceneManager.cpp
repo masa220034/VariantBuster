@@ -3,7 +3,6 @@
 #include "../TitleScene.h"
 #include "../SelectScene.h"
 #include "../PlayScene.h"
-#include "../ResultScene.h"
 #include "../GameClearScene.h"
 #include "Model.h"
 #include "Image.h"
@@ -22,7 +21,7 @@ void SceneManager::Initialize()
 	//最初のシーンを準備
 	currentSceneID_ = SCENE_ID_TITLE;
 	nextSceneID_ = currentSceneID_;
-	Instantiate<TitleScene>(this);
+	Instantiate<SelectScene>(this);
 }
 
 //更新
@@ -45,7 +44,6 @@ void SceneManager::Update()
 		case SCENE_ID_TITLE: Instantiate<TitleScene>(this); break;
 		case SCENE_ID_SELECT: Instantiate<SelectScene>(this); break;
 		case SCENE_ID_PLAY: Instantiate<PlayScene>(this); break;
-		case SCENE_ID_RESULT: Instantiate<ResultScene>(this); break;
 		case SCENE_ID_GAMECLEAR: Instantiate<GameClearScene>(this); break;
 		}
 		Audio::Initialize();

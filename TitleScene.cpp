@@ -13,10 +13,13 @@ TitleScene::TitleScene(GameObject* parent)
 void TitleScene::Initialize()
 {
 	//画像データのロード
-	hTitleBack_ = Image::Load("BackGround.png");
+	hTitleBack_ = Image::Load("TitleBackGround.png");
 	hTitle_ = Image::Load("TitleName.png");
 	assert(hTitleBack_ >= 0);
 	assert(hTitle_ >= 0);
+
+	tTitle.position_.y += 0.3f;
+	tTitle.scale_ = XMFLOAT3(1.3f, 1.3f, 1.3f);
 }
 
 //更新
@@ -33,7 +36,7 @@ void TitleScene::Update()
 void TitleScene::Draw()
 {
 	Image::SetTransform(hTitleBack_, tTitleBack);
-	Image::SetTransform(hTitle_, transform_);
+	Image::SetTransform(hTitle_, tTitle);
 	Image::Draw(hTitleBack_);
 	Image::Draw(hTitle_);
 }

@@ -156,7 +156,6 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerGauge.cpp" />
     <ClCompile Include="PlayScene.cpp" />
-    <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -194,7 +193,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerGauge.h" />
     <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="ResultScene.h" />
     <ClInclude Include="SelectScene.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Timer.h" />

@@ -99,7 +99,6 @@
     <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="EnemyGauge.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -183,7 +182,6 @@
     <ClInclude Include="SelectScene.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="EnemyGauge.h" />
     <ClInclude Include="Timer.h" />
