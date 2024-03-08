@@ -39,7 +39,7 @@ void Enemy::Update()
 {
     if (!isHpmax)
     {
-        nowHp_ += 1;
+        nowHp_ += 2;
         if (nowHp_ >= maxHp_)
         {
             nowHp_ = maxHp_;
