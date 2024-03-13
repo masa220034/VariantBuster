@@ -153,6 +153,7 @@
     <ClCompile Include="Engine\Transform.cpp" />
     <ClCompile Include="EnemyGauge.cpp" />
     <ClCompile Include="GameClearScene.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerGauge.cpp" />
     <ClCompile Include="PlayScene.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="Engine\Transform.h" />
     <ClInclude Include="EnemyGauge.h" />
     <ClInclude Include="GameClearScene.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerGauge.h" />
     <ClInclude Include="PlayScene.h" />

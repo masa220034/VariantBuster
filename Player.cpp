@@ -5,6 +5,7 @@
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
+#include "Engine/SceneManager.h"
 #include "Engine/SphereCollider.h"
 
 //コンストラクタ
@@ -46,6 +47,12 @@ void Player::Update()
             isHpmax = true;
         }
     }
+
+    //if (nowHp_ <= 0)
+    //{
+    //    SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+    //    pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+    //}
 
     PlayerGauge* pPlayerGauge = (PlayerGauge*)FindObject("PlayerGauge");
     pPlayerGauge->SetHp(nowHp_, maxHp_);
@@ -107,9 +114,8 @@ void Player::Update()
 
             if (tPlayer.position_.y <= fPosition)
             {
-                //初期位置に戻す
-                tPlayer.position_ = XMFLOAT3(0.0f, 0.0f, 0.0f);
-                isJumping = false;
+                SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+                pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
             }
         }
     }

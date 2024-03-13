@@ -8,7 +8,8 @@ enum SCENE_ID
 	SCENE_ID_TITLE = 0,
 	SCENE_ID_SELECT,
 	SCENE_ID_PLAY,
-	SCENE_ID_GAMECLEAR
+	SCENE_ID_GAMECLEAR,
+	SCENE_ID_GAMEOVER
 };
 
 //-----------------------------------------------------------
