@@ -9,7 +9,9 @@ class Timer : public GameObject
 private:
 	int frame;
 	int limitFrame;
+	int time = 120;
 	int drawX, drawY; //X‚ÆY‚ÌˆÊ’uÀ•W
+	float textScale = 1.0f;
 	bool active;      //“®‚¢‚Ä‚é‚©‚Ç‚¤‚©
 
 	Text* pText;

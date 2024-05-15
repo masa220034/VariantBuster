@@ -8,6 +8,11 @@ class TitleScene : public GameObject
 	int hTitle_;
 	int BGM_;
 
+	float titlePos = 0.3f;
+	float scaleX = 1.3f;
+	float scaleY = 1.3f;
+	float scaleZ = 1.3f;
+
 	Transform tTitleBack;
 	Transform tTitle;
 public:

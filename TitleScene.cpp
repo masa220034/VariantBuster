@@ -21,8 +21,8 @@ void TitleScene::Initialize()
 	assert(hTitle_ >= 0);
 	assert(BGM_ >= 0);
 
-	tTitle.position_.y += 0.3f;
-	tTitle.scale_ = XMFLOAT3(1.3f, 1.3f, 1.3f);
+	tTitle.position_.y += titlePos;
+	tTitle.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 }
 
 //çXêV

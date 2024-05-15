@@ -22,7 +22,7 @@ void PlayScene::Initialize()
 	Instantiate<Stage>(this);
 	Instantiate<Player>(this);
 	Instantiate<Enemy>(this);
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < enemyNum; i++)
 	{
 		Instantiate<MiniEnemy>(this);
 	}

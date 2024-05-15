@@ -146,25 +146,25 @@ void Player::OnCollision(GameObject* pTarget)
 {
     if (pTarget->GetObjectName() == "Enemy")
     {
-        nowHp_ -= 1;
+        nowHp_ -= 2;
     }
 
     if (pTarget->GetObjectName() == "EnemyBullet")
     {
         pTarget->KillMe();
-        nowHp_ -= 2;
+        nowHp_ -= 4;
         Audio::Play(DamegeSound_);
     }
 
     if (pTarget->GetObjectName() == "EnemyBullet2")
     {
         pTarget->KillMe();
-        nowHp_ -= 4;
+        nowHp_ -= 8;
     }
 
     if (pTarget->GetObjectName() == "minBullet")
     {
         pTarget->KillMe();
-        nowHp_ -= 2;
+        nowHp_ -= 4;
     }
 }

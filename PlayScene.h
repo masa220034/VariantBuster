@@ -5,6 +5,8 @@
 class PlayScene : public GameObject
 {
 	int BGM_;
+	int enemyNum = 2;
+
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

@@ -18,7 +18,7 @@ void Timer::Initialize()
 	frame = 0;
 	active = false;
 
-	SetLimit(120); //§ŒÀŠÔ‚ğİ’è
+	SetLimit(time); //§ŒÀŠÔ‚ğİ’è
 }
 
 void Timer::Update()
@@ -38,7 +38,7 @@ void Timer::Update()
 
 void Timer::Draw()
 {
-	pText->SetScale(1.0f);
+	pText->SetScale(textScale);
 
 	int sec = frame / FPS; //Œo‰ß‚µ‚½•b”‚ğŒvZ
 	int minutes = sec / 60;

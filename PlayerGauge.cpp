@@ -22,9 +22,9 @@ void PlayerGauge::Initialize()
     hFrame_ = Image::Load("PlayerGaugeFrame.png");
     assert(hFrame_ >= 0);
 
-    pGauge.position_ = XMFLOAT3(-0.95f, 0.85f, 0.0f);
-    pGauge.scale_.y = 2.0f;
-    pGauge.rotate_.z = 90;
+    pGauge.position_ = XMFLOAT3(posX, posY, posZ);
+    pGauge.scale_.y = scaleY;
+    pGauge.rotate_.z = rotateZ;
 }
 
 //更新
@@ -37,7 +37,7 @@ void PlayerGauge::Draw()
 {
     //プレイヤーゲージの描画
     Transform PlayerGauge = pGauge;
-    PlayerGauge.scale_.y = 2 * ((float)nowHp_ / (float)maxHp_);
+    PlayerGauge.scale_.y = scaleY * ((float)nowHp_ / (float)maxHp_);
     Image::SetTransform(hGauge_, PlayerGauge);
     Image::Draw(hGauge_);
 
