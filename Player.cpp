@@ -25,8 +25,8 @@ Player::~Player()
 //初期化
 void Player::Initialize()
 {
-    Camera::SetPosition(XMFLOAT3(0, 3, -10));
-    Camera::SetTarget(XMFLOAT3(0, 2, 0));
+    Camera::SetPosition(XMFLOAT3(cmrPosX, cmrPosY, -cmrPosZ));
+    Camera::SetTarget(XMFLOAT3(cmrTgtX, cmrTgtY, cmrTgtZ));
 
     hPlayer_ = Model::Load("Player.fbx");
     assert(hPlayer_ >= 0);
@@ -36,8 +36,8 @@ void Player::Initialize()
     assert(JumpSound_ >= 0);
     assert(DamegeSound_ >= 0);
 
-    tPlayer.position_ = XMFLOAT3(-3.0f, 0.0f, 0.0f);
-    tPlayer.scale_ = XMFLOAT3(0.2f, 0.2f, 0.2f);
+    tPlayer.position_ = XMFLOAT3(posX, posY, posZ);
+    tPlayer.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 
     SphereCollider* collision = new SphereCollider(XMFLOAT3(0.0, 0.2, 0.0), 0.25f);
     AddCollider(collision);
@@ -48,7 +48,7 @@ void Player::Update()
 {
     if (!isHpmax)
     {
-        nowHp_ += 1;
+        nowHp_ += upHp_;
         if (nowHp_ >= maxHp_)
         {
             nowHp_ = maxHp_;
@@ -56,7 +56,7 @@ void Player::Update()
         }
     }
 
-    if (nowHp_ <= 0)
+    if (nowHp_ <= noHp_)
     {
         SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
         pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
@@ -87,21 +87,21 @@ void Player::Update()
 
     RayCastData data;
     data.start = tPlayer.position_;   //レイの発射位置
-    data.dir = XMFLOAT3(0, -1, 0);       //レイの方向
+    data.dir = XMFLOAT3(R_dirX, R_dirY, R_dirZ);       //レイの方向
     Model::RayCast(hGroundModel, &data); //レイを発射
 
     if (isJump)
     {
+        
         tPlayer.position_.y += x;
         x -= gravity;
 
-        if (tPlayer.position_.y <= 0.0f)
+        if (tPlayer.position_.y <= ground_Y)
         {
             if (data.hit)
             {
                 //足場がある場合、ジャンプした分の位置を下げる
-                tPlayer.position_.y -= data.dist;
-                tPlayer.position_.y = 0.0f;
+                tPlayer.position_.y = ground_Y;
             }
             isJump = false;
         }
@@ -146,25 +146,25 @@ void Player::OnCollision(GameObject* pTarget)
 {
     if (pTarget->GetObjectName() == "Enemy")
     {
-        nowHp_ -= 2;
+        nowHp_ -= e_damage;
     }
 
     if (pTarget->GetObjectName() == "EnemyBullet")
     {
         pTarget->KillMe();
-        nowHp_ -= 4;
+        nowHp_ -= eb_damege;
         Audio::Play(DamegeSound_);
     }
 
     if (pTarget->GetObjectName() == "EnemyBullet2")
     {
         pTarget->KillMe();
-        nowHp_ -= 8;
+        nowHp_ -= sec_eb_damege;
     }
 
     if (pTarget->GetObjectName() == "minBullet")
     {
         pTarget->KillMe();
-        nowHp_ -= 4;
+        nowHp_ -= min_b_damege;
     }
 }
