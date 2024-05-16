@@ -23,8 +23,8 @@ void GameClearScene::Initialize()
 	BGM_ = Audio::Load("GameClearBGM.wav");
 	assert(BGM_ >= 0);
 
-	tClear.position_.y = 0.5f;
-	tClear.scale_ = XMFLOAT3(1.5f, 1.5f, 1.5f);
+	tClear.position_ = XMFLOAT3(posX, posY, posZ);
+	tClear.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 }
 
 //çXêV

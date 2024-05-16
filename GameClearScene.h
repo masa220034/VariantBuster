@@ -7,6 +7,15 @@ class GameClearScene : public GameObject
 	int hPict_;
 	int BGM_;
 
+	//-----ゲームクリアのロゴの位置、大きさの設定-----
+	float posX = 0.0f;
+	float posY = 0.5f;
+	float posZ = 0.0f;
+	float scaleX = 1.5f;
+	float scaleY = 1.5f;
+	float scaleZ = 1.5f;
+	//------------------------------------------------
+
 	Transform tClear;
 public:
 	//コンストラクタ

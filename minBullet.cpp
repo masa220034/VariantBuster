@@ -21,17 +21,17 @@ void minBullet::Initialize()
     hModel_ = Model::Load("minBullet.fbx");
     assert(hModel_ >= 0);
 
-    BoxCollider* collision = new BoxCollider(XMFLOAT3(0.0, 1.8, 0.0), XMFLOAT3(0.5, 3.5, 1.0));
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(basePosX, basePosY, basePosZ), XMFLOAT3(sizeX, sizeY, sizeZ));
     AddCollider(collision);
 
-    transform_.scale_ = XMFLOAT3(0.3f, 0.5f, 0.0f);
+    m_Bullet.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 }
 
 //çXêV
 void minBullet::Update()
 {
-    transform_.position_.y -= 0.3f;
-    if (transform_.position_.y <= -20)
+    m_Bullet.position_.y -= v_shot;
+    if (m_Bullet.position_.y <= limitPosY)
     {
         KillMe();
     }
@@ -40,7 +40,7 @@ void minBullet::Update()
 //ï`âÊ
 void minBullet::Draw()
 {
-    Model::SetTransform(hModel_, transform_);
+    Model::SetTransform(hModel_, m_Bullet);
     Model::Draw(hModel_);
 }
 

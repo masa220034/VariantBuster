@@ -5,7 +5,25 @@
 class minBullet : public GameObject
 {
     int hModel_;
-    bool shot;
+
+    //-----コライダーの中心位置、大きさの設定-----
+    float basePosX = 0.0f;
+    float basePosY = 1.8f;
+    float basePosZ = 0.0f;
+    float sizeX = 0.5f;
+    float sizeY = 3.5f;
+    float sizeZ = 1.0f;
+    //--------------------------------------------
+
+    //-----弾の大きさの設定-----
+    float scaleX = 0.3f;
+    float scaleY = 0.5f;
+    float scaleZ = 0.0f;
+    //--------------------------
+
+    float v_shot = 0.3f;
+    float limitPosY = -20.0f;
+    Transform m_Bullet;
 public:
     //コンストラクタ
     minBullet(GameObject* parent);
