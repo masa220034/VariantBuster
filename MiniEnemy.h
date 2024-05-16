@@ -5,10 +5,18 @@
 class MiniEnemy : public GameObject
 {
     int hMiniEnemy_;
+
+    //-----ミニ敵の位置、大きさの設定-----
     float move = 0.05f;
     float scaleX = 0.3f;
     float scaleY = 0.3f;
     float scaleZ = 0.3f;
+    float posX = (float)(rand() % 401 - 200) / 10;
+    float posY = 5.8f;
+    float posZ = 0.0f;
+    //------------------------------------
+
+    float movedPos = 4.0f;
     bool moveUp;
 
     Transform tMiniEnemy;

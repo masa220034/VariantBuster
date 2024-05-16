@@ -20,7 +20,7 @@ void MiniEnemy::Initialize()
     assert(hMiniEnemy_ >= 0);
 
     tMiniEnemy.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
-    tMiniEnemy.position_ = XMFLOAT3((float)(rand() % 401 - 200) / 10, 5.8f, 0.0f);
+    tMiniEnemy.position_ = XMFLOAT3(posX, posY, posZ);
 }
 
 //XV
@@ -51,7 +51,7 @@ void MiniEnemy::movePattern()
     if (moveUp)
     {
         tMiniEnemy.position_.x += move;
-        if (tMiniEnemy.position_.x >= 4.0f)
+        if (tMiniEnemy.position_.x >= movedPos)
         {
             moveUp = false;
         }
@@ -59,7 +59,7 @@ void MiniEnemy::movePattern()
     else
     {
         tMiniEnemy.position_.x -= move;
-        if (tMiniEnemy.position_.x <= -4.0f)
+        if (tMiniEnemy.position_.x <= -movedPos)
         {
             moveUp = true;
         }
