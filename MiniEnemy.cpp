@@ -19,7 +19,7 @@ void MiniEnemy::Initialize()
     hMiniEnemy_ = Model::Load("miniEnemy.fbx");
     assert(hMiniEnemy_ >= 0);
 
-    tMiniEnemy.scale_ = XMFLOAT3(0.3f, 0.3f, 0.3f);
+    tMiniEnemy.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
     tMiniEnemy.position_ = XMFLOAT3((float)(rand() % 401 - 200) / 10, 5.8f, 0.0f);
 }
 

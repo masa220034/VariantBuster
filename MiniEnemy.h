@@ -6,6 +6,9 @@ class MiniEnemy : public GameObject
 {
     int hMiniEnemy_;
     float move = 0.05f;
+    float scaleX = 0.3f;
+    float scaleY = 0.3f;
+    float scaleZ = 0.3f;
     bool moveUp;
 
     Transform tMiniEnemy;

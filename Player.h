@@ -11,23 +11,30 @@ private:
 
     float moveSpeed = 0.1f;
 
-    //-----カメラの位置、視点の初期設定-----
+    //-----カメラの位置、視点の設定-----
     float cmrPosX = 0.0f;
     float cmrPosY = 3.0f;
     float cmrPosZ = 10.0f;
     float cmrTgtX = 0.0f;
     float cmrTgtY = 2.0f;
     float cmrTgtZ = 0.0f;
-    //---------------------------------------
+    //--------------------------------------
  
-    //-----プレイヤーの位置、大きさの初期設定-----
+    //-----プレイヤーの位置、大きさの設定-----
     float posX = -3.0f;
     float posY = 0.0f;
     float posZ = 0.0f;
     float scaleX = 0.2f;
     float scaleY = 0.2f;
     float scaleZ = 0.2f;
-    //---------------------------------------------
+    //----------------------------------------
+    
+    //-----コライダーの中心位置、大きさの設定-----
+    float collPosX = 0.0f;
+    float collPosY = 0.2f;
+    float collPosZ = 0.0f;
+    float collScale = 0.25f;
+    //--------------------------------------------
     
     //-----レイの発射方向-----
     float R_dirX = 0.0f;
