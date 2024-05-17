@@ -10,9 +10,9 @@ class minBullet : public GameObject
     float basePosX = 0.0f;
     float basePosY = 1.8f;
     float basePosZ = 0.0f;
-    float sizeX = 0.5f;
-    float sizeY = 3.5f;
-    float sizeZ = 1.0f;
+    float c_sizeX = 0.5f;
+    float c_sizeY = 3.5f;
+    float c_sizeZ = 1.0f;
     //--------------------------------------------
 
     //-----’e‚Ì‘å‚«‚³‚Ìİ’è-----

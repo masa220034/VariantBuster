@@ -30,10 +30,10 @@ void Enemy::Initialize()
     DamegeSound_ = Audio::Load("DamegeSound.wav");
     assert(DamegeSound_ >= 0);
 
-    transform_.position_ = XMFLOAT3(5.5f, 2.0f, 0.0f);
-    transform_.scale_ = XMFLOAT3(0.3f, 0.3f, 0.3f);
+    transform_.position_ = XMFLOAT3(posX, posY, posZ);
+    transform_.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.0, 0), 1.1f);
+    SphereCollider* collision = new SphereCollider(XMFLOAT3(basePosX, basePosY, basePosZ), c_scale);
     AddCollider(collision);
 
     moveUp = true;
@@ -52,7 +52,7 @@ void Enemy::Update()
 
         if (!isHpmax)
         {
-            nowHp_ += 2;
+            nowHp_ += upHp_;
             if (nowHp_ >= maxHp_)
             {
                 nowHp_ = maxHp_;
@@ -135,7 +135,7 @@ void Enemy::movePattern()
     if (moveUp)
     {
         transform_.position_.y += move;
-        if (transform_.position_.y >= 2.0f)
+        if (transform_.position_.y >= moveUp_lim)
         {
             moveUp = false;
         }
@@ -143,7 +143,7 @@ void Enemy::movePattern()
     else
     {
         transform_.position_.y -= move;
-        if (transform_.position_.y <= 0.0f)
+        if (transform_.position_.y <= moveDown_lim)
         {
             moveUp = true;
         }

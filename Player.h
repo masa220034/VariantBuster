@@ -30,10 +30,10 @@ private:
     //----------------------------------------
     
     //-----コライダーの中心位置、大きさの設定-----
-    float collPosX = 0.0f;
-    float collPosY = 0.2f;
-    float collPosZ = 0.0f;
-    float collScale = 0.25f;
+    float basePosX = 0.0f;
+    float basePosY = 0.2f;
+    float basePosZ = 0.0f;
+    float c_scale = 0.25f;
     //--------------------------------------------
     
     //-----レイの発射方向-----

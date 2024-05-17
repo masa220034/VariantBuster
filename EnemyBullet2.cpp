@@ -20,9 +20,9 @@ void EnemyBullet2::Initialize()
     hModel_ = Model::Load("eBullet2.fbx");
     assert(hModel_ >= 0);
 
-    transform_.scale_ = XMFLOAT3(0.3f, 0.3f, 0.3f);
+    transform_.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0.3, 0), 0.35f);
+    SphereCollider* collision = new SphereCollider(XMFLOAT3(basePosX, basePosY, basePosZ), c_scale);
     AddCollider(collision);
 
     shot = true;
@@ -31,27 +31,14 @@ void EnemyBullet2::Initialize()
 //XV
 void EnemyBullet2::Update()
 {
-    if (shot)
+    if (rand() % 100 == 0)
     {
-        transform_.position_.x += 0.5f;
-        transform_.position_.y += 0.5f;
-        if (transform_.position_.y >= 10.0f)
-        {
-            shot = false;
-            KillMe();
-        }
+        transform_.position_.x += v_shot;
     }
-    else 
-    {
-        if (rand() % 100 == 0)
-        {
-            transform_.position_.y -= 0.5f;
-        }
 
-        if (transform_.position_.y < -20.0f)
-        {
-            KillMe();
-        }
+    if (transform_.position_.y > limitPos)
+    {
+        KillMe();
     }
 }
 

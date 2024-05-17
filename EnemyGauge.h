@@ -10,9 +10,9 @@ class EnemyGauge : public GameObject
     float posX = 0.15f;
     float posY = 0.85f;
     float posZ = 0.0f;
-    float scaleX = 0.0f;
+    float scaleX = 1.0f;
     float scaleY = 2.0f;
-    float scaleZ = 0.0f;
+    float scaleZ = 1.0f;
     float rotateX = 0.0f;
     float rotateY = 0.0f;
     float rotateZ = 90.0f;

@@ -39,7 +39,7 @@ void Player::Initialize()
     tPlayer.position_ = XMFLOAT3(posX, posY, posZ);
     tPlayer.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(collPosX, collPosY, collPosZ), collScale);
+    SphereCollider* collision = new SphereCollider(XMFLOAT3(basePosX, basePosY, basePosZ), c_scale);
     AddCollider(collision);
 }
 

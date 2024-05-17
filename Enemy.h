@@ -8,13 +8,37 @@ class Enemy : public GameObject
     int hMiniEnemy_;
     int DamegeSound_;
 
+    //-----敵の位置、大きさの設定-----
+    float posX = 5.5f;
+    float posY = 2.0f;
+    float posZ = 0.0f;
+    float scaleX = 0.3f;
+    float scaleY = 0.3f;
+    float scaleZ = 0.3f;
+    //--------------------------------
+
+    //-----コライダーの中心位置、大きさの設定-----
+    float basePosX = 0.0f;
+    float basePosY = 1.0f;
+    float basePosZ = 0.0f;
+    float c_scale = 1.1f;
+    //--------------------------------------------
+
+    //-----敵のHPの設定-----
+    int nowHp_, maxHp_, halfHp_;
+    int upHp_ = 2;
+    bool isHpmax;
+    //----------------------
+
+    //-----敵の動きに関する設定-----
+    bool moveUp;
+    float move = 0.05f;
+    float moveUp_lim = 2.0f;
+    float moveDown_lim = 0.0f;
+    //------------------------------
+
     unsigned int frameCount;
     unsigned int DelayFrame;
-    int nowHp_, maxHp_, halfHp_;
-    float move = 0.05f;
-    float pos;
-    bool moveUp;
-    bool isHpmax;
 
     Transform tEnemy;
     Transform tMiniEnemy;

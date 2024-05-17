@@ -21,7 +21,7 @@ void minBullet::Initialize()
     hModel_ = Model::Load("minBullet.fbx");
     assert(hModel_ >= 0);
 
-    BoxCollider* collision = new BoxCollider(XMFLOAT3(basePosX, basePosY, basePosZ), XMFLOAT3(sizeX, sizeY, sizeZ));
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(basePosX, basePosY, basePosZ), XMFLOAT3(c_sizeX, c_sizeY, c_sizeZ));
     AddCollider(collision);
 
     m_Bullet.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
