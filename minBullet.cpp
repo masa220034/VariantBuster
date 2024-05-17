@@ -24,14 +24,14 @@ void minBullet::Initialize()
     BoxCollider* collision = new BoxCollider(XMFLOAT3(basePosX, basePosY, basePosZ), XMFLOAT3(c_sizeX, c_sizeY, c_sizeZ));
     AddCollider(collision);
 
-    m_Bullet.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
+    transform_.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 }
 
 //çXêV
 void minBullet::Update()
 {
-    m_Bullet.position_.y -= v_shot;
-    if (m_Bullet.position_.y <= limitPosY)
+    transform_.position_.y -= v_shot;
+    if (transform_.position_.y <= limitPosY)
     {
         KillMe();
     }
@@ -40,7 +40,7 @@ void minBullet::Update()
 //ï`âÊ
 void minBullet::Draw()
 {
-    Model::SetTransform(hModel_, m_Bullet);
+    Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
 }
 

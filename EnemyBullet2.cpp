@@ -31,12 +31,9 @@ void EnemyBullet2::Initialize()
 //XV
 void EnemyBullet2::Update()
 {
-    if (rand() % 100 == 0)
-    {
-        transform_.position_.x += v_shot;
-    }
+    transform_.position_.x += v_shot;
 
-    if (transform_.position_.y > limitPos)
+    if (transform_.position_.x > limitPos)
     {
         KillMe();
     }

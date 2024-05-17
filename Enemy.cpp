@@ -61,7 +61,7 @@ void Enemy::Update()
         }
     }
 
-    if (nowHp_ <= 0)
+    if (nowHp_ <= noHp_)
     {
         SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
         pSceneManager->ChangeScene(SCENE_ID_GAMECLEAR);
@@ -102,19 +102,15 @@ void Enemy::AttackPattern()
 
     if(nowHp_ > halfHp_ && nowHp_ <= maxHp_) 
     {
-        dir = { -0.5f,0.0f,0.0f };
         if (rand() % 100 == 0)
         {
             EnemyBullet* pEnemyBullet = Instantiate<EnemyBullet>(GetParent());
             pEnemyBullet->SetPosition(transform_.position_);
-            pEnemyBullet->setdirection(dir);
         }
     }
 
     if (nowHp_ <= halfHp_)
     {
-        dir = { 0.5f,0.5f,0.0f };
-
         transform_.position_.x -= 0.1f;
         if (transform_.position_.x <= -5.0f)
         {

@@ -6,7 +6,24 @@ class EnemyBullet : public GameObject
 {
     int hModel_;
     int eBulletSound_;
-    XMFLOAT3 direction;
+
+    //-----弾の大きさの設定-----
+    float scaleX = 0.3f;
+    float scaleY = 0.3f;
+    float scaleZ = 0.3f;
+    //--------------------------
+
+    //-----コライダーの中心位置と大きさの設定-----
+    float basePosX = 0.0f;
+    float basePosY = 0.1f;
+    float basePosZ = 0.1f;
+    float c_sizeX = 1.5f;
+    float c_sizeY = 1.5f;
+    float c_sizeZ = 1.0f;
+    //--------------------------------------------
+
+    float v_shot = 0.5f;
+    float limitPos = 20.0f;
 public:
     //コンストラクタ
     EnemyBullet(GameObject* parent);
@@ -25,6 +42,4 @@ public:
 
     //開放
     void Release() override;
-
-    void setdirection(XMFLOAT3 dir_) { direction = dir_; }
 };

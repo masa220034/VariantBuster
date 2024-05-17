@@ -13,9 +13,9 @@ class EnemyBullet2 : public GameObject
     //--------------------------
 
     //-----コライダーの中心位置、大きさの設定-----
-    float basePosX = 0.0f;
-    float basePosY = 0.3f;
-    float basePosZ = 0.0f;
+    float basePosX = 0.0;
+    float basePosY = 0.3;
+    float basePosZ = 0.0;
     float c_scale = 0.35f;
     //--------------------------------------------
 

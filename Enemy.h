@@ -26,6 +26,7 @@ class Enemy : public GameObject
 
     //-----ìGÇÃHPÇÃê›íË-----
     int nowHp_, maxHp_, halfHp_;
+    int noHp_ = 0;
     int upHp_ = 2;
     bool isHpmax;
     //----------------------

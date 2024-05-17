@@ -23,7 +23,6 @@ class minBullet : public GameObject
 
     float v_shot = 0.3f;
     float limitPosY = -20.0f;
-    Transform m_Bullet;
 public:
     //コンストラクタ
     minBullet(GameObject* parent);

@@ -25,9 +25,9 @@ void EnemyBullet::Initialize()
     eBulletSound_ = Audio::Load("eBulletSound.wav");
     assert(eBulletSound_ >= 0);
 
-    transform_.scale_ = XMFLOAT3(0.3f, 0.3f, 0.3f);
+    transform_.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 
-    BoxCollider* collision = new BoxCollider(XMFLOAT3(0.0, 0.1, 0.1), XMFLOAT3(1.5, 0.1, 1.0));
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(basePosX, basePosY, basePosZ), XMFLOAT3(c_sizeX, c_sizeY, c_sizeZ));
     AddCollider(collision);
 }
 
@@ -35,12 +35,10 @@ void EnemyBullet::Initialize()
 void EnemyBullet::Update()
 {
     Audio::Play(eBulletSound_);
-    transform_.position_.x += direction.x;
-    transform_.position_.y += direction.y;
-    transform_.position_.z += direction.z;
 
-    if (transform_.position_.x < -50.0f || transform_.position_.x > 50.0f ||
-        transform_.position_.y < -50.0f || transform_.position_.y > 50.0f )
+    transform_.position_.x -= v_shot;
+
+    if (transform_.position_.x <= limitPos)
     {
         KillMe();
     }
