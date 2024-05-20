@@ -97,9 +97,6 @@ void Enemy::OnCollision(GameObject* pTarget)
 
 void Enemy::AttackPattern()
 {
-    //‹…‚Ì•ûŒü‚ðŒˆ‚ß‚é
-    XMFLOAT3 dir;
-
     if(nowHp_ > halfHp_ && nowHp_ <= maxHp_) 
     {
         if (rand() % 100 == 0)
@@ -111,7 +108,7 @@ void Enemy::AttackPattern()
 
     if (nowHp_ <= halfHp_)
     {
-        transform_.position_.x -= 0.1f;
+        transform_.position_.x -= ene_move;
         if (transform_.position_.x <= -5.0f)
         {
             transform_.position_.x = -5.0f;

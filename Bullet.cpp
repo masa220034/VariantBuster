@@ -25,9 +25,9 @@ void Bullet::Initialize()
     BulletSound_ = Audio::Load("BulletSound.wav");
     assert(BulletSound_ >= 0);
 
-    transform_.scale_ = XMFLOAT3(0.3f, 0.3f, 0.3f);
+    transform_.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(0.1, 0.1, 0.1), 0.3f);
+    SphereCollider* collision = new SphereCollider(XMFLOAT3(basePosX, basePosY, basePosZ), c_scale);
     AddCollider(collision);
 }
 
@@ -36,8 +36,8 @@ void Bullet::Update()
 {
     Audio::Play(BulletSound_);
 
-    transform_.position_.x += 0.5f;
-    if (transform_.position_.x > 50.0f)
+    transform_.position_.x += v_shot;
+    if (transform_.position_.x > limitPos)
     {
         KillMe();
     }

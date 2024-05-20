@@ -38,6 +38,7 @@ class Enemy : public GameObject
     float moveDown_lim = 0.0f;
     //------------------------------
 
+    float ene_move = 0.1f;
     unsigned int frameCount;
     unsigned int DelayFrame;
 
