@@ -15,7 +15,7 @@ void Timer::Initialize()
 	pText = new Text;
 	pText->Initialize();
 
-	frame = 0;
+	frame = noFrame;
 	active = false;
 
 	SetLimit(time); //§ŒÀŠÔ‚ğİ’è
@@ -26,7 +26,7 @@ void Timer::Update()
 	Start();
 
 	if (active) {
-		if (frame > 0) {
+		if (frame > noFrame){
 			frame--;
 		}
 	}
@@ -41,11 +41,11 @@ void Timer::Draw()
 	pText->SetScale(textScale);
 
 	int sec = frame / FPS; //Œo‰ß‚µ‚½•b”‚ğŒvZ
-	int minutes = sec / 60;
-	int seconds = sec % 60;
+	int minutes = sec / div;
+	int seconds = sec % div;
 
-	std::string s_minutes = (minutes < 10) ? "0" + std::to_string(minutes) : std::to_string(minutes);
-	std::string s_seconds = (seconds < 10) ? "0" + std::to_string(seconds) : std::to_string(seconds);
+	std::string s_minutes = (minutes < t_pla) ? "0" + std::to_string(minutes) : std::to_string(minutes);
+	std::string s_seconds = (seconds < t_pla) ? "0" + std::to_string(seconds) : std::to_string(seconds);
 	std::string s_time = s_minutes + ":" + s_seconds; //•ª:•b‚Ì•¶š—ñ‚ğì¬
 	pText->Draw(drawX, drawY, s_time.c_str());
 }
@@ -73,5 +73,5 @@ void Timer::Stop()
 
 bool Timer::IsFinished()
 {
-	return (frame == 0);
+	return (frame == noFrame);
 }

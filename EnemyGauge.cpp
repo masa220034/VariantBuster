@@ -37,7 +37,7 @@ void EnemyGauge::Draw()
 {
     //“G‚ÌƒQ[ƒW‚Ì•`‰æ
     Transform transGauge = transform_;
-    transGauge.scale_.y = 2 * ((float)nowHp_ / (float)maxHp_);
+    transGauge.scale_.y = scaleY * ((float)nowHp_ / (float)maxHp_);
     Image::SetTransform(hGauge_, transGauge);
     Image::Draw(hGauge_);
 

@@ -1,7 +1,6 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//ŸŸŸ‚ğŠÇ—‚·‚éƒNƒ‰ƒX
 class Enemy : public GameObject
 {
     int hEnemy_;
@@ -38,7 +37,10 @@ class Enemy : public GameObject
     float moveDown_lim = 0.0f;
     //------------------------------
 
+    int B_damage = 3;
     float ene_move = 0.1f;
+    float lim_ene_pos = -5.0f;
+    float ene_rotate = 180;
     unsigned int frameCount;
     unsigned int DelayFrame;
 

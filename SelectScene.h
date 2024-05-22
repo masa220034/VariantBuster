@@ -14,13 +14,20 @@ class SelectScene : public GameObject
 private:
 	int hSelectBack_;
 	int hSelBoss_[BOSS_MAX];
+
+	//-----画像の移動量などの設定-----
 	int center = 0;
 	int limitLeftPos= -2;
 	float move = 1.0f;
+	//--------------------------------
+
+	//-----画像の大きさの設定-----
 	float scaleX = 0.5f;
 	float scaleY = 0.5f;
 	float scaleZ = 0.5f;
 	float scaleUp = 1.5f;
+	//----------------------------
+
 	Transform tSelBoss_[BOSS_MAX];
 public:
 	//コンストラクタ

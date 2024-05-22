@@ -90,7 +90,7 @@ void Enemy::OnCollision(GameObject* pTarget)
     if (pTarget->GetObjectName() == "Bullet")
     {
         pTarget->KillMe();
-        nowHp_ -= 3;
+        nowHp_ -= B_damage;
         Audio::Play(DamegeSound_);
     }
 }
@@ -109,10 +109,10 @@ void Enemy::AttackPattern()
     if (nowHp_ <= halfHp_)
     {
         transform_.position_.x -= ene_move;
-        if (transform_.position_.x <= -5.0f)
+        if (transform_.position_.x <= lim_ene_pos)
         {
-            transform_.position_.x = -5.0f;
-            transform_.rotate_.y -= 180;
+            transform_.position_.x = lim_ene_pos;
+            transform_.rotate_.y -= ene_rotate;
 
             if (rand() % 100 == 0)
             {
