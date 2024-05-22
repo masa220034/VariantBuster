@@ -1,5 +1,6 @@
 #include "Timer.h"
 #include "Engine/Input.h"
+#include "Engine/SceneManager.h"
 
 Timer::Timer(GameObject* obj) : GameObject(obj, "Timer"),
 pText(nullptr), frame(0), active(false), drawX(610), drawY(30), limitFrame(0)
@@ -33,7 +34,10 @@ void Timer::Update()
 
 	Stop();
 
-	IsFinished();
+	if (IsFinished()) {
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+	}
 }
 
 void Timer::Draw()

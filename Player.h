@@ -45,7 +45,7 @@ private:
     //-----ジャンプに使用している変数達-----
     bool isJump = true;      //ジャンプしてるかどうかのフラグ
     float ground_Y = 0.0f;   //地面の位置
-    float x = 0.0f;          //経過時間
+    float x = 0.0f;          //上昇量
     float v = 0.4f;          //ジャンプの初速度
     float gravity = 0.02;    //重力加速度
     float fallSpeed = 10.0f; //落ちる速度

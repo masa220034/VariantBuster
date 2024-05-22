@@ -16,8 +16,11 @@ class MiniEnemy : public GameObject
     float posZ = 0.0f;
     //------------------------------------
 
-    float movedPos = 4.0f;
+    float movedPos = 5.5f;
     bool moveUp;
+
+    unsigned int frameCount;
+    unsigned int DelayFrame;
 
     Transform tMiniEnemy;
 public:

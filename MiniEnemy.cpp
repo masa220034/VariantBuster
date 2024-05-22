@@ -4,7 +4,8 @@
 
 //コンストラクタ
 MiniEnemy::MiniEnemy(GameObject* parent)
-    :GameObject(parent, "Enemy"), hMiniEnemy_(-1)
+    :GameObject(parent, "Enemy"), hMiniEnemy_(-1),
+    frameCount(0), DelayFrame(150)
 {
 }
 
@@ -27,10 +28,17 @@ void MiniEnemy::Initialize()
 void MiniEnemy::Update()
 {
     movePattern();
-    if (rand() % 100 == 0)
+    if (frameCount >= DelayFrame)
     {
-        minBullet* pminBullet = Instantiate<minBullet>(GetParent());
-        pminBullet->SetPosition(tMiniEnemy.position_);
+        if (rand() % 100 == 0)
+        {
+            minBullet* pminBullet = Instantiate<minBullet>(GetParent());
+            pminBullet->SetPosition(tMiniEnemy.position_);
+        }
+    }
+    else
+    {
+        frameCount++;
     }
 }
 

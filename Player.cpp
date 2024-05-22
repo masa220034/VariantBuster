@@ -75,7 +75,7 @@ void Player::Update()
         tPlayer.position_.x += moveSpeed;
     }
 
-    if (Input::IsKeyDown(DIK_A))
+    if (Input::IsKeyDown(DIK_SPACE))
     {
         Bullet* pBullet = Instantiate<Bullet>(GetParent());
         pBullet->SetPosition(tPlayer.position_);

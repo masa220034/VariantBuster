@@ -38,7 +38,7 @@ void EnemyBullet::Update()
 
     transform_.position_.x -= v_shot;
 
-    if (transform_.position_.x <= limitPos)
+    if (transform_.position_.x >= limitPos)
     {
         KillMe();
     }
