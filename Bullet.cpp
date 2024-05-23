@@ -36,7 +36,8 @@ void Bullet::Update()
 {
     Audio::Play(BulletSound_);
 
-    transform_.position_.x += v_shot;
+    transform_.position_.x += direction_.x * v_shot;
+    
     if (transform_.position_.x > limitPos)
     {
         KillMe();
@@ -53,5 +54,10 @@ void Bullet::Draw()
 //ŠJ•ú
 void Bullet::Release()
 {
+}
+
+void Bullet::SetDirection(const XMFLOAT3& direction)
+{
+    direction_ = direction;
 }
 

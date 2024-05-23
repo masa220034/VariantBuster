@@ -45,7 +45,6 @@ class Enemy : public GameObject
     unsigned int DelayFrame;
 
     Transform tEnemy;
-    Transform tMiniEnemy;
 public:
     //コンストラクタ
     Enemy(GameObject* parent);

@@ -29,6 +29,13 @@ private:
     float scaleZ = 0.2f;
     //----------------------------------------
     
+     //-----プレイヤーの向きを設定-----
+    bool P_Right; //右を向いているかどうか
+    float P_dirX = 1.0f;
+    float P_dirY = 0.0f;
+    float P_dirZ = 0.0f;
+    //--------------------------------
+
     //-----コライダーの中心位置、大きさの設定-----
     float basePosX = 0.0f;
     float basePosY = 0.2f;
@@ -43,7 +50,7 @@ private:
     //------------------------
 
     //-----ジャンプに使用している変数達-----
-    bool isJump = true;      //ジャンプしてるかどうかのフラグ
+    bool isJump = true;      //ジャンプしてるかどうか
     float ground_Y = 0.0f;   //地面の位置
     float x = 0.0f;          //上昇量
     float v = 0.4f;          //ジャンプの初速度

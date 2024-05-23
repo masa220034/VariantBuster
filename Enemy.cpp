@@ -30,8 +30,8 @@ void Enemy::Initialize()
     DamegeSound_ = Audio::Load("DamegeSound.wav");
     assert(DamegeSound_ >= 0);
 
-    transform_.position_ = XMFLOAT3(posX, posY, posZ);
-    transform_.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
+    tEnemy.position_ = XMFLOAT3(posX, posY, posZ);
+    tEnemy.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
 
     SphereCollider* collision = new SphereCollider(XMFLOAT3(basePosX, basePosY, basePosZ), c_scale);
     AddCollider(collision);
@@ -71,12 +71,14 @@ void Enemy::Update()
     pEnemyGauge->SetHp(nowHp_, maxHp_);
  
     movePattern();
+
+    transform_ = tEnemy;
 }
 
 //•`‰æ
 void Enemy::Draw()
 {
-    Model::SetTransform(hEnemy_, transform_);
+    Model::SetTransform(hEnemy_, tEnemy);
     Model::Draw(hEnemy_);
 }
 
@@ -102,22 +104,22 @@ void Enemy::AttackPattern()
         if (rand() % 100 == 0)
         {
             EnemyBullet* pEnemyBullet = Instantiate<EnemyBullet>(GetParent());
-            pEnemyBullet->SetPosition(transform_.position_);
+            pEnemyBullet->SetPosition(tEnemy.position_);
         }
     }
 
     if (nowHp_ <= halfHp_)
     {
-        transform_.position_.x -= ene_move;
-        if (transform_.position_.x <= lim_ene_pos)
+        tEnemy.position_.x -= ene_move;
+        if (tEnemy.position_.x <= lim_ene_pos)
         {
-            transform_.position_.x = lim_ene_pos;
-            transform_.rotate_.y -= ene_rotate;
+            tEnemy.position_.x = lim_ene_pos;
+            tEnemy.rotate_.y -= ene_rotate;
 
             if (rand() % 100 == 0)
             {
                 EnemyBullet2* pEnemyBullet2 = Instantiate<EnemyBullet2>(GetParent());
-                pEnemyBullet2->SetPosition(transform_.position_);
+                pEnemyBullet2->SetPosition(tEnemy.position_);
             }
         }
     }
@@ -127,16 +129,16 @@ void Enemy::movePattern()
 {
     if (moveUp)
     {
-        transform_.position_.y += move;
-        if (transform_.position_.y >= moveUp_lim)
+        tEnemy.position_.y += move;
+        if (tEnemy.position_.y >= moveUp_lim)
         {
             moveUp = false;
         }
     }
     else
     {
-        transform_.position_.y -= move;
-        if (transform_.position_.y <= moveDown_lim)
+        tEnemy.position_.y -= move;
+        if (tEnemy.position_.y <= moveDown_lim)
         {
             moveUp = true;
         }

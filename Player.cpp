@@ -68,17 +68,28 @@ void Player::Update()
     if (Input::IsKey(DIK_LEFT))
     { 
         tPlayer.position_.x -= moveSpeed;
+        P_Right = false;
     }
 
     if (Input::IsKey(DIK_RIGHT))
     {  
         tPlayer.position_.x += moveSpeed;
+        P_Right = true;
     }
 
     if (Input::IsKeyDown(DIK_SPACE))
     {
         Bullet* pBullet = Instantiate<Bullet>(GetParent());
         pBullet->SetPosition(tPlayer.position_);
+
+        if (P_Right)
+        {
+            pBullet->SetDirection(XMFLOAT3(P_dirX, P_dirY, P_dirZ));
+        }
+        else
+        {
+            pBullet->SetDirection(XMFLOAT3(-P_dirX, P_dirY, P_dirZ));
+        }
     }
 
     //移動先に足場があるかどうかをレイキャストで確認
