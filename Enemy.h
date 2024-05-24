@@ -24,11 +24,18 @@ class Enemy : public GameObject
     //--------------------------------------------
 
     //-----“G‚ÌHP‚Ìİ’è-----
-    int nowHp_, maxHp_, halfHp_;
-    int noHp_ = 0;
-    int upHp_ = 2;
     bool isHpmax;
+    int nowHp_, maxHp_, halfHp_;
+    int upHp_ = 2;
+    int noHp_ = 0;
     //----------------------
+
+    //-----HPƒQ[ƒW‚ÌŒ¸­ŠÖ˜A‚É‚Â‚¢‚Ä-----
+    bool isDamage;
+    float d_Amount;
+    float d_Step;
+    float targetHp;
+    //------------------------------------
 
     //-----“G‚Ì“®‚«‚ÉŠÖ‚·‚éİ’è-----
     bool moveUp;
@@ -69,4 +76,6 @@ public:
     void AttackPattern();
 
     void movePattern();
+
+    void StartDamage(float amount);
 };

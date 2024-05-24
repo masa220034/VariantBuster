@@ -16,6 +16,9 @@ class GameClearScene : public GameObject
 	float scaleZ = 1.5f;
 	//------------------------------------------------
 
+	unsigned int frameCount;
+	unsigned int DelayFrame;
+
 	Transform tClear;
 public:
 	//コンストラクタ

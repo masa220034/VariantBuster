@@ -6,7 +6,8 @@
 
 //コンストラクタ
 GameClearScene::GameClearScene(GameObject* parent)
-	: GameObject(parent, "GameClearScene"), hBackGround_(-1), hPict_(-1), BGM_(-1)
+	: GameObject(parent, "GameClearScene"), hBackGround_(-1), hPict_(-1), BGM_(-1),
+	frameCount(0), DelayFrame(180)
 {
 }
 
@@ -31,10 +32,18 @@ void GameClearScene::Initialize()
 void GameClearScene::Update()
 {
 	Audio::Play(BGM_);
-	if (Input::IsKeyDown(DIK_SPACE))
+
+	if (frameCount >= DelayFrame)
 	{
-		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-		pSceneManager->ChangeScene(SCENE_ID_PLAY);
+		if (Input::IsKeyDown(DIK_SPACE))
+		{
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_PLAY);
+		}
+	}
+	else
+	{
+		frameCount++;
 	}
 }
 

@@ -6,7 +6,8 @@
 
 //コンストラクタ
 GameOverScene::GameOverScene(GameObject* parent)
-	: GameObject(parent, "GameOverScene"), hPict_(-1), hBack_(-1), BGM_(-1)
+	: GameObject(parent, "GameOverScene"), hPict_(-1), hBack_(-1), BGM_(-1),
+	frameCount(0), DelayFrame(180)
 {
 }
 
@@ -28,10 +29,18 @@ void GameOverScene::Initialize()
 void GameOverScene::Update()
 {
 	Audio::Play(BGM_);
-	if (Input::IsKeyDown(DIK_SPACE))
+
+	if (frameCount >= DelayFrame)
 	{
-		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-		pSceneManager->ChangeScene(SCENE_ID_PLAY);
+		if (Input::IsKeyDown(DIK_SPACE))
+		{
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_PLAY);
+		}
+	}
+	else
+	{
+		frameCount++;
 	}
 }
 

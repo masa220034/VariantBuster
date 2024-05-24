@@ -12,7 +12,8 @@
 Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), hEnemy_(-1), DamegeSound_(-1),
     frameCount(0), DelayFrame(150),
-    maxHp_(200), nowHp_(0), halfHp_(100)
+    maxHp_(200), nowHp_(0), halfHp_(100),
+    isDamage(false), d_Amount(0), d_Step(0.1f)
 {
 }
 
@@ -50,6 +51,7 @@ void Enemy::Update()
     {
         frameCount++;
 
+        //始まった時、HPゲージ上昇
         if (!isHpmax)
         {
             nowHp_ += upHp_;
@@ -58,6 +60,17 @@ void Enemy::Update()
                 nowHp_ = maxHp_;
                 isHpmax = true;
             }
+        }
+    }
+
+    //ダメージを受けたときのHPゲージの減少速度
+    if (isDamage)
+    {
+        nowHp_ -= d_Step;
+        if (nowHp_ <= targetHp)
+        {
+            nowHp_ = targetHp;
+            isDamage = false;
         }
     }
 
@@ -92,7 +105,7 @@ void Enemy::OnCollision(GameObject* pTarget)
     if (pTarget->GetObjectName() == "Bullet")
     {
         pTarget->KillMe();
-        nowHp_ -= B_damage;
+        StartDamage(B_damage);
         Audio::Play(DamegeSound_);
     }
 }
@@ -143,4 +156,14 @@ void Enemy::movePattern()
             moveUp = true;
         }
     }
+}
+
+void Enemy::StartDamage(float amount)
+{
+    targetHp = nowHp_ - amount;
+    if (targetHp < 0)
+    {
+        targetHp = 0;
+    }
+    isDamage = true;
 }

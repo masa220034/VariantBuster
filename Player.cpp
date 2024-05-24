@@ -11,9 +11,10 @@
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-    :GameObject(parent, "Player"), hPlayer_(-1), 
+    :GameObject(parent, "Player"), hPlayer_(-1),
     JumpSound_(-1), DamegeSound_(-1),
-    maxHp_(100), nowHp_(0)
+    maxHp_(100), nowHp_(0), targetHp(0),
+    isDamage(false), d_Amount(0), d_Step(0.1f)
 {
 }
 
@@ -46,6 +47,7 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
+    //始まった時、HPゲージ上昇
     if (!isHpmax)
     {
         nowHp_ += upHp_;
@@ -53,6 +55,17 @@ void Player::Update()
         {
             nowHp_ = maxHp_;
             isHpmax = true;
+        }
+    }
+
+    //ダメージを受けたときのHPゲージの減少速度
+    if (isDamage)
+    {
+        nowHp_ -= d_Step;
+        if (nowHp_ <= targetHp)
+        {
+            nowHp_ = targetHp;
+            isDamage = false;
         }
     }
 
@@ -65,79 +78,83 @@ void Player::Update()
     PlayerGauge* pPlayerGauge = (PlayerGauge*)FindObject("PlayerGauge");
     pPlayerGauge->SetHp(nowHp_, maxHp_);
 
-    if (Input::IsKey(DIK_LEFT))
-    { 
-        tPlayer.position_.x -= moveSpeed;
-        P_Right = false;
-    }
-
-    if (Input::IsKey(DIK_RIGHT))
-    {  
-        tPlayer.position_.x += moveSpeed;
-        P_Right = true;
-    }
-
-    if (Input::IsKeyDown(DIK_SPACE))
+    if (isHpmax)
     {
-        Bullet* pBullet = Instantiate<Bullet>(GetParent());
-        pBullet->SetPosition(tPlayer.position_);
-
-        if (P_Right)
+        if (Input::IsKey(DIK_LEFT))
         {
-            pBullet->SetDirection(XMFLOAT3(P_dirX, P_dirY, P_dirZ));
+            tPlayer.position_.x -= moveSpeed;
+            P_Right = false;
+        }
+
+        if (Input::IsKey(DIK_RIGHT))
+        {
+            tPlayer.position_.x += moveSpeed;
+            P_Right = true;
+        }
+
+        if (Input::IsKeyDown(DIK_SPACE))
+        {
+            Bullet* pBullet = Instantiate<Bullet>(GetParent());
+            pBullet->SetPosition(tPlayer.position_);
+
+            if (P_Right)
+            {
+                pBullet->SetDirection(XMFLOAT3(P_dirX, P_dirY, P_dirZ));
+            }
+            else
+            {
+                pBullet->SetDirection(XMFLOAT3(-P_dirX, P_dirY, P_dirZ));
+            }
+        }
+
+        //移動先に足場があるかどうかをレイキャストで確認
+        Stage* pStage = (Stage*)FindObject("Stage");
+        int hGroundModel = pStage->GetModelHandle();
+
+        RayCastData data;
+        data.start = tPlayer.position_;   //レイの発射位置
+        data.dir = XMFLOAT3(R_dirX, R_dirY, R_dirZ);       //レイの方向
+        Model::RayCast(hGroundModel, &data); //レイを発射
+
+        if (isJump)
+        {
+
+            tPlayer.position_.y += x;
+            x -= gravity;
+
+            if (tPlayer.position_.y <= ground_Y)
+            {
+                if (data.hit)
+                {
+                    //足場がある場合、ジャンプした分の位置を下げる
+                    tPlayer.position_.y = ground_Y;
+                }
+                isJump = false;
+            }
         }
         else
         {
-            pBullet->SetDirection(XMFLOAT3(-P_dirX, P_dirY, P_dirZ));
-        }
-    }
-
-    //移動先に足場があるかどうかをレイキャストで確認
-    Stage* pStage = (Stage*)FindObject("Stage");
-    int hGroundModel = pStage->GetModelHandle();
-
-    RayCastData data;
-    data.start = tPlayer.position_;   //レイの発射位置
-    data.dir = XMFLOAT3(R_dirX, R_dirY, R_dirZ);       //レイの方向
-    Model::RayCast(hGroundModel, &data); //レイを発射
-
-    if (isJump)
-    {
-        
-        tPlayer.position_.y += x;
-        x -= gravity;
-
-        if (tPlayer.position_.y <= ground_Y)
-        {
-            if (data.hit)
+            if (Input::IsKeyDown(DIK_UP))
             {
-                //足場がある場合、ジャンプした分の位置を下げる
-                tPlayer.position_.y = ground_Y;
+                // ジャンプ開始
+                isJump = true;
+                x = v;
             }
-            isJump = false;
-        }
-    }
-    else
-    {
-        if (Input::IsKeyDown(DIK_UP))
-        {
-            // ジャンプ開始
-            isJump = true;
-            x = v;
-        }
 
-        if (!data.hit)
-        {
-            //足場がない場合、プレイヤーの高さを下げる
-            tPlayer.position_.y -= fallSpeed * gravity;
-
-            if (tPlayer.position_.y <= fPosition)
+            if (!data.hit)
             {
-                SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-                pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+                //足場がない場合、プレイヤーの高さを下げる
+                tPlayer.position_.y -= fallSpeed * gravity;
+
+                if (tPlayer.position_.y <= fPosition)
+                {
+                    SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+                    pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+                }
             }
         }
     }
+   
     transform_ = tPlayer;
 }
 
@@ -157,25 +174,35 @@ void Player::OnCollision(GameObject* pTarget)
 {
     if (pTarget->GetObjectName() == "Enemy")
     {
-        nowHp_ -= e_damage;
+        StartDamage(e_damage);
     }
 
     if (pTarget->GetObjectName() == "EnemyBullet")
     {
         pTarget->KillMe();
-        nowHp_ -= eb_damege;
+        StartDamage(eb_damage);
         Audio::Play(DamegeSound_);
     }
 
     if (pTarget->GetObjectName() == "EnemyBullet2")
     {
         pTarget->KillMe();
-        nowHp_ -= sec_eb_damege;
+        StartDamage(sec_eb_damage);
     }
 
     if (pTarget->GetObjectName() == "minBullet")
     {
         pTarget->KillMe();
-        nowHp_ -= min_b_damege;
+        StartDamage(min_b_damage);
     }
+}
+
+void Player::StartDamage(float amount)
+{
+    targetHp = nowHp_ - amount;
+    if (targetHp < 0)
+    {
+        targetHp = 0;
+    }
+    isDamage = true;
 }

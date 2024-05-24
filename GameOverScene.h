@@ -6,6 +6,10 @@ class GameOverScene : public GameObject
 	int hPict_;
 	int hBack_;
 	int BGM_;
+
+	unsigned int frameCount;
+	unsigned int DelayFrame;
+
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
