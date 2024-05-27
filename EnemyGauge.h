@@ -4,7 +4,9 @@
 class EnemyGauge : public GameObject
 {
 	int hGauge_;
+    int hGauge_BG;
 	int hFrame_;
+    int nowHp_, maxHp_, animHp_;
 
     //-----ゲージの位置や大きさなどの設定-----
     float posX = 0.15f;
@@ -18,7 +20,7 @@ class EnemyGauge : public GameObject
     float rotateZ = 90.0f;
     //-----------------------------------------
 
-	int nowHp_, maxHp_, animHp_;
+    Transform pGauge;
 public:
     //コンストラクタ
     EnemyGauge(GameObject* parent);
