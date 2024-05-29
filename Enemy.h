@@ -44,7 +44,7 @@ class Enemy : public GameObject
     float moveDown_lim = 0.0f;
     //------------------------------
 
-    int B_damage = 3;
+    int B_damage = 20;
     float ene_move = 0.1f;
     float lim_ene_pos = -5.0f;
     float ene_rotate = 180;
