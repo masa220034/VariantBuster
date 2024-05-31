@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include <chrono>
 
 //プレイヤーを管理するクラス
 class Player : public GameObject
@@ -10,6 +11,9 @@ private:
     int DamegeSound_;
 
     float moveSpeed = 0.1f;
+
+    float cooldown;
+    std::chrono::high_resolution_clock::time_point lastBulletTime;
 
     //-----カメラの位置、視点の設定-----
     float cmrPosX = 0.0f;

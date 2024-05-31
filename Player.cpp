@@ -14,7 +14,8 @@ Player::Player(GameObject* parent)
     :GameObject(parent, "Player"), hPlayer_(-1),
     JumpSound_(-1), DamegeSound_(-1),
     maxHp_(100), nowHp_(0), targetHp(0),
-    isDamage(false), d_Amount(0), d_Step(0.1f)
+    isDamage(false), d_Amount(0), d_Step(0.1f),
+    cooldown(0.5f), lastBulletTime(std::chrono::high_resolution_clock::now())
 {
 }
 
@@ -47,6 +48,9 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
+    auto currentTime = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<float> elapsed = currentTime - lastBulletTime;
+
     //始まった時、HPゲージ上昇
     if (!isHpmax)
     {
@@ -92,7 +96,7 @@ void Player::Update()
             P_Right = true;
         }
 
-        if (Input::IsKeyDown(DIK_SPACE))
+        if (Input::IsKeyDown(DIK_SPACE) && elapsed.count() >= cooldown)
         {
             Bullet* pBullet = Instantiate<Bullet>(GetParent());
             pBullet->SetPosition(tPlayer.position_);
@@ -105,6 +109,8 @@ void Player::Update()
             {
                 pBullet->SetDirection(XMFLOAT3(-P_dirX, P_dirY, P_dirZ));
             }
+
+            lastBulletTime = currentTime;
         }
 
         //移動先に足場があるかどうかをレイキャストで確認
@@ -139,6 +145,7 @@ void Player::Update()
                 // ジャンプ開始
                 isJump = true;
                 x = v;
+                Audio::Play(JumpSound_);
             }
 
             if (!data.hit)
