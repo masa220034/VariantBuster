@@ -111,6 +111,7 @@
     <ClCompile Include="EnemyBullet2.cpp" />
     <ClCompile Include="MiniEnemy.cpp" />
     <ClCompile Include="minBullet.cpp" />
+    <ClCompile Include="DamageEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -198,6 +199,7 @@
     <ClInclude Include="EnemyBullet2.h" />
     <ClInclude Include="MiniEnemy.h" />
     <ClInclude Include="minBullet.h" />
+    <ClInclude Include="DamageEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

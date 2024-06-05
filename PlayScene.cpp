@@ -6,6 +6,7 @@
 #include "PlayerGauge.h"
 #include "EnemyGauge.h"
 #include "Timer.h"
+//#include "DamageEffect.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Audio.h"
@@ -29,6 +30,7 @@ void PlayScene::Initialize()
 	Instantiate<PlayerGauge>(this);
 	Instantiate<EnemyGauge>(this);
 	Instantiate<Timer>(this);
+	//Instantiate<DamageEffect>(this);
 
 	BGM_ = Audio::Load("BattleBGM.wav");
 	assert(BGM_ >= 0);

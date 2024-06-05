@@ -2,6 +2,7 @@
 #include "EnemyGauge.h"
 #include "EnemyBullet.h"
 #include "EnemyBullet2.h"
+#include "DamageEffect.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Audio.h"
@@ -106,6 +107,10 @@ void Enemy::OnCollision(GameObject* pTarget)
     {
         pTarget->KillMe();
         StartDamage(B_damage);
+
+        DamageEffect* damageEffect = Instantiate<DamageEffect>(GetParent());
+        damageEffect->SetPosition(tEnemy.position_);
+
         Audio::Play(DamegeSound_);
     }
 }
