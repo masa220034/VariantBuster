@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "Bullet.h"
 #include "EnemyGauge.h"
 #include "EnemyBullet.h"
 #include "EnemyBullet2.h"
@@ -83,7 +84,7 @@ void Enemy::Update()
 
     EnemyGauge* pEnemyGauge = (EnemyGauge*)FindObject("EnemyGauge");
     pEnemyGauge->SetHp(nowHp_, maxHp_);
- 
+
     movePattern();
 
     transform_ = tEnemy;
@@ -105,13 +106,14 @@ void Enemy::OnCollision(GameObject* pTarget)
 {
     if (pTarget->GetObjectName() == "Bullet")
     {
-        pTarget->KillMe();
         StartDamage(B_damage);
+
+        Audio::Play(DamegeSound_);
 
         DamageEffect* damageEffect = Instantiate<DamageEffect>(GetParent());
         damageEffect->SetPosition(tEnemy.position_);
 
-        Audio::Play(DamegeSound_);
+        pTarget->KillMe();
     }
 }
 
