@@ -78,4 +78,6 @@ public:
     void movePattern();
 
     void StartDamage(float amount);
+
+    XMFLOAT3 GetPosition() const { return tEnemy.position_; }
 };

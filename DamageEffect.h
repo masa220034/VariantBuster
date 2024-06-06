@@ -4,10 +4,11 @@
 class DamageEffect : public GameObject
 {
 	int hModel_;
+	XMFLOAT3 position_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	DamageEffect(GameObject* parent);
+	DamageEffect(GameObject* parent, const XMFLOAT3& position);
 
 	//初期化
 	void Initialize() override;

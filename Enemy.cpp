@@ -110,8 +110,8 @@ void Enemy::OnCollision(GameObject* pTarget)
 
         Audio::Play(DamegeSound_);
 
-        DamageEffect* damageEffect = Instantiate<DamageEffect>(GetParent());
-        damageEffect->SetPosition(tEnemy.position_);
+        DamageEffect* damageEffect = new DamageEffect(GetParent(), tEnemy.position_);
+        damageEffect->Initialize();
 
         pTarget->KillMe();
     }
