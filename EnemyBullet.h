@@ -1,29 +1,25 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//◆◆◆を管理するクラス
 class EnemyBullet : public GameObject
 {
     int hModel_;
     int eBulletSound_;
 
     //-----弾の大きさの設定-----
-    float scaleX = 0.3f;
-    float scaleY = 0.3f;
-    float scaleZ = 0.3f;
+    XMFLOAT3 BULLET_SCL = XMFLOAT3(0.3f, 0.3f, 0.3f);
     //--------------------------
 
     //-----コライダーの中心位置と大きさの設定-----
-    float basePosX = 0.0f;
-    float basePosY = 0.1f;
-    float basePosZ = 0.1f;
-    float c_sizeX = 1.5f;
-    float c_sizeY = 1.5f;
-    float c_sizeZ = 1.0f;
+    XMFLOAT3 BASE_POS = XMFLOAT3(0.0f, 0.1f, 0.1f);
+    XMFLOAT3 COLLIDER_SIZE = XMFLOAT3(1.5f, 1.5f, 1.0f);
     //--------------------------------------------
 
+    //-----弾の速度と距離の設定-----
     float v_shot = 0.5f;
     float limitPos = 20.0f;
+    //------------------------------
+
 public:
     //コンストラクタ
     EnemyBullet(GameObject* parent);

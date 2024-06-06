@@ -9,15 +9,10 @@ class PlayerGauge : public GameObject
     int nowHp_, maxHp_, animHp_;
 
     //-----ÉQÅ[ÉWÇÃà íuÇ‚ëÂÇ´Ç≥Ç»Ç«ÇÃê›íË-----
-    float posX = -0.95f;
-    float posY = 0.85f;
-    float posZ = 0.0f;
-    float scaleX = 1.0f;
-    float scaleY = 2.0f;
-    float scaleZ = 1.0f;
-    float rotateX = 0.0f;
-    float rotateY = 0.0f;
-    float rotateZ = 90;
+    float Gauge_UP = 2.0f;
+    XMFLOAT3 GAUGE_POS = XMFLOAT3(-0.95f, 0.85f, 0.0f);
+    XMFLOAT3 GAUGE_SCL= XMFLOAT3(1.0f, 2.0f, 1.0f);
+    XMFLOAT3 GAUGE_ROT = XMFLOAT3(0.0f, 0.0f, 90.0f);
     //----------------------------------------
 
     Transform pGauge;

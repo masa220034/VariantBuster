@@ -8,12 +8,8 @@ class GameClearScene : public GameObject
 	int BGM_;
 
 	//-----ゲームクリアのロゴの位置、大きさの設定-----
-	float posX = 0.0f;
-	float posY = 0.5f;
-	float posZ = 0.0f;
-	float scaleX = 1.5f;
-	float scaleY = 1.5f;
-	float scaleZ = 1.5f;
+	XMFLOAT3 CLEAR_LOGO_POS = XMFLOAT3(0.0f, 0.5f, 0.0f);
+	XMFLOAT3 CLEAR_LOGO_SCL = XMFLOAT3(1.5f, 1.5f, 1.5f);
 	//------------------------------------------------
 
 	unsigned int frameCount;

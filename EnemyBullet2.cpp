@@ -20,12 +20,10 @@ void EnemyBullet2::Initialize()
     hModel_ = Model::Load("eBullet2.fbx");
     assert(hModel_ >= 0);
 
-    transform_.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
+    transform_.scale_ = BULLET_SCL;
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(basePosX, basePosY, basePosZ), c_scale);
+    SphereCollider* collision = new SphereCollider(BASE_POS, c_scale);
     AddCollider(collision);
-
-    shot = true;
 }
 
 //çXêV

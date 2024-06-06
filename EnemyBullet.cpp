@@ -25,9 +25,9 @@ void EnemyBullet::Initialize()
     eBulletSound_ = Audio::Load("eBulletSound.wav");
     assert(eBulletSound_ >= 0);
 
-    transform_.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
+    transform_.scale_ = BULLET_SCL;
 
-    BoxCollider* collision = new BoxCollider(XMFLOAT3(basePosX, basePosY, basePosZ), XMFLOAT3(c_sizeX, c_sizeY, c_sizeZ));
+    BoxCollider* collision = new BoxCollider(BASE_POS, COLLIDER_SIZE);
     AddCollider(collision);
 }
 

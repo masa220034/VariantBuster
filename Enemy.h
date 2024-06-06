@@ -8,18 +8,12 @@ class Enemy : public GameObject
     int DamegeSound_;
 
     //-----敵の位置、大きさの設定-----
-    float posX = 5.5f;
-    float posY = 2.0f;
-    float posZ = 0.0f;
-    float scaleX = 0.3f;
-    float scaleY = 0.3f;
-    float scaleZ = 0.3f;
+    XMFLOAT3 ENEMY_POS = XMFLOAT3(5.5f, 2.0f, 0.0f);
+    XMFLOAT3 ENEMY_SCL = XMFLOAT3(0.3f, 0.3f, 0.3f);
     //--------------------------------
 
     //-----コライダーの中心位置、大きさの設定-----
-    float basePosX = 0.0f;
-    float basePosY = 1.0f;
-    float basePosZ = 0.0f;
+    XMFLOAT3 BASE_POS = XMFLOAT3(0.0f, 1.0f, 0.0f);
     float c_scale = 1.1f;
     //--------------------------------------------
 

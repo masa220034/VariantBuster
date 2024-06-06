@@ -33,10 +33,10 @@ void Enemy::Initialize()
     DamegeSound_ = Audio::Load("DamegeSound.wav");
     assert(DamegeSound_ >= 0);
 
-    tEnemy.position_ = XMFLOAT3(posX, posY, posZ);
-    tEnemy.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
+    tEnemy.position_ = ENEMY_POS;
+    tEnemy.scale_ = ENEMY_SCL;
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(basePosX, basePosY, basePosZ), c_scale);
+    SphereCollider* collision = new SphereCollider(BASE_POS, c_scale);
     AddCollider(collision);
 
     moveUp = true;

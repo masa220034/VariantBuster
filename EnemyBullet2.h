@@ -7,21 +7,16 @@ class EnemyBullet2 : public GameObject
     int hModel_;
 
     //-----弾の大きさの設定-----
-    float scaleX = 0.3f;
-    float scaleY = 0.3f;
-    float scaleZ = 0.3f;
+    XMFLOAT3 BULLET_SCL = XMFLOAT3(0.3f, 0.3f, 0.3f);
     //--------------------------
 
     //-----コライダーの中心位置、大きさの設定-----
-    float basePosX = 0.0;
-    float basePosY = 0.3;
-    float basePosZ = 0.0;
+    XMFLOAT3 BASE_POS = XMFLOAT3(0.0f, 0.3f, 0.0f);
     float c_scale = 0.35f;
     //--------------------------------------------
 
     float v_shot = 0.5f;
     float limitPos = 20.0f;
-    bool shot;
 public:
     //コンストラクタ
     EnemyBullet2(GameObject* parent);

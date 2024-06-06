@@ -20,14 +20,15 @@ void MiniEnemy::Initialize()
     hMiniEnemy_ = Model::Load("miniEnemy.fbx");
     assert(hMiniEnemy_ >= 0);
 
-    tMiniEnemy.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
-    tMiniEnemy.position_ = XMFLOAT3(posX, posY, posZ);
+    tMiniEnemy.position_ = MINIENEMY_POS;
+    tMiniEnemy.scale_ = MINIENEMY_SCL;  
 }
 
 //XV
 void MiniEnemy::Update()
 {
     movePattern();
+
     if (frameCount >= DelayFrame)
     {
         if (rand() % 100 == 0)

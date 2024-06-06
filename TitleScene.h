@@ -10,9 +10,7 @@ class TitleScene : public GameObject
 
 	//-----タイトル名の位置、大きさの設定-----
 	float titlePos = 0.3f;
-	float scaleX = 1.3f;
-	float scaleY = 1.3f;
-	float scaleZ = 1.3f;
+	XMFLOAT3 TITLE_SCALE = XMFLOAT3(1.3f, 1.3f, 1.3f);
 	//----------------------------------------
 
 	Transform tTitleBack;

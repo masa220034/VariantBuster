@@ -7,18 +7,12 @@ class minBullet : public GameObject
     int hModel_;
 
     //-----コライダーの中心位置、大きさの設定-----
-    float basePosX = 0.0f;
-    float basePosY = 1.8f;
-    float basePosZ = 0.0f;
-    float c_sizeX = 0.5f;
-    float c_sizeY = 3.5f;
-    float c_sizeZ = 1.0f;
+    XMFLOAT3 BASE_POS = XMFLOAT3(0.0f, 1.8f, 0.0f);
+    XMFLOAT3 COLLIDER_SIZE = XMFLOAT3(0.5f, 3.5f, 1.0f);
     //--------------------------------------------
 
     //-----弾の大きさの設定-----
-    float scaleX = 0.3f;
-    float scaleY = 0.5f;
-    float scaleZ = 0.0f;
+    XMFLOAT3 BULLET_SCL = XMFLOAT3(0.3f, 0.5f, 0.0f);
     //--------------------------
 
     float v_shot = 0.3f;

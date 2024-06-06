@@ -25,9 +25,9 @@ void EnemyGauge::Initialize()
     hFrame_ = Image::Load("EnemyGaugeFrame.png");
     assert(hFrame_ >= 0);
 
-    pGauge.position_ = XMFLOAT3(posX, posY, posZ);
-    pGauge.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
-    pGauge.rotate_ = XMFLOAT3(rotateX, rotateY, rotateZ);
+    pGauge.position_ = GAUGE_POS;
+    pGauge.scale_ = GAUGE_SCL;
+    pGauge.rotate_ = GAUGE_ROT;
 }
 
 //çXêV
@@ -43,7 +43,7 @@ void EnemyGauge::Draw()
 
     //ìGÇÃÉQÅ[ÉWÇÃï`âÊ
     Transform transGauge = pGauge;
-    transGauge.scale_.y = scaleY * ((float)nowHp_ / (float)maxHp_);
+    transGauge.scale_.y = Gauge_UP * ((float)nowHp_ / (float)maxHp_);
     Image::SetTransform(hGauge_, transGauge);
     Image::Draw(hGauge_);
 

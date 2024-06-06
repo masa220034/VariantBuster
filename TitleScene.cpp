@@ -22,7 +22,7 @@ void TitleScene::Initialize()
 	assert(BGM_ >= 0);
 
 	tTitle.position_.y += titlePos;
-	tTitle.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
+	tTitle.scale_ = TITLE_SCALE;
 }
 
 //çXêV

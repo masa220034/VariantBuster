@@ -16,41 +16,28 @@ private:
     std::chrono::high_resolution_clock::time_point lastBulletTime;
 
     //-----カメラの位置、視点の設定-----
-    float cmrPosX = 0.0f;
-    float cmrPosY = 3.0f;
-    float cmrPosZ = 10.0f;
-    float cmrTgtX = 0.0f;
-    float cmrTgtY = 2.0f;
-    float cmrTgtZ = 0.0f;
+    XMFLOAT3 CAMERA_POS = XMFLOAT3(0.0f, 3.0f, -10.0f);
+    XMFLOAT3 CAMERA_TGT = XMFLOAT3(0.0f, 2.0f, 0.0f);
     //--------------------------------------
  
     //-----プレイヤーの位置、大きさの設定-----
-    float posX = -3.0f;
-    float posY = 0.0f;
-    float posZ = 0.0f;
-    float scaleX = 0.2f;
-    float scaleY = 0.2f;
-    float scaleZ = 0.2f;
+    XMFLOAT3 PLAYER_POS = XMFLOAT3(-3.0f, 0.0f, 0.0f);
+    XMFLOAT3 PLAYER_SCL = XMFLOAT3(0.2f, 0.2f, 0.2f);
     //----------------------------------------
     
-     //-----プレイヤーの向きを設定-----
+     //-----プレイヤーが向いている方向に弾を撃つかどうか-----
     bool P_Right; //右を向いているかどうか
-    float P_dirX = 1.0f;
-    float P_dirY = 0.0f;
-    float P_dirZ = 0.0f;
-    //--------------------------------
+    XMFLOAT3 RIGHT_DIR = XMFLOAT3(1.0f, 0.0f, 0.0f);
+    XMFLOAT3 LEFT_DIR = XMFLOAT3(-1.0f, 0.0f, 0.0f);
+    //-------------------------------------------------------
 
     //-----コライダーの中心位置、大きさの設定-----
-    float basePosX = 0.0f;
-    float basePosY = 0.2f;
-    float basePosZ = 0.0f;
+    XMFLOAT3 BASE_POS = XMFLOAT3(0.0f, 0.2f, 0.0f);
     float c_scale = 0.25f;
     //--------------------------------------------
     
     //-----レイの発射方向-----
-    float R_dirX = 0.0f;
-    float R_dirY = -1.0f;
-    float R_dirZ = 0.0f;
+    XMFLOAT3 RAY_DIR = XMFLOAT3(0.0f, -1.0f, 0.0f);
     //------------------------
 
     //-----ジャンプに使用している変数達-----

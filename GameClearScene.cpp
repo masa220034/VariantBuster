@@ -7,7 +7,7 @@
 //コンストラクタ
 GameClearScene::GameClearScene(GameObject* parent)
 	: GameObject(parent, "GameClearScene"), hBackGround_(-1), hPict_(-1), BGM_(-1),
-	frameCount(0), DelayFrame(180)
+	frameCount(0), DelayFrame(120)
 {
 }
 
@@ -24,8 +24,8 @@ void GameClearScene::Initialize()
 	BGM_ = Audio::Load("GameClearBGM.wav");
 	assert(BGM_ >= 0);
 
-	tClear.position_ = XMFLOAT3(posX, posY, posZ);
-	tClear.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
+	tClear.position_ = CLEAR_LOGO_POS;
+	tClear.scale_ = CLEAR_LOGO_SCL;
 }
 
 //更新

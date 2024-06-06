@@ -7,18 +7,16 @@ class MiniEnemy : public GameObject
     int hMiniEnemy_;
 
     //-----ミニ敵の位置、大きさの設定-----
-    float move = 0.05f;
-    float scaleX = 0.3f;
-    float scaleY = 0.3f;
-    float scaleZ = 0.3f;
-    float posX = (float)(rand() % 401 - 200) / 10;
-    float posY = 5.8f;
-    float posZ = 0.0f;
+    XMFLOAT3 MINIENEMY_POS = XMFLOAT3((float)(rand() % 401 - 200) / 10, 5.8f, 0.0f);
+    XMFLOAT3 MINIENEMY_SCL = XMFLOAT3(0.3f, 0.3f, 0.3f);
     //------------------------------------
 
-    float movedPos = 5.5f;
+    //-----敵の行動距離の設定-----
     bool moveUp;
-
+    float move = 0.05f;
+    float movedPos = 5.5f;
+    //----------------------------
+    
     unsigned int frameCount;
     unsigned int DelayFrame;
 

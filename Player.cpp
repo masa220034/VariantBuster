@@ -27,8 +27,8 @@ Player::~Player()
 //初期化
 void Player::Initialize()
 {
-    Camera::SetPosition(XMFLOAT3(cmrPosX, cmrPosY, -cmrPosZ));
-    Camera::SetTarget(XMFLOAT3(cmrTgtX, cmrTgtY, cmrTgtZ));
+    Camera::SetPosition(CAMERA_POS);
+    Camera::SetTarget(CAMERA_TGT);
 
     hPlayer_ = Model::Load("Player.fbx");
     assert(hPlayer_ >= 0);
@@ -38,10 +38,10 @@ void Player::Initialize()
     assert(JumpSound_ >= 0);
     assert(DamegeSound_ >= 0);
 
-    tPlayer.position_ = XMFLOAT3(posX, posY, posZ);
-    tPlayer.scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
+    tPlayer.position_ = PLAYER_POS;
+    tPlayer.scale_ = PLAYER_SCL;
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(basePosX, basePosY, basePosZ), c_scale);
+    SphereCollider* collision = new SphereCollider(BASE_POS, c_scale);
     AddCollider(collision);
 }
 
@@ -103,11 +103,11 @@ void Player::Update()
 
             if (P_Right)
             {
-                pBullet->SetDirection(XMFLOAT3(P_dirX, P_dirY, P_dirZ));
+                pBullet->SetDirection(RIGHT_DIR);
             }
             else
             {
-                pBullet->SetDirection(XMFLOAT3(-P_dirX, P_dirY, P_dirZ));
+                pBullet->SetDirection(LEFT_DIR);
             }
 
             lastBulletTime = currentTime;
@@ -119,7 +119,7 @@ void Player::Update()
 
         RayCastData data;
         data.start = tPlayer.position_;   //レイの発射位置
-        data.dir = XMFLOAT3(R_dirX, R_dirY, R_dirZ);       //レイの方向
+        data.dir = RAY_DIR;       //レイの方向
         Model::RayCast(hGroundModel, &data); //レイを発射
 
         if (isJump)
