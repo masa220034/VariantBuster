@@ -12,18 +12,18 @@ void DamageEffect::Initialize()
 	EmitterData data;
 	data.textureFileName = "flashA_W.png";
 	data.position = position_;
-	data.delay = 0;
-	data.number = 80;
-	data.lifeTime = 30;
-	data.direction = XMFLOAT3(0, 1, 0);
-	data.directionRnd = XMFLOAT3(90, 90, 90);
-	data.speed = 0.1f;
-	data.speedRnd = 0.8;
-	data.size = XMFLOAT2(0.6, 0.6); 
-	data.sizeRnd = XMFLOAT2(0.2, 0.2); 
-	data.scale = XMFLOAT2(1.05, 1.05);
-	data.color = XMFLOAT4(1.0, 0.0, 1.0, 0.7); 
-	data.deltaColor = XMFLOAT4(0, 0, 0, -0.003);
+	data.delay = DELAY;
+	data.number = NUMBER;
+	data.lifeTime = LIFE_TIME;
+	data.direction = DIRECTION;
+	data.directionRnd = DIRECTION_RND;
+	data.speed = SPEED;
+	data.speedRnd = SPEED_RND;
+	data.size = SIZE; 
+	data.sizeRnd = SIZE_RND; 
+	data.scale = SCALE;
+	data.color = COLOR; 
+	data.deltaColor = DELTA_COLOR;
 	VFX::Start(data);
 }
 
