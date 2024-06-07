@@ -7,7 +7,7 @@
 //コンストラクタ
 GameOverScene::GameOverScene(GameObject* parent)
 	: GameObject(parent, "GameOverScene"), hPict_(-1), hBack_(-1), BGM_(-1),
-	frameCount(0), DelayFrame(180)
+	frameCount(0), DelayFrame(120)
 {
 }
 
