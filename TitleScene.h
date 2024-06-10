@@ -1,7 +1,6 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//タイトルシーンを管理するクラス
 class TitleScene : public GameObject
 {
 	int hTitleBack_;

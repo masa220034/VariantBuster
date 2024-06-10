@@ -8,7 +8,6 @@ enum BossType {
 	BOSS_MAX
 };
 
-//セレクトシーンを管理するクラス
 class SelectScene : public GameObject
 {
 private:

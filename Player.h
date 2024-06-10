@@ -2,7 +2,6 @@
 #include "Engine/GameObject.h"
 #include <chrono>
 
-//プレイヤーを管理するクラス
 class Player : public GameObject
 {
 private:

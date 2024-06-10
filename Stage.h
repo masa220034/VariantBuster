@@ -1,7 +1,6 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//プレイヤーを管理するクラス
 class Stage : public GameObject
 {
 private:
