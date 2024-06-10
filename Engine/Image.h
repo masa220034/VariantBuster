@@ -31,11 +31,12 @@ namespace Image
 		Transform transform;
 
 		//コンストラクタ
-		ImageData() : pSprite(nullptr)
+		ImageData() : pSprite(nullptr), alpha(1.0f)
 		{
 			fileName = "";
-			alpha = 1.0f;
+			//alpha = 1.0f;
 			pSprite = nullptr;
+			rect = { 0, 0, 0, 0 };
 		}
 	};
 

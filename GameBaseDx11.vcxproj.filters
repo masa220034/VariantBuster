@@ -112,6 +112,12 @@
     <ClCompile Include="MiniEnemy.cpp" />
     <ClCompile Include="minBullet.cpp" />
     <ClCompile Include="DamageEffect.cpp" />
+    <ClCompile Include="Engine\UI.cpp">
+      <Filter>01Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Graphics.cpp">
+      <Filter>01Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -200,6 +206,15 @@
     <ClInclude Include="MiniEnemy.h" />
     <ClInclude Include="minBullet.h" />
     <ClInclude Include="DamageEffect.h" />
+    <ClInclude Include="Engine\UI.h">
+      <Filter>01Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics.h">
+      <Filter>01Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Color.h">
+      <Filter>01Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

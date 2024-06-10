@@ -7,6 +7,9 @@ class GameOverScene : public GameObject
 	int hBack_;
 	int BGM_;
 
+	bool isOptionWindowOpen;
+	int selectOption;
+
 	unsigned int frameCount;
 	unsigned int DelayFrame;
 
@@ -26,4 +29,6 @@ public:
 
 	//ŠJ•ú
 	void Release() override;
+
+	void DrawOptionWindow();
 };
