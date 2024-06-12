@@ -192,4 +192,3 @@ namespace Image
 		return _datas[handle]->transform.GetWorldMatrix();
 	}
 }
-

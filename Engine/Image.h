@@ -19,7 +19,7 @@ namespace Image
 		std::string fileName;
 
 		//ロードした画像データのアドレス
-		Sprite*		pSprite;
+		Sprite* pSprite;
 
 		//切り抜き範囲
 		RECT		rect;
@@ -31,12 +31,11 @@ namespace Image
 		Transform transform;
 
 		//コンストラクタ
-		ImageData() : pSprite(nullptr), alpha(1.0f)
+		ImageData() : pSprite(nullptr)
 		{
 			fileName = "";
-			//alpha = 1.0f;
+			alpha = 1.0f;
 			pSprite = nullptr;
-			rect = { 0, 0, 0, 0 };
 		}
 	};
 
