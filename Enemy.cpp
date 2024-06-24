@@ -39,6 +39,14 @@ void Enemy::Initialize()
     SphereCollider* collision = new SphereCollider(BASE_POS, c_scale);
     AddCollider(collision);
 
+    EFFEKSEERLIB::gEfk->AddEffect("MASPA", "Maspa.efk");
+    EFFEKSEERLIB::EFKTransform t;
+    DirectX::XMStoreFloat4x4(&(t.matrix), transform_.GetWorldMatrix());
+    t.isLoop = true;  //繰り返しON
+    t.maxFrame = 700; //エフェクシアのフレーム
+    t.speed = 1.0;    //スピード
+    mt = EFFEKSEERLIB::gEfk->Play("MASPA", t);
+
     moveUp = true;
 }
 
@@ -48,6 +56,10 @@ void Enemy::Update()
     if (frameCount >= DelayFrame)
     {
         AttackPattern();
+
+        XMMATRIX tr = XMMatrixTranslation(-3.0, 2.9, 0.5);
+        XMMATRIX rt = XMMatrixRotationY(XM_PI);
+        DirectX::XMStoreFloat4x4(&(mt->matrix), rt * tr * this->GetWorldMatrix());
     }
     else
     {

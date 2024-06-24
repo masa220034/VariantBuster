@@ -93,10 +93,11 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GE3A20\ゲーム制作III\VariantBuster\EffekseeLib\install_msvc2022_x64\include\Effekseer;C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\lib\x64\debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\GE3A20\ゲーム制作III\VariantBuster\EffekseeLib\install_msvc2022_x64\lib;C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\lib\x64\debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GE3A20\ゲーム制作III\VariantBuster\EffekseeLib\install_msvc2022_x64\include\Effekseer;C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -133,6 +134,7 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="DamageEffect.cpp" />
+    <ClCompile Include="EffekseeLib\EffekseerVFX.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBullet.cpp" />
     <ClCompile Include="EnemyBullet2.cpp" />
@@ -175,6 +177,7 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="DamageEffect.h" />
+    <ClInclude Include="EffekseeLib\EffekseerVFX.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBullet.h" />
     <ClInclude Include="EnemyBullet2.h" />

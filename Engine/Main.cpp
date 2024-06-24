@@ -1,10 +1,3 @@
-
-//
-//　最終更新日：2023/10/20
-//
-
-
-
 #include <Windows.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -18,6 +11,7 @@
 #include "Input.h"
 #include "Audio.h"
 #include "VFX.h"
+#include "../EffekseeLib/EffekseerVFX.h"
 
 #pragma comment(lib,"Winmm.lib")
 
@@ -64,6 +58,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//オーディオ（効果音）の準備
 	Audio::Initialize();
 
+	EFFEKSEERLIB::gEfk = new EFFEKSEERLIB::EffekseerManager;
+	EFFEKSEERLIB::gEfk->Initialize(Direct3D::pDevice_, Direct3D::pContext_);
 
 	//ルートオブジェクト準備
 	//すべてのゲームオブジェクトの親となるオブジェクト
@@ -108,9 +104,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				}
 			}
 
-
+			double deltaT = nowTime - lastUpdateTime;
 			//指定した時間（FPSを60に設定した場合は60分の1秒）経過していたら更新処理
-			if ((nowTime - lastUpdateTime) * fpsLimit > 1000.0f)
+			if (deltaT * fpsLimit > 1000.0f)
 			{
 				//時間計測関連
 				lastUpdateTime = nowTime;	//現在の時間（最後に画面を更新した時間）を覚えておく
@@ -132,6 +128,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				//エフェクトの更新
 				VFX::Update();
 
+				//エフェクシアの更新
+				EFFEKSEERLIB::gEfk->Update(deltaT / 1000.0);
 
 				//このフレームの描画開始
 				Direct3D::BeginDraw();
@@ -142,6 +140,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 				//エフェクトの描画
 				VFX::Draw();
+
+				//エフェクシアの描画
+				EFFEKSEERLIB::gEfk->Draw();
 
 				//描画終了
 				Direct3D::EndDraw();

@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "EffekseeLib/EffekseerVFX.h"
 
 class Enemy : public GameObject
 {
@@ -74,4 +75,6 @@ public:
     void StartDamage(float amount);
 
     XMFLOAT3 GetPosition() const { return tEnemy.position_; }
+
+    std::shared_ptr<EFFEKSEERLIB::EFKTransform> mt;
 };
