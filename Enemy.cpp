@@ -7,7 +7,6 @@
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Audio.h"
-#include "Engine/SceneManager.h"
 #include "Engine/SphereCollider.h"
 
 //コンストラクタ
@@ -15,7 +14,8 @@ Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), hEnemy_(-1), DamegeSound_(-1),
     frameCount(0), DelayFrame(150),
     maxHp_(200), nowHp_(0), halfHp_(100),
-    isDamage(false), d_Amount(0), d_Step(0.1f)
+    isDamage(false), d_Amount(0), d_Step(0.1f),
+    pKey_(nullptr), isKey_(false)
 {
 }
 
@@ -52,7 +52,7 @@ void Enemy::Update()
             EFFEKSEERLIB::gEfk->AddEffect("MASPA", "Maspa.efk");
             EFFEKSEERLIB::EFKTransform t;
             DirectX::XMStoreFloat4x4(&(t.matrix), transform_.GetWorldMatrix());
-            t.isLoop = true;  //繰り返しON
+            t.isLoop = false;  //繰り返しON
             t.maxFrame = 700; //エフェクシアのフレーム
             t.speed = 1.0;    //スピード
             mt = EFFEKSEERLIB::gEfk->Play("MASPA", t);
@@ -93,8 +93,22 @@ void Enemy::Update()
 
     if (nowHp_ <= noHp_)
     {
-        SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-        pSceneManager->ChangeScene(SCENE_ID_GAMECLEAR);
+        if (!isKey_)
+        {
+            pKey_ = Instantiate<Key>(GetParent());
+            pKey_->SetPosition(tEnemy.position_);
+            isKey_ = true;
+        }
+
+        EFFEKSEERLIB::gEfk->AddEffect("DEATH", "Death.efk");
+        EFFEKSEERLIB::EFKTransform t;
+        DirectX::XMStoreFloat4x4(&(t.matrix), transform_.GetWorldMatrix());
+        t.isLoop = false;  //繰り返しON
+        t.maxFrame = 120; //エフェクシアのフレーム
+        t.speed = 1.0;    //スピード
+        mt = EFFEKSEERLIB::gEfk->Play("DEATH", t);
+
+        KillMe();
     }
 
     EnemyGauge* pEnemyGauge = (EnemyGauge*)FindObject("EnemyGauge");

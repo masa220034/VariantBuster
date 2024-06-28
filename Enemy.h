@@ -1,4 +1,5 @@
 #pragma once
+#include "Key.h"
 #include "Engine/GameObject.h"
 #include "EffekseeLib/EffekseerVFX.h"
 
@@ -38,6 +39,9 @@ class Enemy : public GameObject
     float moveUp_lim = 2.0f;
     float moveDown_lim = 0.0f;
     //------------------------------
+
+    Key* pKey_;
+    bool isKey_;
 
     int B_damage = 20;
     float ene_move = 0.1f;

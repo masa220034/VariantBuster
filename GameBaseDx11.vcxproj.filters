@@ -113,6 +113,7 @@
     <ClCompile Include="minBullet.cpp" />
     <ClCompile Include="DamageEffect.cpp" />
     <ClCompile Include="EffekseeLib\EffekseerVFX.cpp" />
+    <ClCompile Include="Key.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -202,6 +203,7 @@
     <ClInclude Include="minBullet.h" />
     <ClInclude Include="DamageEffect.h" />
     <ClInclude Include="EffekseeLib\EffekseerVFX.h" />
+    <ClInclude Include="Key.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

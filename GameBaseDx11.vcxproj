@@ -164,6 +164,7 @@
     <ClCompile Include="EnemyGauge.cpp" />
     <ClCompile Include="GameClearScene.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
+    <ClCompile Include="Key.cpp" />
     <ClCompile Include="minBullet.cpp" />
     <ClCompile Include="MiniEnemy.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="EnemyGauge.h" />
     <ClInclude Include="GameClearScene.h" />
     <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="Key.h" />
     <ClInclude Include="minBullet.h" />
     <ClInclude Include="MiniEnemy.h" />
     <ClInclude Include="Player.h" />
