@@ -202,6 +202,12 @@ void Player::OnCollision(GameObject* pTarget)
         pTarget->KillMe();
         StartDamage(min_b_damage);
     }
+
+    if (pTarget->GetObjectName() == "Key")
+    {
+        SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+        pSceneManager->ChangeScene(SCENE_ID_GAMECLEAR);
+    }
 }
 
 void Player::StartDamage(float amount)

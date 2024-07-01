@@ -1,5 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include <DirectXMath.h>
+#include <d3d11.h>
 
 class Key : public GameObject
 {
@@ -24,5 +26,6 @@ public:
     void Release() override;
 
     void SetPosition(const DirectX::XMFLOAT3& position);
+
     DirectX::XMFLOAT3 GetPosition() const;
 };
