@@ -11,6 +11,7 @@
 #include "Input.h"
 #include "Audio.h"
 #include "VFX.h"
+#include "Fade.h"
 #include "../EffekseeLib/EffekseerVFX.h"
 
 #pragma comment(lib,"Winmm.lib")
@@ -41,8 +42,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	int isDrawFps = GetPrivateProfileInt("DEBUG", "ViewFps", 0, ".\\setup.ini");		//キャプションに現在のFPSを表示するかどうか
 
 
-
-
 	//ウィンドウを作成
 	HWND hWnd = InitApp(hInstance, screenWidth, screenHeight, nCmdShow);
 
@@ -66,6 +65,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	RootObject* pRootObject = new RootObject;
 	pRootObject->Initialize();
 
+	Fade fade(2.0f); //2秒間のフェードイン/アウト
+	fade.FadeIn();
 
 	//メッセージループ（何か起きるのを待つ）
 	MSG msg;
@@ -113,8 +114,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				FPS++;						//画面更新回数をカウントする
 
 
-
-
 				//入力（キーボード、マウス、コントローラー）情報を更新
 				Input::Update();
 
@@ -131,6 +130,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				//エフェクシアの更新
 				EFFEKSEERLIB::gEfk->Update(deltaT / 1000.0);
 
+				//フェードの更新
+				fade.Update();
+
 				//このフレームの描画開始
 				Direct3D::BeginDraw();
 
@@ -144,20 +146,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				//エフェクシアの描画
 				EFFEKSEERLIB::gEfk->Draw();
 
+				fade.Draw();
+
 				//描画終了
 				Direct3D::EndDraw();
 
-
-
-				
 				//ちょっと休ませる
 				Sleep(1);
 			}
 			timeEndPeriod(1);	//時間計測の制度を戻す
 		}
 	}
-
-	
 
 	//いろいろ解放
 	VFX::Release();
