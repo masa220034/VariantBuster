@@ -11,7 +11,6 @@
 #include "Input.h"
 #include "Audio.h"
 #include "VFX.h"
-#include "Fade.h"
 #include "../EffekseeLib/EffekseerVFX.h"
 
 #pragma comment(lib,"Winmm.lib")
@@ -64,9 +63,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//すべてのゲームオブジェクトの親となるオブジェクト
 	RootObject* pRootObject = new RootObject;
 	pRootObject->Initialize();
-
-	Fade fade(2.0f); //2秒間のフェードイン/アウト
-	fade.FadeIn();
 
 	//メッセージループ（何か起きるのを待つ）
 	MSG msg;
@@ -130,9 +126,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				//エフェクシアの更新
 				EFFEKSEERLIB::gEfk->Update(deltaT / 1000.0);
 
-				//フェードの更新
-				fade.Update();
-
 				//このフレームの描画開始
 				Direct3D::BeginDraw();
 
@@ -145,8 +138,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 				//エフェクシアの描画
 				EFFEKSEERLIB::gEfk->Draw();
-
-				fade.Draw();
 
 				//描画終了
 				Direct3D::EndDraw();
