@@ -1,11 +1,12 @@
 #include "SelectScene.h"
 #include "Engine/Image.h"
 #include "Engine/Input.h"
+#include "Engine/Audio.h"
 #include "Engine/SceneManager.h"
 
 //コンストラクタ
 SelectScene::SelectScene(GameObject* parent)
-    : GameObject(parent, "SelectScene"), hSelectBack_(-1), hSelBoss_{ 0, 1, 2 }
+    : GameObject(parent, "SelectScene"), hSelectBack_(-1), hSelBoss_{ 0, 1, 2 }, SelectSound_(-1)
 {
 }
 
@@ -29,6 +30,9 @@ void SelectScene::Initialize()
         tSelBoss_[i].scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
         tSelBoss_[i].position_.x = i;
     }
+
+    SelectSound_ = Audio::Load("SelectSound.wav");
+    assert(SelectSound_ >= 0);
 }
 
 //更新
@@ -36,6 +40,7 @@ void SelectScene::Update()
 {
     if (Input::IsKeyDown(DIK_LEFT))
     {
+        Audio::Play(SelectSound_);
         for (int i = 0; i < BOSS_MAX; i++)
         {
             tSelBoss_[i].position_.x += move;
@@ -48,6 +53,7 @@ void SelectScene::Update()
 
     if (Input::IsKeyDown(DIK_RIGHT))
     {
+        Audio::Play(SelectSound_);
         for (int i = 0; i < BOSS_MAX; i++)
         {
             tSelBoss_[i].position_.x -= move;

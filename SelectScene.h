@@ -13,6 +13,7 @@ class SelectScene : public GameObject
 private:
 	int hSelectBack_;
 	int hSelBoss_[BOSS_MAX];
+	int SelectSound_;
 
 	//-----‰æ‘œ‚ÌˆÚ“®—Ê‚È‚Ç‚Ìİ’è-----
 	int center = 0;

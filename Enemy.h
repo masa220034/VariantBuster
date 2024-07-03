@@ -8,6 +8,7 @@ class Enemy : public GameObject
     int hEnemy_;
     int hMiniEnemy_;
     int DamegeSound_;
+    int DeathSound_;
 
     //-----“G‚ÌˆÊ’uA‘å‚«‚³‚Ìİ’è-----
     XMFLOAT3 ENEMY_POS = XMFLOAT3(5.5f, 2.0f, 0.0f);

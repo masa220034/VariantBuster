@@ -11,7 +11,7 @@
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
-    :GameObject(parent, "Enemy"), hEnemy_(-1), DamegeSound_(-1),
+    :GameObject(parent, "Enemy"), hEnemy_(-1), DamegeSound_(-1), DeathSound_(-1),
     frameCount(0), DelayFrame(150),
     maxHp_(200), nowHp_(0), halfHp_(100),
     isDamage(false), d_Amount(0), d_Step(0.1f),
@@ -31,7 +31,9 @@ void Enemy::Initialize()
     assert(hEnemy_ >= 0);
 
     DamegeSound_ = Audio::Load("DamegeSound.wav");
+    DeathSound_ = Audio::Load("DeathSound.wav");
     assert(DamegeSound_ >= 0);
+    assert(DeathSound_ >= 0);
 
     tEnemy.position_ = ENEMY_POS;
     tEnemy.scale_ = ENEMY_SCL;
@@ -99,6 +101,8 @@ void Enemy::Update()
             pKey_->SetPosition(tEnemy.position_);
             isKey_ = true;
         }
+
+        Audio::Play(DeathSound_);
 
         EFFEKSEERLIB::gEfk->AddEffect("DEATH", "Death.efk");
         EFFEKSEERLIB::EFKTransform t;
