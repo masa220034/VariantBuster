@@ -1,7 +1,6 @@
 #include "Fade.h"
 #include <iostream>
-#include <chrono>
-#include <thread>
+
 
 Fade::Fade(float duration)
 	:duration(duration), opacity(0.0f), isFadeIn(true), isActive(false)

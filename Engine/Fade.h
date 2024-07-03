@@ -1,6 +1,9 @@
 #ifndef FADE_H
 #define FADE_H
 
+#include <chrono>
+#include <thread>
+
 class Fade
 {
 private:
