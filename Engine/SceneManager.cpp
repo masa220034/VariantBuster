@@ -1,6 +1,7 @@
 #include "sceneManager.h"
 
 #include "../TitleScene.h"
+#include "../TutorialScene.h"
 #include "../SelectScene.h"
 #include "../PlayScene.h"
 #include "../GameClearScene.h"
@@ -22,7 +23,7 @@ void SceneManager::Initialize()
 	//最初のシーンを準備
 	currentSceneID_ = SCENE_ID_TITLE;
 	nextSceneID_ = currentSceneID_;
-	Instantiate<TitleScene>(this);
+	Instantiate<TutorialScene>(this);
 }
 
 //更新
@@ -43,6 +44,7 @@ void SceneManager::Update()
 		switch (nextSceneID_)
 		{
 		case SCENE_ID_TITLE: Instantiate<TitleScene>(this); break;
+		case SCENE_ID_TUTORIAL: Instantiate<TutorialScene>(this); break;
 		case SCENE_ID_SELECT: Instantiate<SelectScene>(this); break;
 		case SCENE_ID_PLAY: Instantiate<PlayScene>(this); break;
 		case SCENE_ID_GAMECLEAR: Instantiate<GameClearScene>(this); break;

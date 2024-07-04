@@ -13,7 +13,6 @@ SelectScene::SelectScene(GameObject* parent)
 //初期化
 void SelectScene::Initialize()
 {
-    //画像データのロード
     hSelectBack_ = Image::Load("BackGround.png");
     assert(hSelectBack_ >= 0);
 
