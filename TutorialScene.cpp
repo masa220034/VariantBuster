@@ -11,6 +11,7 @@ TutorialScene::TutorialScene(GameObject* parent)
 void TutorialScene::Initialize()
 {
 	Instantiate<TutorialEnemy>(this);
+	Instantiate<
 }
 
 //XV

@@ -17,6 +17,8 @@ void TutorialEnemy::Initialize()
 
 	tEnemy.position_ = XMFLOAT3(5, 0, 0);
 	tEnemy.scale_ = XMFLOAT3(0.5f, 0.5f, 0.5f);
+
+	Model::SetAnimFrame(hEnemy_, 1, 60, 0.5);
 }
 
 void TutorialEnemy::Update()
