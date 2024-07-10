@@ -3,6 +3,7 @@
 
 class TutorialScene : public GameObject
 {
+	int hBackGorund;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

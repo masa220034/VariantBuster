@@ -6,7 +6,7 @@
 
 //コンストラクタ
 SelectScene::SelectScene(GameObject* parent)
-    : GameObject(parent, "SelectScene"), hSelectBack_(-1), hSelBoss_{ 0, 1, 2 }, SelectSound_(-1)
+    : GameObject(parent, "SelectScene"), hSelectBack_(-1), hSelBoss_{ 0, 1, 2, 3 }, SelectSound_(-1)
 {
 }
 
@@ -16,14 +16,14 @@ void SelectScene::Initialize()
     hSelectBack_ = Image::Load("BackGround.png");
     assert(hSelectBack_ >= 0);
 
-    const char* ImageNames[BOSS_MAX] = { "SelectBoss1.png", "SelectBoss2.png", "SelectBoss3.png" };
+    const char* ImageNames[BOSS_MAX] = { "Tutorial.png", "SelectBoss1.png", "SelectBoss2.png", "SelectBoss3.png" };
     for (int i = 0; i < BOSS_MAX; i++)
     {
         hSelBoss_[i] = Image::Load(ImageNames[i]);
         assert(hSelBoss_[i] > 0);
     }
 
-    //セレクトボス(1,2,3)の初期位置と大きさ
+    //チュートリアル+セレクトボス(画像)の初期位置と大きさ
     for (int i = 0; i < BOSS_MAX; i++)
     {
         tSelBoss_[i].scale_ = XMFLOAT3(scaleX, scaleY, scaleZ);
@@ -43,7 +43,7 @@ void SelectScene::Update()
         for (int i = 0; i < BOSS_MAX; i++)
         {
             tSelBoss_[i].position_.x += move;
-            if (tSelBoss_[BOSS_first].position_.x >= center)
+            if (tSelBoss_[BOSS_TUTORIAL].position_.x >= center)
             {
                 tSelBoss_[i].position_.x = i;
             }
@@ -56,7 +56,7 @@ void SelectScene::Update()
         for (int i = 0; i < BOSS_MAX; i++)
         {
             tSelBoss_[i].position_.x -= move;
-            if (tSelBoss_[BOSS_third].position_.x <= center)
+            if (tSelBoss_[BOSS_TREE].position_.x <= center)
             {
                 tSelBoss_[i].position_.x = limitLeftPos + i;
             }
@@ -65,7 +65,7 @@ void SelectScene::Update()
 
     if (Input::IsKeyDown(DIK_SPACE))
     {
-        if (tSelBoss_[BOSS_second].position_.x == center)
+        if (tSelBoss_[BOSS_TWO].position_.x == center)
         {
             SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
             pSceneManager->ChangeScene(SCENE_ID_PLAY);

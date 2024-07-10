@@ -2,9 +2,10 @@
 #include "Engine/GameObject.h"
 
 enum BossType {
-	BOSS_first,
-	BOSS_second,
-	BOSS_third,
+	BOSS_TUTORIAL,
+	BOSS_ONE,
+	BOSS_TWO,
+	BOSS_TREE,
 	BOSS_MAX
 };
 
@@ -17,7 +18,7 @@ private:
 
 	//-----‰æ‘œ‚ÌˆÚ“®—Ê‚È‚Ç‚Ìİ’è-----
 	int center = 0;
-	int limitLeftPos= -2;
+	int limitLeftPos = -3;
 	float move = 1.0f;
 	//--------------------------------
 
