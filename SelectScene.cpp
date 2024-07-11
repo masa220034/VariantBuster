@@ -65,10 +65,29 @@ void SelectScene::Update()
 
     if (Input::IsKeyDown(DIK_SPACE))
     {
-        if (tSelBoss_[BOSS_TWO].position_.x == center)
+        for (int i = 0; i < BOSS_MAX; i++)
         {
-            SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+            if (tSelBoss_[i].position_.x == center)
+            {
+                selectedBoss = i;
+                break;
+            }
+        }
+
+        SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+
+        switch(selectedBoss)
+        {
+        case BOSS_TUTORIAL:
+            pSceneManager->ChangeScene(SCENE_ID_TUTORIAL);
+            break;
+        case BOSS_ONE:
+            break;
+        case BOSS_TWO:
             pSceneManager->ChangeScene(SCENE_ID_PLAY);
+            break;
+        case BOSS_TREE:
+            break;
         }
     }
 }

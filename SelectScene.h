@@ -15,6 +15,7 @@ private:
 	int hSelectBack_;
 	int hSelBoss_[BOSS_MAX];
 	int SelectSound_;
+	int selectedBoss;
 
 	//-----‰æ‘œ‚ÌˆÚ“®—Ê‚È‚Ç‚Ìİ’è-----
 	int center = 0;
