@@ -28,7 +28,7 @@ void TutorialEnemy::Initialize()
 	tEnemy.position_ = XMFLOAT3(5, -1, 0);
 	tEnemy.scale_ = XMFLOAT3(0.5f, 0.5f, 0.5f);
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(0.1f, 0.1f, 0.1f), 1.0f);
+    SphereCollider* collision = new SphereCollider(BASE_POS, c_scale);
     AddCollider(collision);
 
 	Model::SetAnimFrame(hEnemy_, 1, 60, 0.5);

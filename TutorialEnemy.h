@@ -8,6 +8,11 @@ class TutorialEnemy : public GameObject
     int hEnemy_;
     int DeathSound_;
 
+    //-----コライダーの中心位置と大きさの設定-----
+    XMFLOAT3 BASE_POS = XMFLOAT3(0.0f, 0.5f, 0.0f);
+    float c_scale = 0.55f;
+    //--------------------------------------------
+
     //-----敵のHPの設定-----
     bool isHpmax;
     int nowHp_, maxHp_;
