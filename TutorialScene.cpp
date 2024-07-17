@@ -1,6 +1,8 @@
 #include "TutorialScene.h"
+#include "TutorialPlayer.h"
 #include "TutorialEnemy.h"
 #include "TutorialGround.h"
+#include "PlayerGauge.h"
 #include "EnemyGauge.h"
 #include "Engine/Image.h"
 
@@ -17,8 +19,10 @@ void TutorialScene::Initialize()
 	assert(hBackGorund >= 0);
 	transform_.scale_ = XMFLOAT3(0.8f, 0.8f, 0.8f);
 
+	Instantiate<TutorialPlayer>(this);
 	Instantiate<TutorialEnemy>(this);
 	Instantiate<TutorialGround>(this);
+	Instantiate<PlayerGauge>(this);
 	Instantiate<EnemyGauge>(this);
 }
 

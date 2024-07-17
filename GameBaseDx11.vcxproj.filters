@@ -117,6 +117,7 @@
     <ClCompile Include="TutorialEnemy.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
     <ClCompile Include="TutorialGround.cpp" />
+    <ClCompile Include="TutorialPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -210,6 +211,7 @@
     <ClInclude Include="TutorialEnemy.h" />
     <ClInclude Include="TutorialScene.h" />
     <ClInclude Include="TutorialGround.h" />
+    <ClInclude Include="TutorialPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

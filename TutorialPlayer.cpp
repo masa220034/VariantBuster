@@ -1,5 +1,5 @@
-#include "Player.h"
-#include "Stage.h"
+#include "TutorialPlayer.h"
+#include "TutorialGround.h"
 #include "Bullet.h"
 #include "PlayerGauge.h"
 #include "Engine/Model.h"
@@ -9,9 +9,8 @@
 #include "Engine/SceneManager.h"
 #include "Engine/SphereCollider.h"
 
-//コンストラクタ
-Player::Player(GameObject* parent)
-    :GameObject(parent, "Player"), hPlayer_(-1),
+TutorialPlayer::TutorialPlayer(GameObject* parent)
+    :GameObject(parent, "TutorialPlayer"), hPlayer_(-1),
     JumpSound_(-1), DamegeSound_(-1),
     maxHp_(100), nowHp_(0), targetHp(0),
     isDamage(false), d_Amount(0), d_Step(0.1f),
@@ -19,18 +18,13 @@ Player::Player(GameObject* parent)
 {
 }
 
-//デストラクタ
-Player::~Player()
+TutorialPlayer::~TutorialPlayer()
 {
 }
 
-//初期化
-void Player::Initialize()
+void TutorialPlayer::Initialize()
 {
-    Camera::SetPosition(CAMERA_POS);
-    Camera::SetTarget(CAMERA_TGT);
-
-    hPlayer_ = Model::Load("Player.fbx");
+    hPlayer_ = Model::Load("TutorialPlayer.fbx");
     assert(hPlayer_ >= 0);
 
     JumpSound_ = Audio::Load("JumpSound.wav");
@@ -45,8 +39,7 @@ void Player::Initialize()
     AddCollider(collision);
 }
 
-//更新
-void Player::Update()
+void TutorialPlayer::Update()
 {
     auto currentTime = std::chrono::high_resolution_clock::now();
     std::chrono::duration<float> elapsed = currentTime - lastBulletTime;
@@ -114,8 +107,8 @@ void Player::Update()
         }
 
         //移動先に足場があるかどうかをレイキャストで確認
-        Stage* pStage = (Stage*)FindObject("Stage");
-        int hGroundModel = pStage->GetModelHandle();
+        TutorialGround* pTutorialGround = (TutorialGround*)FindObject("TutorialGround");
+        int hGroundModel = pTutorialGround->GetModelHandle();
 
         RayCastData data;
         data.start = tPlayer.position_;   //レイの発射位置
@@ -161,46 +154,25 @@ void Player::Update()
             }
         }
     }
-   
+
     transform_ = tPlayer;
 }
 
-//描画
-void Player::Draw()
+void TutorialPlayer::Draw()
 {
     Model::SetTransform(hPlayer_, tPlayer);
     Model::Draw(hPlayer_);
 }
 
-//開放
-void Player::Release()
+void TutorialPlayer::Release()
 {
 }
 
-void Player::OnCollision(GameObject* pTarget)
+void TutorialPlayer::OnCollision(GameObject* pTarget) 
 {
-    if (pTarget->GetObjectName() == "Enemy")
+    if (pTarget->GetObjectName() == "TutorialEnemy")
     {
         StartDamage(e_damage);
-    }
-
-    if (pTarget->GetObjectName() == "EnemyBullet")
-    {
-        pTarget->KillMe();
-        StartDamage(eb_damage);
-        Audio::Play(DamegeSound_);
-    }
-
-    if (pTarget->GetObjectName() == "EnemyBullet2")
-    {
-        pTarget->KillMe();
-        StartDamage(sec_eb_damage);
-    }
-
-    if (pTarget->GetObjectName() == "minBullet")
-    {
-        pTarget->KillMe();
-        StartDamage(min_b_damage);
     }
 
     if (pTarget->GetObjectName() == "Key")
@@ -210,7 +182,7 @@ void Player::OnCollision(GameObject* pTarget)
     }
 }
 
-void Player::StartDamage(float amount)
+void TutorialPlayer::StartDamage(float amount)
 {
     targetHp = nowHp_ - amount;
     if (targetHp < 0)

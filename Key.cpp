@@ -20,21 +20,22 @@ void Key::Initialize()
     hKey_ = Model::Load("Key.fbx");
     assert(hKey_ >= 0);
 
-    transform_.scale_ = XMFLOAT3(0.5f, 0.5f, 0.5f);
+    tKey.scale_ = KEY_SCL;
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(-0.1, 0.4, 0.3), 0.3f);
+    SphereCollider* collision = new SphereCollider(BASE_POS, c_scl);
     AddCollider(collision);
 }
 
 //çXêV
 void Key::Update()
 {
+    transform_ = tKey;
 }
 
 //ï`âÊ
 void Key::Draw()
 {
-    Model::SetTransform(hKey_, transform_);
+    Model::SetTransform(hKey_, tKey);
     Model::Draw(hKey_);
 }
 
@@ -45,10 +46,10 @@ void Key::Release()
 
 void Key::SetPosition(const DirectX::XMFLOAT3& position)
 {
-    transform_.position_ = position;
+    tKey.position_ = position;
 }
 
 DirectX::XMFLOAT3 Key::GetPosition() const
 {
-    return transform_.position_;
+    return tKey.position_;
 }

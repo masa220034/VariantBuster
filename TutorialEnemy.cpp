@@ -1,5 +1,6 @@
 #include "TutorialEnemy.h"
 #include "EnemyGauge.h"
+#include "DamageEffect.h"
 #include "Engine/Model.h"
 #include "Engine/Audio.h"
 #include "Engine/SphereCollider.h"
@@ -25,13 +26,13 @@ void TutorialEnemy::Initialize()
     DeathSound_ = Audio::Load("DeathSound.wav");
     assert(DeathSound_ >= 0);
 
-	tEnemy.position_ = XMFLOAT3(5, -1, 0);
-	tEnemy.scale_ = XMFLOAT3(0.5f, 0.5f, 0.5f);
+	tEnemy.position_ = ENEMY_POS;
+	tEnemy.scale_ = ENEMY_SCL;
 
     SphereCollider* collision = new SphereCollider(BASE_POS, c_scale);
     AddCollider(collision);
 
-	Model::SetAnimFrame(hEnemy_, 1, 60, 0.5);
+	Model::SetAnimFrame(hEnemy_, startAnim, finishAnim, AnimSpeed);
 }
 
 void TutorialEnemy::Update()
@@ -102,6 +103,21 @@ void TutorialEnemy::Draw()
 
 void TutorialEnemy::Release()
 {
+}
+
+void TutorialEnemy::OnCollision(GameObject* pTarget)
+{
+    if (pTarget->GetObjectName() == "Bullet")
+    {
+        StartDamage(B_damage);
+
+        Audio::Play(DamegeSound_);
+
+        DamageEffect* damageEffect = new DamageEffect(GetParent(), tEnemy.position_);
+        damageEffect->Initialize();
+
+        pTarget->KillMe();
+    }
 }
 
 void TutorialEnemy::StartDamage(float amount)

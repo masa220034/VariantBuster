@@ -26,6 +26,7 @@ void Bullet::Initialize()
     assert(BulletSound_ >= 0);
 
     transform_.scale_ = BULLET_SCL;
+
     SphereCollider* collision = new SphereCollider(BASE_POS, c_scale);
     AddCollider(collision);
 }

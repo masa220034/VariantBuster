@@ -23,7 +23,7 @@ void SceneManager::Initialize()
 	//最初のシーンを準備
 	currentSceneID_ = SCENE_ID_TITLE;
 	nextSceneID_ = currentSceneID_;
-	Instantiate <SelectScene> (this);
+	Instantiate <TitleScene> (this);
 }
 
 //更新

@@ -176,6 +176,7 @@
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TutorialEnemy.cpp" />
     <ClCompile Include="TutorialGround.cpp" />
+    <ClCompile Include="TutorialPlayer.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +224,7 @@
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TutorialEnemy.h" />
     <ClInclude Include="TutorialGround.h" />
+    <ClInclude Include="TutorialPlayer.h" />
     <ClInclude Include="TutorialScene.h" />
   </ItemGroup>
   <ItemGroup>
