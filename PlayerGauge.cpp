@@ -4,7 +4,7 @@
 //コンストラクタ
 PlayerGauge::PlayerGauge(GameObject* parent)
     :GameObject(parent, "PlayerGauge"), hGauge_(-1), hFrame_(-1), hGauge_BG(-1),
-    maxHp_(100), nowHp_(0)
+    maxHp_(0), nowHp_(0)
 {
 }
 

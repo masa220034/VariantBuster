@@ -4,7 +4,7 @@
 //コンストラクタ
 EnemyGauge::EnemyGauge(GameObject* parent)
     :GameObject(parent, "EnemyGauge"), hGauge_(-1), hFrame_(-1), hGauge_BG(-1),
-    maxHp_(200), nowHp_(0)
+    maxHp_(0), nowHp_(0)
 {
 }
 

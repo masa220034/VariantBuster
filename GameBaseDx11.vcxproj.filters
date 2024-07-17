@@ -114,9 +114,9 @@
     <ClCompile Include="DamageEffect.cpp" />
     <ClCompile Include="EffekseeLib\EffekseerVFX.cpp" />
     <ClCompile Include="Key.cpp" />
-    <ClCompile Include="Engine\Fade.cpp">
-      <Filter>01Engine</Filter>
-    </ClCompile>
+    <ClCompile Include="TutorialEnemy.cpp" />
+    <ClCompile Include="TutorialScene.cpp" />
+    <ClCompile Include="TutorialGround.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -207,9 +207,9 @@
     <ClInclude Include="DamageEffect.h" />
     <ClInclude Include="EffekseeLib\EffekseerVFX.h" />
     <ClInclude Include="Key.h" />
-    <ClInclude Include="Engine\Fade.h">
-      <Filter>01Engine</Filter>
-    </ClInclude>
+    <ClInclude Include="TutorialEnemy.h" />
+    <ClInclude Include="TutorialScene.h" />
+    <ClInclude Include="TutorialGround.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

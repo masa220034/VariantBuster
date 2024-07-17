@@ -175,6 +175,7 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TutorialEnemy.cpp" />
+    <ClCompile Include="TutorialGround.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +222,7 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TutorialEnemy.h" />
+    <ClInclude Include="TutorialGround.h" />
     <ClInclude Include="TutorialScene.h" />
   </ItemGroup>
   <ItemGroup>

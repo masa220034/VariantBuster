@@ -1,5 +1,7 @@
 #include "TutorialScene.h"
 #include "TutorialEnemy.h"
+#include "TutorialGround.h"
+#include "EnemyGauge.h"
 #include "Engine/Image.h"
 
 //コンストラクタ
@@ -16,6 +18,8 @@ void TutorialScene::Initialize()
 	transform_.scale_ = XMFLOAT3(0.8f, 0.8f, 0.8f);
 
 	Instantiate<TutorialEnemy>(this);
+	Instantiate<TutorialGround>(this);
+	Instantiate<EnemyGauge>(this);
 }
 
 //更新
