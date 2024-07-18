@@ -14,14 +14,10 @@ private:
     float cooldown;
     std::chrono::high_resolution_clock::time_point lastBulletTime;
 
-    //-----カメラの位置、視点の設定-----
-    //XMFLOAT3 CAMERA_POS = XMFLOAT3(0.0f, 3.0f, -10.0f);
-    //XMFLOAT3 CAMERA_TGT = XMFLOAT3(0.0f, 2.0f, 0.0f);
-    //--------------------------------------
-
-    //-----プレイヤーの位置、大きさの設定-----
-    XMFLOAT3 PLAYER_POS = XMFLOAT3(-3.0f, -2.5f, 0.0f);
+    //-----プレイヤーの位置、大きさ、向きの設定-----
+    XMFLOAT3 PLAYER_POS = XMFLOAT3(-3.0f, 0.0f, 0.0f);
     XMFLOAT3 PLAYER_SCL = XMFLOAT3(0.2f, 0.2f, 0.2f);
+    XMFLOAT3 PLAYER_ROT = XMFLOAT3(0.0f, 90.0f, 0.0f);
     //----------------------------------------
 
      //-----プレイヤーが向いている方向に弾を撃つかどうか-----
@@ -41,7 +37,7 @@ private:
 
     //-----ジャンプに使用している変数達-----
     bool isJump = true;      //ジャンプしてるかどうか
-    float ground_Y = -2.5f;   //地面の位置
+    float ground_Y = 0.0f;   //地面の位置
     float x = 0.0f;          //上昇量
     float v = 0.4f;          //ジャンプの初速度
     float gravity = 0.02;    //重力加速度

@@ -4,7 +4,6 @@
 #include "PlayerGauge.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
-#include "Engine/Camera.h"
 #include "Engine/Audio.h"
 #include "Engine/SceneManager.h"
 #include "Engine/SphereCollider.h"
@@ -34,6 +33,7 @@ void TutorialPlayer::Initialize()
 
     tPlayer.position_ = PLAYER_POS;
     tPlayer.scale_ = PLAYER_SCL;
+    tPlayer.rotate_ = PLAYER_ROT;
 
     SphereCollider* collision = new SphereCollider(BASE_POS, c_scale);
     AddCollider(collision);

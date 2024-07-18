@@ -6,7 +6,7 @@
 #include "Engine/SphereCollider.h"
 
 TutorialEnemy::TutorialEnemy(GameObject* parent)
-	:GameObject(parent, "TutorialEnemy"), hEnemy_(-1), DeathSound_(-1),
+	:GameObject(parent, "TutorialEnemy"), hEnemy_(-1), DamegeSound_(-1), DeathSound_(-1),
     frameCount(0), DelayFrame(150),
 	maxHp_(100), nowHp_(0),
     isDamage(false), d_Amount(0), d_Step(0.1f),
@@ -23,7 +23,9 @@ void TutorialEnemy::Initialize()
 	hEnemy_ = Model::Load("TutorialEnemy.fbx");
 	assert(hEnemy_ >= 0);
 
+    DamegeSound_ = Audio::Load("DamegeSound.wav");
     DeathSound_ = Audio::Load("DeathSound.wav");
+    assert(DamegeSound_ >= 0);
     assert(DeathSound_ >= 0);
 
 	tEnemy.position_ = ENEMY_POS;

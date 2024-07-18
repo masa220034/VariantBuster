@@ -6,9 +6,6 @@ class TutorialGround : public GameObject
 private:
     int hGround_;
 
-    XMFLOAT3 GROUND_POSITION = XMFLOAT3(0.0f, -2.5f, 0.0f);
-
-    Transform tGround;
 public:
     TutorialGround(GameObject* parent);
 

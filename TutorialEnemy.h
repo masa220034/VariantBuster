@@ -10,7 +10,7 @@ class TutorialEnemy : public GameObject
     int DeathSound_;
 
     //-----ìGÇÃà íuÇ∆ëÂÇ´Ç≥ÇÃê›íË-----
-    XMFLOAT3 ENEMY_POS = XMFLOAT3(5.0f, -1.0f, 0.0f);
+    XMFLOAT3 ENEMY_POS = XMFLOAT3(5.0f, 1.5f, 0.0f);
     XMFLOAT3 ENEMY_SCL = XMFLOAT3(0.5f, 0.5f, 0.5f);
     //--------------------------------
 
@@ -69,6 +69,8 @@ public:
     void OnCollision(GameObject* pTarget);
 
     void StartDamage(float amount);
+
+    XMFLOAT3 GetPosition() const { return tEnemy.position_; }
 
     std::shared_ptr<EFFEKSEERLIB::EFKTransform> mt;
 };

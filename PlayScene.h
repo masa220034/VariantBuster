@@ -6,6 +6,11 @@ class PlayScene : public GameObject
 	int BGM_;
 	int enemyNum = 2;
 
+	//-----カメラの位置、視点の設定-----
+	XMFLOAT3 CAMERA_POS = XMFLOAT3(0.0f, 3.0f, -10.0f);
+	XMFLOAT3 CAMERA_TGT = XMFLOAT3(0.0f, 2.0f, 0.0f);
+	//--------------------------------------
+
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

@@ -4,7 +4,6 @@
 #include "PlayerGauge.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
-#include "Engine/Camera.h"
 #include "Engine/Audio.h"
 #include "Engine/SceneManager.h"
 #include "Engine/SphereCollider.h"
@@ -27,9 +26,6 @@ Player::~Player()
 //‰Šú‰»
 void Player::Initialize()
 {
-    Camera::SetPosition(CAMERA_POS);
-    Camera::SetTarget(CAMERA_TGT);
-
     hPlayer_ = Model::Load("Player.fbx");
     assert(hPlayer_ >= 0);
 
@@ -40,6 +36,7 @@ void Player::Initialize()
 
     tPlayer.position_ = PLAYER_POS;
     tPlayer.scale_ = PLAYER_SCL;
+    tPlayer.rotate_ = PLAYER_ROT;
 
     SphereCollider* collision = new SphereCollider(BASE_POS, c_scale);
     AddCollider(collision);

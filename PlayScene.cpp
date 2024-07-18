@@ -8,6 +8,7 @@
 #include "Timer.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
+#include "Engine/Camera.h"
 #include "Engine/Audio.h"
 
 //コンストラクタ
@@ -19,6 +20,9 @@ PlayScene::PlayScene(GameObject* parent)
 //初期化
 void PlayScene::Initialize()
 {
+	Camera::SetPosition(CAMERA_POS);
+	Camera::SetTarget(CAMERA_TGT);
+
 	Instantiate<Stage>(this);
 	Instantiate<Player>(this);
 	Instantiate<Enemy>(this);

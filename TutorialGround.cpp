@@ -17,8 +17,6 @@ void TutorialGround::Initialize()
 {
 	hGround_ = Model::Load("TutorialGround.fbx");
 	assert(hGround_ >= 0);
-
-	tGround.position_ = GROUND_POSITION;
 }
 
 //çXêV
@@ -29,7 +27,7 @@ void TutorialGround::Update()
 //ï`âÊ
 void TutorialGround::Draw()
 {
-	Model::SetTransform(hGround_, tGround);
+	Model::SetTransform(hGround_, transform_);
 	Model::Draw(hGround_);
 }
 
