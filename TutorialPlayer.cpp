@@ -68,8 +68,7 @@ void TutorialPlayer::Update()
 
     if (nowHp_ <= noHp_)
     {
-        SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-        pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+        nowHp_ = immortality_Hp_;
     }
 
     PlayerGauge* pPlayerGauge = (PlayerGauge*)FindObject("PlayerGauge");
@@ -106,28 +105,14 @@ void TutorialPlayer::Update()
             lastBulletTime = currentTime;
         }
 
-        //移動先に足場があるかどうかをレイキャストで確認
-        TutorialGround* pTutorialGround = (TutorialGround*)FindObject("TutorialGround");
-        int hGroundModel = pTutorialGround->GetModelHandle();
-
-        RayCastData data;
-        data.start = tPlayer.position_;   //レイの発射位置
-        data.dir = RAY_DIR;       //レイの方向
-        Model::RayCast(hGroundModel, &data);
-
         if (isJump)
         {
-
             tPlayer.position_.y += x;
             x -= gravity;
 
             if (tPlayer.position_.y <= ground_Y)
             {
-                if (data.hit)
-                {
-                    //足場がある場合、ジャンプした分の位置を下げる
-                    tPlayer.position_.y = ground_Y;
-                }
+                tPlayer.position_.y = ground_Y;
                 isJump = false;
             }
         }
@@ -139,18 +124,6 @@ void TutorialPlayer::Update()
                 isJump = true;
                 x = v;
                 Audio::Play(JumpSound_);
-            }
-
-            if (!data.hit)
-            {
-                //足場がない場合、プレイヤーの高さを下げる
-                tPlayer.position_.y -= fallSpeed * gravity;
-
-                if (tPlayer.position_.y <= fPosition)
-                {
-                    SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-                    pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
-                }
             }
         }
     }

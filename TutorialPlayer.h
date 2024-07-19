@@ -50,6 +50,7 @@ private:
     int nowHp_, maxHp_;
     int upHp_ = 1;
     int noHp_ = 0;
+    int immortality_Hp_ = 1;
     //------------------------------------
 
     //-----HPゲージの減少関連について-----
@@ -61,9 +62,6 @@ private:
 
     //-----ダメージ量の設定-----
     int e_damage = 2;
-    int eb_damage = 4;
-    int sec_eb_damage = 8;
-    int min_b_damage = 4;
     //--------------------------
 
     Transform tPlayer;
