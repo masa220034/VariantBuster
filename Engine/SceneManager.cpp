@@ -2,6 +2,7 @@
 
 #include "../TitleScene.h"
 #include "../TutorialScene.h"
+#include "../TutorialClearScene.h"
 #include "../SelectScene.h"
 #include "../PlayScene.h"
 #include "../GameClearScene.h"
@@ -45,6 +46,7 @@ void SceneManager::Update()
 		{
 		case SCENE_ID_TITLE: Instantiate<TitleScene>(this); break;
 		case SCENE_ID_TUTORIAL: Instantiate<TutorialScene>(this); break;
+		case SCENE_ID_TUTORIAL_CLEAR: Instantiate<TutorialClearScene>(this); break;
 		case SCENE_ID_SELECT: Instantiate<SelectScene>(this); break;
 		case SCENE_ID_PLAY: Instantiate<PlayScene>(this); break;
 		case SCENE_ID_GAMECLEAR: Instantiate<GameClearScene>(this); break;
