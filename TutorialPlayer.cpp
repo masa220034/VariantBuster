@@ -24,12 +24,12 @@ TutorialPlayer::~TutorialPlayer()
 void TutorialPlayer::Initialize()
 {
     hPlayer_ = Model::Load("TutorialPlayer.fbx");
-    assert(hPlayer_ >= 0);
+    assert(hPlayer_ >= IMB);
 
     JumpSound_ = Audio::Load("JumpSound.wav");
     DamegeSound_ = Audio::Load("DamegeSound2.wav");
-    assert(JumpSound_ >= 0);
-    assert(DamegeSound_ >= 0);
+    assert(JumpSound_ >= IMB);
+    assert(DamegeSound_ >= IMB);
 
     tPlayer.position_ = PLAYER_POS;
     tPlayer.scale_ = PLAYER_SCL;
@@ -158,9 +158,9 @@ void TutorialPlayer::OnCollision(GameObject* pTarget)
 void TutorialPlayer::StartDamage(float amount)
 {
     targetHp = nowHp_ - amount;
-    if (targetHp < 0)
+    if (targetHp < noHp_)
     {
-        targetHp = 0;
+        targetHp = noHp_;
     }
     isDamage = true;
 }

@@ -6,7 +6,7 @@ class Stage : public GameObject
 private:
     int hBackGround_;
     int hGround_;
-
+    int IMB = 0; //I=画像、M=モデル、B=BGM
 public:
     //コンストラクタ
     Stage(GameObject* parent);

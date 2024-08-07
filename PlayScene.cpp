@@ -35,7 +35,7 @@ void PlayScene::Initialize()
 	Instantiate<Timer>(this);
 	
 	BGM_ = Audio::Load("BattleBGM.wav");
-	assert(BGM_ >= 0);
+	assert(BGM_ >= IMB);
 }
 
 //XV

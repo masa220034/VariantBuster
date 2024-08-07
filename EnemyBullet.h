@@ -6,9 +6,11 @@ class EnemyBullet : public GameObject
 {
     int hModel_;
     int eBulletSound_;
-    std::chrono::steady_clock::time_point startTime_;
     bool soundPlayed_;
+    int IMB = 0; //I=‰æ‘œAM=ƒ‚ƒfƒ‹AB=BGM
 
+    std::chrono::steady_clock::time_point startTime_;
+   
     //-----’e‚Ì‘å‚«‚³‚Ìİ’è-----
     XMFLOAT3 BULLET_SCL = XMFLOAT3(0.3f, 0.3f, 0.3f);
     //--------------------------

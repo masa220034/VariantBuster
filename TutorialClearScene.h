@@ -5,6 +5,7 @@ class TutorialClearScene : public GameObject
 {
 	int hBackGround_;
 	int BGM_;
+	int IMB = 0; //I=‰æ‘œAM=ƒ‚ƒfƒ‹AB=BGM
 
 	unsigned int frameCount;
 	unsigned int DelayFrame;

@@ -14,6 +14,7 @@ class TutorialScene : public GameObject
 	int hBackGorund;
 	int hImage_[EX_MAX];
 	int BGM_;
+	int IMB = 0; //I=画像、M=モデル、B=BGM
 	
 	//-----カメラの位置、視点の設定-----
 	XMFLOAT3 CAMERA_POS = XMFLOAT3(0.0f, 3.0f, -10.0f);

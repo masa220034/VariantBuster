@@ -20,10 +20,10 @@ Bullet::~Bullet()
 void Bullet::Initialize()
 {
     hModel_ = Model::Load("Bullet.fbx");
-    assert(hModel_ >= 0);
+    assert(hModel_ >= IMB);
 
     BulletSound_ = Audio::Load("BulletSound.wav");
-    assert(BulletSound_ >= 0);
+    assert(BulletSound_ >= IMB);
 
     transform_.scale_ = BULLET_SCL;
 

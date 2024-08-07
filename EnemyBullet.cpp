@@ -19,10 +19,10 @@ EnemyBullet::~EnemyBullet()
 void EnemyBullet::Initialize()
 {
     hModel_ = Model::Load("eBullet.fbx");
-    assert(hModel_ >= 0);
+    assert(hModel_ >= IMB);
 
     eBulletSound_ = Audio::Load("eBulletSound.wav");
-    assert(eBulletSound_ >= 0);
+    assert(eBulletSound_ >= IMB);
 
     transform_.scale_ = BULLET_SCL;
 

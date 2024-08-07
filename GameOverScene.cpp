@@ -16,13 +16,13 @@ void GameOverScene::Initialize()
 {
 	//画像データのロード
 	hPict_ = Image::Load("GameOver.png");
-	assert(hPict_ >= 0);
+	assert(hPict_ >= IMB);
 
 	hBack_ = Image::Load("GameOverBackGround.png");
-	assert(hPict_ >= 0);
+	assert(hPict_ >= IMB);
 
 	BGM_ = Audio::Load("GameOverBGM.wav");
-	assert(BGM_ >= 0);
+	assert(BGM_ >= IMB);
 }
 
 //更新

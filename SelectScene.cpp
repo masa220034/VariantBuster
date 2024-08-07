@@ -14,13 +14,13 @@ SelectScene::SelectScene(GameObject* parent)
 void SelectScene::Initialize()
 {
     hSelectBack_ = Image::Load("BackGround.png");
-    assert(hSelectBack_ >= 0);
+    assert(hSelectBack_ >= IMB);
 
     const char* ImageNames[BOSS_MAX] = { "Tutorial.png", "SelectBoss1.png", "SelectBoss2.png", "SelectBoss3.png" };
     for (int i = 0; i < BOSS_MAX; i++)
     {
         hSelBoss_[i] = Image::Load(ImageNames[i]);
-        assert(hSelBoss_[i] > 0);
+        assert(hSelBoss_[i] > IMB);
     }
 
     //チュートリアル+セレクトボス(画像)の初期位置と大きさ
@@ -31,7 +31,7 @@ void SelectScene::Initialize()
     }
 
     SelectSound_ = Audio::Load("SelectSound.wav");
-    assert(SelectSound_ >= 0);
+    assert(SelectSound_ >= IMB);
 }
 
 //更新

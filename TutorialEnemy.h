@@ -5,9 +5,13 @@
 
 class TutorialEnemy : public GameObject
 {
+    Key* pKey_;
+    bool isKey_;
+
     int hEnemy_;
     int DamegeSound_;
     int DeathSound_;
+    int IMB = 0; //I=画像、M=モデル、B=BGM
 
     //-----敵の位置と大きさの設定-----
     XMFLOAT3 ENEMY_POS = XMFLOAT3(5.0f, 1.5f, 0.0f);
@@ -39,10 +43,13 @@ class TutorialEnemy : public GameObject
     float AnimSpeed = 0.5f;
     //------------------------------
 
-    Key* pKey_;
-    bool isKey_;
+    //-----エフェクト関連の設定-----
+    int EffectFlame = 120;    //エフェクトのフレーム数
+    float EffectSpeed = 1.0f; //エフェクトのスピード
+    //------------------------------
+   
+    int B_damage = 20; //ダメージ数
 
-    int B_damage = 20;
     unsigned int frameCount;
     unsigned int DelayFrame;
 

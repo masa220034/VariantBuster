@@ -5,10 +5,16 @@
 
 class Enemy : public GameObject
 {
+    Key* pKey_;
+    bool isKey_;
+
     int hEnemy_;
     int hMiniEnemy_;
     int DamegeSound_;
     int DeathSound_;
+    int IMB = 0; //I=画像、M=モデル、B=BGM
+
+    int ATKState = 0;
 
     //-----敵の位置、大きさの設定-----
     XMFLOAT3 ENEMY_POS = XMFLOAT3(5.5f, 2.0f, 0.0f);
@@ -41,8 +47,14 @@ class Enemy : public GameObject
     float moveDown_lim = 0.0f;
     //------------------------------
 
-    Key* pKey_;
-    bool isKey_;
+    //-----エフェクト関連の設定-----
+    int ATKEffectFrame = 700;      //攻撃エフェクトのフレーム数
+    int DeathEffectFrame = 120;    //デスエフェクトのフレーム数
+    float EffectSpeed = 1.0f;   //エフェクトのスピード
+    float translationX = -3.0f;
+    float translationY = 2.9f;
+    float translationZ = 0.5;
+    //------------------------------
 
     int B_damage = 20;
     float ene_move = 0.1f;
@@ -51,6 +63,9 @@ class Enemy : public GameObject
     unsigned int frameCount;
     unsigned int DelayFrame;
 
+    int RANDOM_ATK = 100;
+    int TARGET_REMAINDER = 0;
+    
     Transform tEnemy;
 public:
     //コンストラクタ

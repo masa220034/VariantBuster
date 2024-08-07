@@ -16,7 +16,7 @@ TutorialGround::~TutorialGround()
 void TutorialGround::Initialize()
 {
 	hGround_ = Model::Load("TutorialGround.fbx");
-	assert(hGround_ >= 0);
+	assert(hGround_ >= IMB);
 }
 
 //XV

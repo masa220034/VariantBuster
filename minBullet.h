@@ -4,6 +4,7 @@
 class minBullet : public GameObject
 {
     int hModel_;
+    int IMB = 0; //I=画像、M=モデル、B=BGM
 
     //-----コライダーの中心位置、大きさの設定-----
     XMFLOAT3 BASE_POS = XMFLOAT3(0.0f, 1.8f, 0.0f);

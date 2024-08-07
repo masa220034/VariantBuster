@@ -18,7 +18,7 @@ EnemyBullet2::~EnemyBullet2()
 void EnemyBullet2::Initialize()
 {
     hModel_ = Model::Load("eBullet2.fbx");
-    assert(hModel_ >= 0);
+    assert(hModel_ >= IMB);
 
     transform_.scale_ = BULLET_SCL;
 

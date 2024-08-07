@@ -5,6 +5,7 @@ class Bullet : public GameObject
 {
     int hModel_;
     int BulletSound_;
+    int IMB = 0; //I=‰æ‘œAM=ƒ‚ƒfƒ‹AB=BGM
 
     //-----’e‚Ì‘å‚«‚³,‘¬‚³,Œ‚‚Ä‚é‹——£‚Ìİ’è-----
     XMFLOAT3 BULLET_SCL = XMFLOAT3(0.3f, 0.3f, 0.3f);

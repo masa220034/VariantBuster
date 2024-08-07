@@ -17,9 +17,9 @@ void TitleScene::Initialize()
 	hTitleBack_ = Image::Load("TitleBackGround.png");
 	hTitle_ = Image::Load("TitleName.png");
 	BGM_ = Audio::Load("TitleBGM.wav");
-	assert(hTitleBack_ >= 0);
-	assert(hTitle_ >= 0);
-	assert(BGM_ >= 0);
+	assert(hTitleBack_ >= IMB);
+	assert(hTitle_ >= IMB);
+	assert(BGM_ >= IMB);
 
 	tTitle.position_.y += titlePos;
 	tTitle.scale_ = TITLE_SCALE;

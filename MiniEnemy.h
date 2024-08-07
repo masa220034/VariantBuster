@@ -4,6 +4,7 @@
 class MiniEnemy : public GameObject
 {
     int hMiniEnemy_;
+    int IMB = 0; //I=画像、M=モデル、B=BGM
 
     //-----ミニ敵の位置、大きさの設定-----
     XMFLOAT3 MINIENEMY_POS = XMFLOAT3((float)(rand() % 401 - 200) / 10, 5.8f, 0.0f);
@@ -16,6 +17,9 @@ class MiniEnemy : public GameObject
     float movedPos = 5.5f;
     //----------------------------
     
+    int RANDOM_ATK = 100;
+    int TARGET_REMAINDER = 0;
+
     unsigned int frameCount;
     unsigned int DelayFrame;
 

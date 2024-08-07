@@ -6,11 +6,16 @@
 class Key : public GameObject
 {
     int hKey_;
+    int IMB = 0; //I=画像、M=モデル、B=BGM
 
+    //-----キーの大きさの設定-----
     XMFLOAT3 KEY_SCL = XMFLOAT3(0.5f, 0.5f, 0.5f);
+    //----------------------------
 
+    //-----コライダーの中心位置と大きさの設定-----
     XMFLOAT3 BASE_POS = XMFLOAT3(-0.1f, 0.4f, 0.3f);
     float c_scl = 0.3f;
+    //--------------------------------------------
 
     Transform tKey;
 public:

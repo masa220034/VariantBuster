@@ -6,6 +6,7 @@ class TitleScene : public GameObject
 	int hTitleBack_;
 	int hTitle_;
 	int BGM_;
+	int IMB = 0; //I=画像、M=モデル、B=BGM
 
 	//-----タイトル名の位置、大きさの設定-----
 	float titlePos = 0.3f;

@@ -18,7 +18,7 @@ Key::~Key()
 void Key::Initialize()
 {
     hKey_ = Model::Load("Key.fbx");
-    assert(hKey_ >= 0);
+    assert(hKey_ >= IMB);
 
     tKey.scale_ = KEY_SCL;
 

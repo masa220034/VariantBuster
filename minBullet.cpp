@@ -19,7 +19,7 @@ void minBullet::Initialize()
 {
     //モデルデータのロード
     hModel_ = Model::Load("minBullet.fbx");
-    assert(hModel_ >= 0);
+    assert(hModel_ >= IMB);
 
     BoxCollider* collision = new BoxCollider(BASE_POS, COLLIDER_SIZE);
     AddCollider(collision);

@@ -16,13 +16,13 @@ void GameClearScene::Initialize()
 {
 	//画像データのロード
 	hBackGround_ = Image::Load("GameClearBackGround.png");
-	assert(hBackGround_ >= 0);
+	assert(hBackGround_ >= IMB);
 
 	hPict_ = Image::Load("GameClear.png");
-	assert(hPict_ >= 0);
+	assert(hPict_ >= IMB);
 
 	BGM_ = Audio::Load("GameClearBGM.wav");
-	assert(BGM_ >= 0);
+	assert(BGM_ >= IMB);
 
 	tClear.position_ = CLEAR_LOGO_POS;
 	tClear.scale_ = CLEAR_LOGO_SCL;

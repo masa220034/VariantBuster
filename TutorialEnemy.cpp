@@ -21,12 +21,12 @@ TutorialEnemy::~TutorialEnemy()
 void TutorialEnemy::Initialize()
 {
 	hEnemy_ = Model::Load("TutorialEnemy.fbx");
-	assert(hEnemy_ >= 0);
+	assert(hEnemy_ >= IMB);
 
     DamegeSound_ = Audio::Load("DamegeSound.wav");
     DeathSound_ = Audio::Load("DeathSound.wav");
-    assert(DamegeSound_ >= 0);
-    assert(DeathSound_ >= 0);
+    assert(DamegeSound_ >= IMB);
+    assert(DeathSound_ >= IMB);
 
 	tEnemy.position_ = ENEMY_POS;
 	tEnemy.scale_ = ENEMY_SCL;
@@ -84,8 +84,8 @@ void TutorialEnemy::Update()
         EFFEKSEERLIB::EFKTransform t;
         DirectX::XMStoreFloat4x4(&(t.matrix), transform_.GetWorldMatrix());
         t.isLoop = false;  //繰り返しON
-        t.maxFrame = 120; //エフェクシアのフレーム
-        t.speed = 1.0;    //スピード
+        t.maxFrame = EffectFlame;
+        t.speed = EffectSpeed;
         mt = EFFEKSEERLIB::gEfk->Play("DEATH", t);
 
         KillMe();
@@ -125,9 +125,9 @@ void TutorialEnemy::OnCollision(GameObject* pTarget)
 void TutorialEnemy::StartDamage(float amount)
 {
     targetHp = nowHp_ - amount;
-    if (targetHp < 0)
+    if (targetHp < noHp_)
     {
-        targetHp = 0;
+        targetHp = noHp_;
     }
     isDamage = true;
 }

@@ -17,13 +17,13 @@ EnemyGauge::~EnemyGauge()
 void EnemyGauge::Initialize()
 {
     hGauge_BG = Image::Load("EnemyGaugeBG.png");
-    assert(hGauge_BG >= 0);
+    assert(hGauge_BG >= IMB);
 
     hGauge_ = Image::Load("EnemyGauge.png");
-    assert(hGauge_ >= 0);
+    assert(hGauge_ >= IMB);
 
     hFrame_ = Image::Load("EnemyGaugeFrame.png");
-    assert(hFrame_ >= 0);
+    assert(hFrame_ >= IMB);
 
     pGauge.position_ = GAUGE_POS;
     pGauge.scale_ = GAUGE_SCL;

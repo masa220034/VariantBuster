@@ -8,8 +8,8 @@ private:
     int hPlayer_;
     int JumpSound_;
     int DamegeSound_;
-
     float moveSpeed = 0.1f;
+    int IMB = 0; //I=‰æ‘œAM=ƒ‚ƒfƒ‹AB=BGM
 
     float cooldown;
     std::chrono::high_resolution_clock::time_point lastBulletTime;

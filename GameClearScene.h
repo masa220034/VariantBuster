@@ -6,6 +6,7 @@ class GameClearScene : public GameObject
 	int hBackGround_;
 	int hPict_;
 	int BGM_;
+	int IMB = 0; //I=画像、M=モデル、B=BGM
 
 	//-----ゲームクリアのロゴの位置、大きさの設定-----
 	XMFLOAT3 CLEAR_LOGO_POS = XMFLOAT3(0.0f, 0.5f, 0.0f);

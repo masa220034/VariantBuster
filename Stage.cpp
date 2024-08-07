@@ -17,10 +17,10 @@ Stage::~Stage()
 void Stage::Initialize()
 {
 	hBackGround_ = Image::Load("PlayBackGround.png");
-	assert(hBackGround_ >= 0);
+	assert(hBackGround_ >= IMB);
 
 	hGround_ = Model::Load("Ground.fbx");
-	assert(hGround_ >= 0);
+	assert(hGround_ >= IMB);
 }
 
 //XV

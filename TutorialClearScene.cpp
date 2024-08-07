@@ -14,10 +14,10 @@ void TutorialClearScene::Initialize()
 {
 	//画像データのロード
 	hBackGround_ = Image::Load("TutorialClearBackGround.png");
-	assert(hBackGround_ >= 0);
+	assert(hBackGround_ >= IMB);
 
 	BGM_ = Audio::Load("GameClearBGM.wav");
-	assert(BGM_ >= 0);
+	assert(BGM_ >= IMB);
 }
 
 void TutorialClearScene::Update()

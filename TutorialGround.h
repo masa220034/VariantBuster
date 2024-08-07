@@ -5,7 +5,7 @@ class TutorialGround : public GameObject
 {
 private:
     int hGround_;
-
+    int IMB = 0; //I=‰æ‘œAM=ƒ‚ƒfƒ‹AB=BGM
 public:
     TutorialGround(GameObject* parent);
 

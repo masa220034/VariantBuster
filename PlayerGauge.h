@@ -7,6 +7,7 @@ class PlayerGauge : public GameObject
     int hGauge_BG;
     int hFrame_;
     int nowHp_, maxHp_, animHp_;
+    int IMB = 0; //I=画像、M=モデル、B=BGM
 
     //-----ゲージの位置や大きさなどの設定-----
     float Gauge_UP = 2.0f;

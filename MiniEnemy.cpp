@@ -18,7 +18,7 @@ MiniEnemy::~MiniEnemy()
 void MiniEnemy::Initialize()
 {
     hMiniEnemy_ = Model::Load("miniEnemy.fbx");
-    assert(hMiniEnemy_ >= 0);
+    assert(hMiniEnemy_ >= IMB);
 
     tMiniEnemy.position_ = MINIENEMY_POS;
     tMiniEnemy.scale_ = MINIENEMY_SCL;  
@@ -31,7 +31,7 @@ void MiniEnemy::Update()
 
     if (frameCount >= DelayFrame)
     {
-        if (rand() % 100 == 0)
+        if (rand() % RANDOM_ATK == TARGET_REMAINDER)
         {
             minBullet* pminBullet = Instantiate<minBullet>(GetParent());
             pminBullet->SetPosition(tMiniEnemy.position_);

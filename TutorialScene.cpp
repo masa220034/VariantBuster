@@ -22,14 +22,14 @@ void TutorialScene::Initialize()
 	Camera::SetTarget(CAMERA_TGT);
 
 	hBackGorund = Image::Load("TutorialBackGround.png");
-	assert(hBackGorund >= 0);
+	assert(hBackGorund >= IMB);
 	tBackGround.scale_ = BACKGROUND_SCL;
 
 	const char* ImageNames[EX_MAX] = { "Ex1.png", "Ex2.png", "Ex3.png", "Ex4.png"};
 	for (int i = 0; i < EX_MAX; i++)
 	{
 		hImage_[i] = Image::Load(ImageNames[i]);
-		assert(hImage_[i] > 0);
+		assert(hImage_[i] > IMB);
 	}
 
 	for (int i = 0; i < EX_MAX; i++)
@@ -59,7 +59,7 @@ void TutorialScene::Initialize()
 	Instantiate<EnemyGauge>(this);
 
 	BGM_ = Audio::Load("TutorialBGM.wav");
-	assert(BGM_ >= 0);
+	assert(BGM_ >= IMB);
 }
 
 //çXêV

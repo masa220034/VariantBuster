@@ -28,12 +28,12 @@ Enemy::~Enemy()
 void Enemy::Initialize()
 {
     hEnemy_ = Model::Load("Enemy.fbx");
-    assert(hEnemy_ >= 0);
+    assert(hEnemy_ >= IMB);
 
     DamegeSound_ = Audio::Load("DamegeSound.wav");
     DeathSound_ = Audio::Load("DeathSound.wav");
-    assert(DamegeSound_ >= 0);
-    assert(DeathSound_ >= 0);
+    assert(DamegeSound_ >= IMB);
+    assert(DeathSound_ >= IMB);
 
     tEnemy.position_ = ENEMY_POS;
     tEnemy.scale_ = ENEMY_SCL;
@@ -49,22 +49,7 @@ void Enemy::Update()
 {
     if (frameCount >= DelayFrame)
     {
-        if (!mt)
-        {
-            EFFEKSEERLIB::gEfk->AddEffect("MASPA", "Maspa.efk");
-            EFFEKSEERLIB::EFKTransform t;
-            DirectX::XMStoreFloat4x4(&(t.matrix), transform_.GetWorldMatrix());
-            t.isLoop = false;  //繰り返しON
-            t.maxFrame = 700; //エフェクシアのフレーム
-            t.speed = 1.0;    //スピード
-            mt = EFFEKSEERLIB::gEfk->Play("MASPA", t);
-        }
-
         AttackPattern();
-
-        XMMATRIX tr = XMMatrixTranslation(-3.0, 2.9, 0.5);
-        XMMATRIX rt = XMMatrixRotationY(XM_PI);
-        DirectX::XMStoreFloat4x4(&(mt->matrix), rt * tr * this->GetWorldMatrix());
     }
     else
     {
@@ -108,8 +93,8 @@ void Enemy::Update()
         EFFEKSEERLIB::EFKTransform t;
         DirectX::XMStoreFloat4x4(&(t.matrix), transform_.GetWorldMatrix());
         t.isLoop = false;  //繰り返しON
-        t.maxFrame = 120; //エフェクシアのフレーム
-        t.speed = 1.0;    //スピード
+        t.maxFrame = DeathEffectFrame; 
+        t.speed = EffectSpeed;
         mt = EFFEKSEERLIB::gEfk->Play("DEATH", t);
 
         KillMe();
@@ -154,27 +139,52 @@ void Enemy::AttackPattern()
 {
     if(nowHp_ > halfHp_ && nowHp_ <= maxHp_) 
     {
-        if (rand() % 100 == 0)
-        {
-            EnemyBullet* pEnemyBullet = Instantiate<EnemyBullet>(GetParent());
-            pEnemyBullet->SetPosition(tEnemy.position_);
-        }
+        ATKState = 1;
     }
 
     if (nowHp_ <= halfHp_)
     {
+        ATKState = 2;
+    }
+
+    switch (ATKState)
+    {
+    case 1:
+        if (!mt)
+        {
+            EFFEKSEERLIB::gEfk->AddEffect("MASPA", "Maspa.efk");
+            EFFEKSEERLIB::EFKTransform t;
+            DirectX::XMStoreFloat4x4(&(t.matrix), transform_.GetWorldMatrix());
+            t.isLoop = false;  //繰り返しON
+            t.maxFrame = ATKEffectFrame;
+            t.speed = EffectSpeed;    
+            mt = EFFEKSEERLIB::gEfk->Play("MASPA", t);
+        }
+
+        XMMATRIX tr = XMMatrixTranslation(translationX, translationY, translationZ);
+        XMMATRIX rt = XMMatrixRotationY(XM_PI);
+        DirectX::XMStoreFloat4x4(&(mt->matrix), rt * tr * this->GetWorldMatrix());
+
+        if (rand() % RANDOM_ATK == TARGET_REMAINDER)
+        {
+            EnemyBullet* pEnemyBullet = Instantiate<EnemyBullet>(GetParent());
+            pEnemyBullet->SetPosition(tEnemy.position_);
+        }
+        break;
+    case 2:
         tEnemy.position_.x -= ene_move;
         if (tEnemy.position_.x <= lim_ene_pos)
         {
             tEnemy.position_.x = lim_ene_pos;
             tEnemy.rotate_.y -= ene_rotate;
 
-            if (rand() % 100 == 0)
+            if (rand() % RANDOM_ATK == TARGET_REMAINDER)
             {
                 EnemyBullet2* pEnemyBullet2 = Instantiate<EnemyBullet2>(GetParent());
                 pEnemyBullet2->SetPosition(tEnemy.position_);
             }
         }
+        break;
     }
 }
 
@@ -201,9 +211,9 @@ void Enemy::movePattern()
 void Enemy::StartDamage(float amount)
 {
     targetHp = nowHp_ - amount;
-    if (targetHp < 0)
+    if (targetHp < noHp_)
     {
-        targetHp = 0;
+        targetHp = noHp_;
     }
     isDamage = true;
 }

@@ -27,12 +27,12 @@ Player::~Player()
 void Player::Initialize()
 {
     hPlayer_ = Model::Load("Player.fbx");
-    assert(hPlayer_ >= 0);
+    assert(hPlayer_ >= IMB);
 
     JumpSound_ = Audio::Load("JumpSound.wav");
     DamegeSound_ = Audio::Load("DamegeSound2.wav");
-    assert(JumpSound_ >= 0);
-    assert(DamegeSound_ >= 0);
+    assert(JumpSound_ >= IMB);
+    assert(DamegeSound_ >= IMB);
 
     tPlayer.position_ = PLAYER_POS;
     tPlayer.scale_ = PLAYER_SCL;
@@ -115,8 +115,8 @@ void Player::Update()
         int hGroundModel = pStage->GetModelHandle();
 
         RayCastData data;
-        data.start = tPlayer.position_;   //レイの発射位置
-        data.dir = RAY_DIR;       //レイの方向
+        data.start = tPlayer.position_; //レイの発射位置
+        data.dir = RAY_DIR; //レイの方向
         Model::RayCast(hGroundModel, &data);
 
         if (isJump)
@@ -210,9 +210,9 @@ void Player::OnCollision(GameObject* pTarget)
 void Player::StartDamage(float amount)
 {
     targetHp = nowHp_ - amount;
-    if (targetHp < 0)
+    if (targetHp < noHp_)
     {
-        targetHp = 0;
+        targetHp = noHp_;
     }
     isDamage = true;
 }
