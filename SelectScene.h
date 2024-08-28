@@ -15,6 +15,7 @@ private:
 	int hSelectBack_;
 	int hSelBoss_[BOSS_MAX];
 	int SelectSound_;
+	int BGM_;
 	int selectedBoss;
 	int IMB = 0; //I=‰æ‘œAM=ƒ‚ƒfƒ‹AB=BGM
 

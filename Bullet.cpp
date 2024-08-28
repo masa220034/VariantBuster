@@ -38,7 +38,7 @@ void Bullet::Update()
 
     transform_.position_.x += direction_.x * v_shot;
     
-    if (transform_.position_.x > limitPos)
+    if (transform_.position_.x > limitPos || transform_.position_.x < -limitPos)
     {
         KillMe();
     }

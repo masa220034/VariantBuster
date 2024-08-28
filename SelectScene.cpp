@@ -6,7 +6,7 @@
 
 //コンストラクタ
 SelectScene::SelectScene(GameObject* parent)
-    : GameObject(parent, "SelectScene"), hSelectBack_(-1), hSelBoss_{ 0, 1, 2, 3 }, SelectSound_(-1)
+    : GameObject(parent, "SelectScene"), hSelectBack_(-1), hSelBoss_{ 0, 1, 2, 3 }, SelectSound_(-1), BGM_(-1)
 {
 }
 
@@ -31,12 +31,16 @@ void SelectScene::Initialize()
     }
 
     SelectSound_ = Audio::Load("SelectSound.wav");
+    BGM_ = Audio::Load("SelectBGM.wav");
     assert(SelectSound_ >= IMB);
+    assert(BGM_ >= IMB);
 }
 
 //更新
 void SelectScene::Update()
 {
+    Audio::Play(BGM_);
+
     if (Input::IsKeyDown(DIK_LEFT))
     {
         Audio::Play(SelectSound_);
