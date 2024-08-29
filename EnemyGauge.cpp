@@ -3,7 +3,7 @@
 
 //コンストラクタ
 EnemyGauge::EnemyGauge(GameObject* parent)
-    :GameObject(parent, "EnemyGauge"), hGauge_(-1), hFrame_(-1), hGauge_BG(-1),
+    :GameObject(parent, "EnemyGauge"), hGauge_(-1), hFrame_(-1), hGauge_BG(-1), hGauge_DA(-1),
     maxHp_(0), nowHp_(0)
 {
 }
@@ -21,6 +21,9 @@ void EnemyGauge::Initialize()
 
     hGauge_ = Image::Load("EnemyGauge.png");
     assert(hGauge_ >= IMB);
+
+    hGauge_DA = Image::Load("DamageGauge.png");
+    assert(hGauge_DA >= IMB);
 
     hFrame_ = Image::Load("EnemyGaugeFrame.png");
     assert(hFrame_ >= IMB);

@@ -6,6 +6,7 @@ class EnemyGauge : public GameObject
 	int hGauge_;
     int hGauge_BG;
 	int hFrame_;
+    int hGauge_DA;
     int nowHp_, maxHp_, animHp_;
     int IMB = 0; //I=‰æ‘œAM=ƒ‚ƒfƒ‹AB=BGM
 
