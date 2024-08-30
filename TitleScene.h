@@ -13,6 +13,11 @@ class TitleScene : public GameObject
 	XMFLOAT3 TITLE_SCALE = XMFLOAT3(1.3f, 1.3f, 1.3f);
 	//----------------------------------------
 
+	float initPosY;
+	float time = 0.0f;
+	float floatingSpeed = 0.05f;   //•‚—V‘¬“x
+	float FLOAT_AMPLITUDE = 0.02f;
+
 	Transform tTitleBack;
 	Transform tTitle;
 public:
@@ -31,6 +36,10 @@ public:
 
 	//ŠJ•ú
 	void Release() override;
+
+	void FireEffect();
+
+	void BulleFireEffect();
 };
 
 
