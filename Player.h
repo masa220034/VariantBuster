@@ -10,6 +10,7 @@ private:
     int DamegeSound_;
     int IMB = 0; //I=画像、M=モデル、B=BGM
 
+    //プレイヤーの動く速度
     float moveSpeed = 0.1f;
 
     float cooldown;

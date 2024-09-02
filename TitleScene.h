@@ -36,10 +36,6 @@ public:
 
 	//ŠJ•ú
 	void Release() override;
-
-	void FireEffect();
-
-	void BulleFireEffect();
 };
 
 

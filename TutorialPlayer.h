@@ -8,7 +8,7 @@ private:
     int hPlayer_;
     int JumpSound_;
     int DamegeSound_;
-    float moveSpeed = 0.1f;
+
     int IMB = 0; //I=画像、M=モデル、B=BGM
 
     float cooldown;
@@ -18,7 +18,13 @@ private:
     XMFLOAT3 PLAYER_POS = XMFLOAT3(-3.0f, 0.0f, 0.0f);
     XMFLOAT3 PLAYER_SCL = XMFLOAT3(0.2f, 0.2f, 0.2f);
     XMFLOAT3 PLAYER_ROT = XMFLOAT3(0.0f, 90.0f, 0.0f);
-    //----------------------------------------
+    //----------------------------------------------
+
+    //-----プレイヤーの移動に関する設定-----
+    float moveSpeed = 0.1f;     //移動速度
+    float limitLeftPos = -7.3f; //左の限界値
+    float limitRightPos = 7.3f; //右の限界値
+    //--------------------------------------
 
      //-----プレイヤーが向いている方向に弾を撃つかどうか-----
     bool P_Right; //右を向いているかどうか

@@ -4,10 +4,15 @@
 class PlayerGauge : public GameObject
 {
     int hGauge_;
+    int hGauge_DA;
     int hGauge_BG;
     int hFrame_;
     int nowHp_, maxHp_, animHp_;
     int IMB = 0; //I=画像、M=モデル、B=BGM
+
+    float damageAmount_;
+    float damageDisplayTime_;
+    const float damageFadeSpeed_ = 0.01f;
 
     //-----ゲージの位置や大きさなどの設定-----
     float Gauge_UP = 2.0f;

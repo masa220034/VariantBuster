@@ -80,12 +80,20 @@ void TutorialPlayer::Update()
         {
             tPlayer.position_.x -= moveSpeed;
             P_Right = false;
+            if (tPlayer.position_.x < limitLeftPos)
+            {
+                tPlayer.position_.x = limitLeftPos;
+            }
         }
 
         if (Input::IsKey(DIK_RIGHT))
         {
             tPlayer.position_.x += moveSpeed;
             P_Right = true;
+            if (tPlayer.position_.x > limitRightPos)
+            {
+                tPlayer.position_.x = limitRightPos;
+            }
         }
 
         if (Input::IsKeyDown(DIK_SPACE) && elapsed.count() >= cooldown)
