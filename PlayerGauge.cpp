@@ -25,8 +25,6 @@ void PlayerGauge::Initialize()
     hFrame_ = Image::Load("PlayerGaugeFrame.png");
     assert(hFrame_ >= IMB);
 
-
-
     pGauge.position_ = GAUGE_POS;
     pGauge.scale_ = GAUGE_SCL;
     pGauge.rotate_ = GAUGE_ROT;

@@ -10,10 +10,6 @@ class PlayerGauge : public GameObject
     int nowHp_, maxHp_, animHp_;
     int IMB = 0; //I=画像、M=モデル、B=BGM
 
-    float damageAmount_;
-    float damageDisplayTime_;
-    const float damageFadeSpeed_ = 0.01f;
-
     //-----ゲージの位置や大きさなどの設定-----
     float Gauge_UP = 2.0f;
     XMFLOAT3 GAUGE_POS = XMFLOAT3(-0.95f, 0.85f, 0.0f);
