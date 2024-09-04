@@ -1,12 +1,12 @@
 #pragma once
-#include "Key.h"
+#include "ClearItem.h"
 #include "Engine/GameObject.h"
 #include "EffekseeLib/EffekseerVFX.h"
 
 class TutorialEnemy : public GameObject
 {
-    Key* pKey_;
-    bool isKey_;
+    ClearItem* pClearItem_;
+    bool isClearItem_;
 
     int hEnemy_;
     int DamegeSound_;

@@ -113,7 +113,7 @@
     <ClCompile Include="minBullet.cpp" />
     <ClCompile Include="DamageEffect.cpp" />
     <ClCompile Include="EffekseeLib\EffekseerVFX.cpp" />
-    <ClCompile Include="Key.cpp" />
+    <ClCompile Include="ClearItem.cpp" />
     <ClCompile Include="TutorialEnemy.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
     <ClCompile Include="TutorialGround.cpp" />
@@ -208,7 +208,7 @@
     <ClInclude Include="minBullet.h" />
     <ClInclude Include="DamageEffect.h" />
     <ClInclude Include="EffekseeLib\EffekseerVFX.h" />
-    <ClInclude Include="Key.h" />
+    <ClInclude Include="ClearItem.h" />
     <ClInclude Include="TutorialEnemy.h" />
     <ClInclude Include="TutorialScene.h" />
     <ClInclude Include="TutorialGround.h" />

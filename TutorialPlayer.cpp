@@ -156,7 +156,7 @@ void TutorialPlayer::OnCollision(GameObject* pTarget)
         StartDamage(e_damage);
     }
 
-    if (pTarget->GetObjectName() == "Key")
+    if (pTarget->GetObjectName() == "ClearItem")
     {
         SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
         pSceneManager->ChangeScene(SCENE_ID_TUTORIAL_CLEAR);

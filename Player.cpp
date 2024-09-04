@@ -200,7 +200,7 @@ void Player::OnCollision(GameObject* pTarget)
         StartDamage(min_b_damage);
     }
 
-    if (pTarget->GetObjectName() == "Key")
+    if (pTarget->GetObjectName() == "ClearItem")
     {
         SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
         pSceneManager->ChangeScene(SCENE_ID_GAMECLEAR);

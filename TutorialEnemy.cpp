@@ -10,7 +10,7 @@ TutorialEnemy::TutorialEnemy(GameObject* parent)
     frameCount(0), DelayFrame(150),
 	maxHp_(100), nowHp_(0),
     isDamage(false), d_Amount(0), d_Step(0.1f),
-    pKey_(nullptr), isKey_(false)
+    pClearItem_(nullptr), isClearItem_(false)
 {
 }
 
@@ -71,11 +71,11 @@ void TutorialEnemy::Update()
 
     if (nowHp_ <= noHp_)
     {
-        if (!isKey_)
+        if (!isClearItem_)
         {
-            pKey_ = Instantiate<Key>(GetParent());
-            pKey_->SetPosition(tEnemy.position_);
-            isKey_ = true;
+            pClearItem_ = Instantiate<ClearItem>(GetParent());
+            pClearItem_->SetPosition(tEnemy.position_);
+            isClearItem_ = true;
         }
 
         Audio::Play(DeathSound_);
