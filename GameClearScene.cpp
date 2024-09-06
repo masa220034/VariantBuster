@@ -40,6 +40,12 @@ void GameClearScene::Update()
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_PLAY);
 		}
+
+		if (Input::IsKeyDown(DIK_RETURN))
+		{
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_SELECT);
+		}
 	}
 	else
 	{
