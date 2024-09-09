@@ -16,6 +16,7 @@ public:
 	XMFLOAT3 position_;		//位置
 	XMFLOAT3 rotate_;		//向き
 	XMFLOAT3 scale_;		//拡大率
+	float    alpha_;        //透明度(0.0f = 完全透明, 1.0f = 完全不透明)
 	Transform * pParent_;	//親オブジェクトの情報
 
 	//コンストラクタ

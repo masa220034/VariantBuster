@@ -4,7 +4,7 @@
 class GameClearScene : public GameObject
 {
 	int hBackGround_;
-	int hPict_;
+	int hClear_;
 	int BGM_;
 	int IMB = 0; //I=âÊëúÅAM=ÉÇÉfÉãÅAB=BGM
 
@@ -12,6 +12,9 @@ class GameClearScene : public GameObject
 	XMFLOAT3 CLEAR_LOGO_POS = XMFLOAT3(0.0f, 0.5f, 0.0f);
 	XMFLOAT3 CLEAR_LOGO_SCL = XMFLOAT3(1.5f, 1.5f, 1.5f);
 	//------------------------------------------------
+
+	int alphaDir;
+	float alphaSpeed;
 
 	unsigned int frameCount;
 	unsigned int DelayFrame;
