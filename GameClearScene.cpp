@@ -4,16 +4,14 @@
 #include "Engine/Audio.h"
 #include "Engine/SceneManager.h"
 
-//コンストラクタ
 GameClearScene::GameClearScene(GameObject* parent)
 	: GameObject(parent, "GameClearScene"), 
 	hBackGround_(-1), hClearLogo_(-1), hLight_(-1), BGM_(-1),
-	hChara1_(-1), hChara2_(-2),
+	hChara_right_(-1), hChara_left_(-1),
 	frameCount(0), DelayFrame(120), alphaSpeed(0.02f), alphaDir(1)
 {
 }
 
-//初期化
 void GameClearScene::Initialize()
 {
 	//画像データのロード
@@ -26,11 +24,11 @@ void GameClearScene::Initialize()
 	hLight_ = Image::Load("EffectLight.png");
 	assert(hLight_ >= IMB);
 	
-	hChara1_ = Image::Load("Character1.png");
-	assert(hChara1_ >= IMB);
+	hChara_right_ = Image::Load("Character1.png");
+	assert(hChara_right_ >= IMB);
 
-	hChara2_ = Image::Load("Character2.png");
-	assert(hChara1_ >= IMB);
+	hChara_left_ = Image::Load("Character2.png");
+	assert(hChara_left_ >= IMB);
 
 	BGM_ = Audio::Load("GameClearBGM.wav");
 	assert(BGM_ >= IMB);
@@ -40,56 +38,65 @@ void GameClearScene::Initialize()
 
 	tLight.position_ = LIGHT_LOGO_POS;
 	tLight.scale_ = LIGHT_LOGO_SCL;
-	tLight.alpha_ = 1.0f;
+	tLight.alpha_ = INITAL_ALPHA;
 
-	tChara1.position_ = XMFLOAT3(0.65f, -0.5f, 0.0f);
-	tChara1.scale_ = XMFLOAT3(0.7f, 0.7f, 0.7f);
-	tChara2.position_ = XMFLOAT3(-0.65f, -0.65f, 0.0f);
-	tChara2.scale_ = XMFLOAT3(0.7f, 0.7f, 0.7f);
+	tChara_right.position_ = RIGHT_CHARA_POS;
+	tChara_right.scale_ = CHARA_SCL;
+	tChara_left.position_ = LEFT_CHARA_POS;
+	tChara_left.scale_ = CHARA_SCL;
 }
 
-//更新
-void GameClearScene::Update()
+void GameClearScene::LogoScaling()
 {
-	Audio::Play(BGM_);
-
 	//アルファ値の増減処理
 	tLight.alpha_ += alphaDir * alphaSpeed;
-	if (tLight.alpha_ >= 1.0f) {
-		tLight.alpha_ = 1.0f;
-		alphaDir = -1;  // 減少方向に変更
+	if (tLight.alpha_ >= max_alpha) {
+		tLight.alpha_ = max_alpha;
+		alphaDir = alpha_direction_down;  // 減少方向に変更
 	}
-	else if (tLight.alpha_ <= 0.0f) {
-		tLight.alpha_ = 0.0f;
-		alphaDir = 1;  // 増加方向に変更
+	else if (tLight.alpha_ <= min_alpha) {
+		tLight.alpha_ = min_alpha;
+		alphaDir = alpha_direction_up;  // 増加方向に変更
 	}
 
-	frameCount = (frameCount + 1) % 360;
+	frameCount = (frameCount + frame_up) % frame_max;
 
 	/// 拡大縮小の変化（強調）
-	float scaleVariation = 0.1f * sinf(static_cast<float>(frameCount) / 20.0f);
+	float scaleVariation = scale_factor * sinf(static_cast<float>(frameCount) / scale_speed);
 	tLight.scale_.x = CLEAR_LOGO_SCL.x + scaleVariation;
 	tLight.scale_.y = CLEAR_LOGO_SCL.y + scaleVariation;
+}
 
-	if (isJump) 
+void GameClearScene::CharaJump()
+{
+	if (isJump)
 	{
-		x += jumpSpeed;
-		if (x >= jumpHeight)
+		initial_speed += jumpSpeed;
+		if (initial_speed >= jumpHeight)
 		{
 			isJump = false;
 		}
 	}
 	else
 	{
-		x -= jumpSpeed;
-		if (x <= 0.0f)
+		initial_speed -= jumpSpeed;
+		if (initial_speed <= initial_speed)
 		{
 			isJump = true;
 		}
 	}
 
-	tChara1.position_.y = 0.15f - x;
-	tChara2.position_.y = 0.0f - x;
+	tChara_left.position_.y = left_chara_posY - initial_speed;
+	tChara_right.position_.y = right_chara_posY - initial_speed;
+}
+
+void GameClearScene::Update()
+{
+	Audio::Play(BGM_);
+
+	LogoScaling();
+
+	CharaJump();
 
 	if (frameCount >= DelayFrame)
 	{
@@ -111,7 +118,6 @@ void GameClearScene::Update()
 	}
 }
 
-//描画
 void GameClearScene::Draw()
 {
 	Image::SetTransform(hBackGround_, transform_);
@@ -123,14 +129,13 @@ void GameClearScene::Draw()
 	Image::SetTransform(hClearLogo_, tClear);
 	Image::Draw(hClearLogo_);
 
-	Image::SetTransform(hChara1_, tChara1);
-	Image::Draw(hChara1_);
+	Image::SetTransform(hChara_right_, tChara_right);
+	Image::Draw(hChara_right_);
 
-	Image::SetTransform(hChara2_, tChara2);
-	Image::Draw(hChara2_);
+	Image::SetTransform(hChara_left_, tChara_left);
+	Image::Draw(hChara_left_);
 }
 
-//開放
 void GameClearScene::Release()
 {
 }
