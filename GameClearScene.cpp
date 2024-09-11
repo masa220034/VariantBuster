@@ -90,8 +90,6 @@ void GameClearScene::Update()
 
 	tChara1.position_.y = 0.15f - x;
 	tChara2.position_.y = 0.0f - x;
-	//tChara1.position_.y = -0.2f + jumpHeight * sinf(static_cast<float>(frameCount) * jumpSpeed);
-	//tChara2.position_.y = -0.2f + jumpHeight * sinf(static_cast<float>(frameCount) * jumpSpeed); // ­‚µ‚¸‚ç‚µ‚Ä“®‚©‚·
 
 	if (frameCount >= DelayFrame)
 	{
