@@ -41,13 +41,15 @@ class GameClearScene : public GameObject
 	float scale_speed = 20.0f;
 	//-----------------------------------------
 
+	//-----CharaJumpŠÖ”“à‚Ì•Ï”‚É‚Â‚¢‚Ä-----
 	bool isJump = true;
+	float jump_value = 0.0f;
 	float initial_speed = 0.0f;
 	float jumpHeight = 0.7f;
 	float jumpSpeed = 0.03f;
 	float left_chara_posY = 0.0f;
 	float right_chara_posY = 0.15f;
-	
+	//---------------------------------------
 
 	unsigned int frameCount;
 	unsigned int DelayFrame;

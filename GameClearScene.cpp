@@ -71,23 +71,23 @@ void GameClearScene::CharaJump()
 {
 	if (isJump)
 	{
-		initial_speed += jumpSpeed;
-		if (initial_speed >= jumpHeight)
+		jump_value += jumpSpeed;
+		if (jump_value >= jumpHeight)
 		{
 			isJump = false;
 		}
 	}
 	else
 	{
-		initial_speed -= jumpSpeed;
-		if (initial_speed <= initial_speed)
+		jump_value -= jumpSpeed;
+		if (jump_value <= initial_speed)
 		{
 			isJump = true;
 		}
 	}
 
-	tChara_left.position_.y = left_chara_posY - initial_speed;
-	tChara_right.position_.y = right_chara_posY - initial_speed;
+	tChara_left.position_.y = left_chara_posY - jump_value;
+	tChara_right.position_.y = right_chara_posY - jump_value;
 }
 
 void GameClearScene::Update()
