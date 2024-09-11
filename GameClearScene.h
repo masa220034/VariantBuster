@@ -1,19 +1,13 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-enum ImageID {
-	BACKGROUND,
-	CLEAR_LOGO,
-	LIGHT_LOGO,
-	IMAGE_MAX
-};
-
 class GameClearScene : public GameObject
 {
-	int hImage_[IMAGE_MAX];
-	//int hBackGround_;
-	//int hClearLogo_;
-	//int hLight_;
+	int hBackGround_;
+	int hClearLogo_;
+	int hLight_;
+	int hChara1_;
+	int hChara2_;
 	int BGM_;
 	int IMB = 0; //I=画像、M=モデル、B=BGM
 
@@ -30,12 +24,19 @@ class GameClearScene : public GameObject
 	int alphaDir;
 	float alphaSpeed;
 
+	float x = 0.0f;
+	float jumpHeight = 0.7f;
+	float jumpSpeed = 0.03f;
+	bool isJump = true;
+
 	unsigned int frameCount;
 	unsigned int DelayFrame;
 
-	//Transform tLight;
-	//Transform tClear;
-	Transform tImage_[IMAGE_MAX];
+	Transform tLight;
+	Transform tClear;
+
+	Transform tChara1;
+	Transform tChara2;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
@@ -53,4 +54,3 @@ public:
 	//開放
 	void Release() override;
 };
-
