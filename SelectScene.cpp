@@ -13,7 +13,7 @@ SelectScene::SelectScene(GameObject* parent)
 //‰Šú‰»
 void SelectScene::Initialize()
 {
-    hSelectBack_ = Image::Load("BackGround.png");
+    hSelectBack_ = Image::Load("SelectBackGround.png");
     assert(hSelectBack_ >= IMB);
 
     const char* ImageNames[BOSS_MAX] = { "Tutorial.png", "SelectBoss1.png", "SelectBoss2.png", "SelectBoss3.png" };
